@@ -62,6 +62,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 74px;
   font-size: 16px;
   background-color: var(--color-light-bg);
   color: var(--color-text-main);
@@ -73,6 +74,7 @@ body {
   line-height: 1.65;
   color: var(--color-text-muted);
   overflow-x: hidden;
+  padding-top: 74px;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -231,14 +233,16 @@ a {
    1. NAVBAR (FIXED, BALANCED & CRISP)
    ========================================================================== */
 .main-header {
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
+  width: 100%;
   z-index: 1000;
   background: rgba(255, 255, 255, 0.94);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   border-bottom: 1px solid rgba(226, 232, 240, 0.85);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
   transition: all var(--transition-fast);
 }
 
@@ -631,20 +635,34 @@ a {
 
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 28px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+@media (max-width: 1200px) {
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 .service-card {
   background: var(--color-light-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
-  padding: 32px 28px;
+  padding: 28px 22px;
   cursor: pointer;
   box-shadow: var(--shadow-sm);
   transition: all var(--transition-normal);
   position: relative;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.service-card-inner {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .service-card::before {
@@ -669,15 +687,15 @@ a {
 }
 
 .service-icon-box {
-  width: 54px;
-  height: 54px;
+  width: 52px;
+  height: 52px;
   border-radius: var(--radius-md);
   background: #F1F5F9;
   color: var(--color-primary);
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 20px;
+  margin-bottom: 18px;
   transition: all var(--transition-fast);
 }
 
@@ -689,23 +707,27 @@ a {
 .service-tag {
   font-family: var(--font-subheading);
   font-weight: 700;
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   letter-spacing: 0.08em;
   color: var(--color-accent-blue);
   margin-bottom: 8px;
+  line-height: 1.3;
 }
 
 .service-name {
-  font-size: 1.35rem;
-  margin-bottom: 12px;
+  font-size: 1.18rem;
+  font-weight: 700;
+  margin-bottom: 10px;
   color: var(--color-text-main);
+  line-height: 1.3;
 }
 
 .service-excerpt {
-  font-size: 0.92rem;
+  font-size: 0.88rem;
   color: var(--color-text-muted);
-  margin-bottom: 24px;
-  line-height: 1.6;
+  margin-bottom: 20px;
+  line-height: 1.55;
+  flex-grow: 1;
 }
 
 .service-action {
@@ -714,8 +736,9 @@ a {
   gap: 6px;
   font-family: var(--font-subheading);
   font-weight: 600;
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   color: var(--color-primary);
+  margin-top: auto;
 }
 
 .service-card:hover .service-action svg {
@@ -2626,6 +2649,7 @@ a {
   from {
     transform: scaleX(1);
   }
+
   to {
     transform: scaleX(0);
   }
@@ -3380,5 +3404,549 @@ a {
 
   .footer-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+/* ==========================================================================
+   MOBILE-FIRST RESPONSIVE OVERRIDES
+   Comprehensive phone compatibility — preserving all transitions & features
+   ========================================================================== */
+
+/* ---- HERO: remove white-space:nowrap on mobile so title wraps ---- */
+@media (max-width: 600px) {
+  .hero-title {
+    white-space: normal;
+    font-size: clamp(1.6rem, 7vw, 2.4rem);
+  }
+
+  .hero-section {
+    min-height: 92svh;
+    padding: 100px 0 60px;
+  }
+
+  .hero-badge {
+    font-size: 0.75rem;
+    padding: 5px 12px;
+    text-align: center;
+  }
+
+  .hero-lead {
+    font-size: 1rem;
+    padding: 0 4px;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    width: 100%;
+    gap: 12px;
+  }
+
+  .hero-buttons .btn {
+    width: 100%;
+  }
+
+  /* Reduce particle count on mobile via CSS hint (handled in JS too) */
+  #shaderCanvas {
+    opacity: 0.7;
+  }
+}
+
+/* ---- SECTION TITLES: never force single-line on phones ---- */
+@media (max-width: 600px) {
+
+  .section-title,
+  .operations-headline,
+  .pillars-headline,
+  .cta-headline,
+  .panel-industry-title,
+  .mof-headline {
+    white-space: normal !important;
+    font-size: clamp(1.3rem, 5.5vw, 1.8rem);
+  }
+
+  .section {
+    padding: 56px 0;
+  }
+
+  .section-header-split {
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 32px;
+  }
+
+  .section-right {
+    max-width: 100%;
+  }
+}
+
+/* ---- NAV: mobile menu full-screen slide ---- */
+@media (max-width: 960px) {
+  html {
+    scroll-padding-top: 62px;
+  }
+
+  body {
+    padding-top: 62px;
+  }
+
+  .nav-container {
+    height: 62px;
+  }
+
+  .brand-logo-img {
+    height: 36px;
+    max-width: 180px;
+  }
+
+  .btn-sm {
+    padding: 7px 14px;
+    font-size: 0.8rem;
+  }
+
+  /* Mobile nav drawer */
+  .nav-links.mobile-open {
+    top: 62px;
+    padding: 20px 20px 28px;
+    gap: 4px;
+    z-index: 999;
+    animation: mobileNavIn 0.25s ease forwards;
+  }
+
+  .nav-links.mobile-open .nav-item {
+    font-size: 1rem;
+    padding: 12px 8px;
+    border-bottom: 1px solid var(--color-border);
+    width: 100%;
+  }
+
+  .nav-links.mobile-open .nav-item:last-child {
+    border-bottom: none;
+  }
+}
+
+@keyframes mobileNavIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ---- TRUST SLIP: 2-col on mobile ---- */
+@media (max-width: 480px) {
+  .trust-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .trust-card {
+    padding: 18px 12px;
+  }
+
+  .trust-number {
+    font-size: clamp(1.8rem, 8vw, 2.4rem);
+  }
+}
+
+/* ---- SERVICES GRID: 1-col on phones ---- */
+@media (max-width: 600px) {
+
+  .services-grid,
+  .sales-matrix-grid,
+  .blogs-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  /* Service modal: full screen on phones */
+  .service-modal-card {
+    width: 100vw !important;
+    height: 100dvh !important;
+    max-width: 100vw;
+    max-height: 100dvh;
+    border-radius: 0;
+    transform: rotateY(0deg) scale(0.92) !important;
+  }
+
+  .service-modal-backdrop.active .service-modal-card {
+    transform: rotateY(0deg) scale(1) !important;
+  }
+
+  .modal-content-container {
+    padding: 20px 18px;
+  }
+
+  .modal-headline {
+    font-size: 1.35rem;
+  }
+
+  .modal-header-hero {
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+
+  .modal-close-btn {
+    top: 14px;
+    right: 14px;
+  }
+}
+
+/* ---- DELIVERY ROADMAP: vertical on mobile already handled, 
+        extra polish below 600px ---- */
+@media (max-width: 600px) {
+  .roadmap-infographic {
+    min-height: unset;
+    margin: 24px 0 10px;
+  }
+
+  .roadmap-steps-wave {
+    padding-left: 0;
+    gap: 20px;
+  }
+
+  .roadmap-steps-wave::before {
+    display: none;
+  }
+
+  .roadmap-col {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 12px;
+  }
+
+  .step-badge-header {
+    flex-direction: row;
+  }
+
+  .step-card {
+    text-align: left;
+  }
+
+  .btn-delivery-explore {
+    flex-direction: column;
+    gap: 6px;
+    padding: 14px 20px;
+    text-align: center;
+    width: 100%;
+  }
+
+  .btn-explore-divider {
+    width: 60px;
+    height: 1px;
+    margin: 0;
+  }
+}
+
+/* ---- MOF (MANAGED OPERATIONS FRAMEWORK): stack on mobile ---- */
+@media (max-width: 600px) {
+  .mof-wrapper {
+    padding: 28px 16px;
+    border-radius: 16px;
+  }
+
+  .mof-architecture-flow {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    min-height: unset;
+  }
+
+  .mof-sources-col,
+  .mof-outcomes-col {
+    grid-template-columns: 1fr;
+  }
+
+  .mof-orbit-container {
+    width: 260px;
+    height: 260px;
+    margin: 0 auto;
+  }
+
+  .mof-core-disc {
+    width: 130px;
+    height: 130px;
+  }
+
+  .mof-orbit-badge {
+    padding: 3px 8px;
+  }
+
+  .mof-badge-label {
+    font-size: 0.62rem;
+  }
+
+  .mof-badge-sub {
+    font-size: 0.52rem;
+  }
+
+  .mof-feature-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .mof-footer-bar {
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+    align-items: center;
+  }
+
+  .mof-footer-center-cta {
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+  }
+
+  .mof-primary-pill-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .mof-footer-keywords-group {
+    justify-content: center;
+  }
+}
+
+/* ---- ABOUT SECTION ---- */
+@media (max-width: 600px) {
+  .about-hero-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    margin-bottom: 36px;
+  }
+
+  .about-pillars-container {
+    padding: 28px 20px;
+    border-radius: 16px;
+  }
+
+  .pillars-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .pillars-headline {
+    white-space: normal !important;
+  }
+
+  .about-card-banner {
+    padding: 28px 24px;
+    min-height: 220px;
+  }
+
+  .banner-word {
+    font-size: 1.8rem;
+  }
+}
+
+/* ---- INDUSTRIES MATRIX: stack on mobile ---- */
+@media (max-width: 600px) {
+  .industries-interactive-matrix {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .industry-display-panel {
+    padding: 28px 20px;
+    border-radius: 16px;
+  }
+
+  .panel-industry-title {
+    white-space: normal !important;
+    font-size: 1.35rem;
+  }
+
+  .panel-lead-text {
+    font-size: 0.95rem;
+  }
+}
+
+/* ---- CTA SECTION: always stacked on mobile ---- */
+@media (max-width: 600px) {
+  .cta-section {
+    padding: 40px 0;
+  }
+
+  .cta-interactive-container,
+  .cta-interactive-container.form-open {
+    grid-template-columns: 1fr !important;
+    border-radius: 16px;
+  }
+
+  .cta-left-panel {
+    padding: 32px 24px 28px;
+  }
+
+  .cta-headline {
+    white-space: normal !important;
+    font-size: clamp(1.4rem, 6vw, 2rem);
+  }
+
+  /* On mobile, form is below CTA panel, not side-by-side */
+  .cta-right-form-panel {
+    border-left: none !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 28px 24px;
+  }
+}
+
+/* ---- AI CHAT WIDGET: full-width on phones ---- */
+@media (max-width: 420px) {
+  .ai-assistant-widget {
+    bottom: 18px;
+    right: 16px;
+  }
+
+  .ai-chat-window {
+    width: calc(100vw - 32px);
+    right: 0;
+    bottom: 74px;
+    height: 420px;
+  }
+}
+
+/* ---- FOOTER: single-column on phones ---- */
+@media (max-width: 600px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    margin-bottom: 32px;
+  }
+
+  .main-footer {
+    padding: 48px 0 24px;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .footer-bottom-links {
+    gap: 10px;
+  }
+
+  .footer-logo-img {
+    height: 42px;
+  }
+}
+
+/* ---- TOP BAR: hide on phones to save space ---- */
+@media (max-width: 600px) {
+  .top-bar {
+    display: none;
+  }
+}
+
+/* ---- CREDENTIALS MARQUEE: shrink on phones ---- */
+@media (max-width: 600px) {
+  .cred-badge {
+    font-size: 0.75rem;
+    padding: 8px 14px;
+  }
+}
+
+/* ---- GENERAL: touch-friendly tap targets ---- */
+@media (hover: none) and (pointer: coarse) {
+
+  .service-card,
+  .industry-nav-btn,
+  .procurement-card,
+  .blog-card {
+    /* Remove hover lift on touch — transitions still fire on tap */
+    transform: none !important;
+  }
+
+  /* But keep the visual state change on active (tap) */
+  .service-card:active {
+    transform: scale(0.98) !important;
+  }
+
+  .industry-nav-btn:active {
+    transform: scale(0.98) !important;
+  }
+
+  .procurement-card:active {
+    transform: scale(0.98) !important;
+  }
+
+  .blog-card:active {
+    transform: scale(0.98) !important;
+  }
+
+  .btn:active {
+    transform: scale(0.96) !important;
+  }
+
+  /* Larger tap targets */
+  .nav-item {
+    padding: 10px 4px;
+  }
+
+  .prompt-chip {
+    padding: 7px 12px;
+  }
+}
+
+/* ---- SAFE AREA INSETS for notched phones ---- */
+@supports (padding-top: env(safe-area-inset-top)) {
+  .main-header {
+    padding-top: env(safe-area-inset-top, 0px);
+  }
+
+  .ai-assistant-widget {
+    bottom: calc(28px + env(safe-area-inset-bottom, 0px));
+    right: calc(28px + env(safe-area-inset-right, 0px));
+  }
+
+  body {
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+}
+
+/* ---- PREVENT HORIZONTAL SCROLL (belt-and-suspenders) ---- */
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.container {
+  padding: 0 16px;
+}
+
+@media (min-width: 480px) {
+  .container {
+    padding: 0 20px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding: 0 24px;
+  }
+}
+
+/* ---- PROPOSAL SUCCESS DIALOG: ensure it fits phones ---- */
+@media (max-width: 480px) {
+  .proposal-dialog-card {
+    padding: 28px 20px 22px;
+    border-radius: 16px;
+  }
+
+  .proposal-dialog-backdrop {
+    padding: 16px;
+  }
+}
+
+/* ---- SCROLL HINT: hide on phones (not relevant for touch) ---- */
+@media (max-width: 600px) {
+  .hero-scroll-hint {
+    display: none;
   }
 }

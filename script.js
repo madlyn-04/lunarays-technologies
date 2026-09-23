@@ -51,8 +51,11 @@ function initShaderHero() {
     mouse.y = null;
   });
 
-  // Create particles for glowing mesh
-  const particleCount = Math.min(Math.floor((width * height) / 12000), 100);
+  // Create particles for glowing mesh — reduce on mobile for performance
+  const isMobile = window.innerWidth < 768;
+  const particleCount = isMobile
+    ? Math.min(Math.floor((width * height) / 30000), 35)
+    : Math.min(Math.floor((width * height) / 12000), 100);
   for (let i = 0; i < particleCount; i++) {
     particles.push({
       x: Math.random() * width,
@@ -180,89 +183,139 @@ function initCounters() {
    3. SERVICES SECTION (CARD CLICK -> 80% SCREEN 3D FLIP/ZOOM MODAL)
    ========================================================================== */
 const servicesData = {
+  'cloud-datacenter': {
+    title: 'Cloud Infrastructure, Migration & Data Center Management',
+    category: 'CLOUD INFRASTRUCTURE & DATA CENTER',
+    lead: 'Lunarays Technologies helps organizations design, migrate and manage cloud environments aligned with their IT requirements, growth and scalability objectives. Services cover private, public and hybrid cloud environments along with data-center infrastructure and operational support.',
+    deliverables: [
+      'Cloud architecture and environment assessment',
+      'Cloud migration planning and implementation',
+      'Private, public and hybrid cloud solutions',
+      'Network, storage and compute virtualization',
+      'Automation and orchestration workflows',
+      'Cloud and data-center integration',
+      'Cloud-based SIEM and log monitoring',
+      'Mobile security / MDM solutions',
+      'Enterprise monitoring automation',
+      'Data-center operations support 24×7×365',
+      'Scalability, availability and performance optimization'
+    ],
+    techStack: 'Public Cloud, Private Cloud, Hybrid Cloud, SDN, SDS, SDC / Compute Virtualization, Cloud SIEM, MDM, Enterprise Monitoring, Data Center Infrastructure',
+    sla: '24×7×365 Data-Center Operations &bull; 4-Hour Guaranteed Response Time for Managed Support Plans (SOW/Plan-dependent)'
+  },
+  'network-management': {
+    title: 'Enterprise Network Management & Operations',
+    category: 'INFRASTRUCTURE & NETWORK OPERATIONS',
+    lead: 'Lunarays manages enterprise network environments to support continuous operation, availability and performance. The service covers network infrastructure, active and passive components, monitoring, troubleshooting and technical support across multiple support levels.',
+    deliverables: [
+      'Network infrastructure assessment & architecture design',
+      'Network design, implementation & rollout',
+      'Hardware and software installation & configuration',
+      'Server and virtual-server setup & provisioning',
+      '24×7×365 Network monitoring & failure resolution',
+      'Performance troubleshooting & traffic optimization',
+      'OEM / Vendor coordination & warranty management',
+      'Structured L1, L2, L3 and L4 technical escalation',
+      'Dedicated onsite network SME support',
+      'Network maintenance, technical logging and SLA adherence'
+    ],
+    techStack: 'LAN, WAN, Wireless Networks, Servers, Storage & Backup, Network & Security Devices, Databases, Middleware, Virtual Servers, OEM Network Technologies',
+    sla: '24×7×365 Monitoring &bull; L1–L4 Technical Resolution &bull; 4-Hour Guaranteed Response Time for Managed Plans'
+  },
+  'information-security': {
+    title: 'Integrated Information Security Services',
+    category: 'CYBERSECURITY & INFORMATION SECURITY',
+    lead: 'Lunarays provides an integrated information-security approach that aligns security strategy with business objectives, operational requirements, risk tolerance and technology environments.',
+    deliverables: [
+      'Security environment assessment & risk posture evaluation',
+      'Security strategy, governance mechanisms & compliance roadmaps',
+      'Security metrics, audit reporting & continual improvement',
+      'ITSM-security workflow integration & incident-to-action automation',
+      'Flexible security operating models: Onsite, Remote & Hybrid',
+      'Endpoint protection, identity governance & perimeter defense',
+      'Comprehensive security program & compliance management'
+    ],
+    techStack: 'Enterprise IT Infrastructure, ITSM Platforms, Security Technologies, Cloud Environments, Network Infrastructure, Endpoint Environments, Security Monitoring, Governance & Risk Frameworks',
+    sla: 'Tailored Business-Service SLAs & Flexible Operating Models aligned to organizational risk profile and contract SOW'
+  },
+  'system-integration': {
+    title: 'Enterprise Systems Integration & Architecture',
+    category: 'ENTERPRISE IT INTEGRATION',
+    lead: 'Lunarays integrates applications, platforms and technology components into connected enterprise environments. The approach focuses on workflow analysis, interface assessment, data foundations and optimized information flow.',
+    deliverables: [
+      'Workflow analysis & IT-tool assessment',
+      'Data-content analysis, mapping & interface definition',
+      'Existing-interface assessment & data-flow optimization',
+      'Database, CRM & ERP cross-platform integration',
+      'Cloud-system integration (Salesforce, Amazon S3, Web Services)',
+      'Custom-built enterprise integration solutions',
+      'Intranet, extranet, e-commerce & mobile application bridges'
+    ],
+    techStack: 'Databases, CRM, ERP, Salesforce, Amazon S3, Intranet, Extranet, E-commerce Platforms, Mobile Applications, Custom Applications',
+    sla: 'Milestone-based delivery timelines, data integrity benchmarks and acceptance SLAs defined per project SOW'
+  },
+  'it-asset-management': {
+    title: 'IT Asset Lifecycle Management & Consulting',
+    category: 'IT ASSET LIFECYCLE MANAGEMENT',
+    lead: 'Lunarays provides structured management of IT hardware and software assets throughout their lifecycle, helping organizations maintain asset visibility, operational control and optimized utilization across the 4-stage model: Procurement → Deployment → Maintenance → Disposition.',
+    deliverables: [
+      'IT asset procurement & vendor identification',
+      'Hardware and software rollout deployment',
+      'Asset-location tracking & responsibility assignment',
+      'Vendor information & database credential management',
+      'Asset maintenance, hardware/software repair & warranty tracking',
+      'Asset additions, removals, decommissioning & disposition recycling',
+      'Software license optimization, compliance defense & TCO reduction'
+    ],
+    techStack: 'Hardware Assets, Software Assets, Asset Databases, Storage Infrastructure, Endpoint Infrastructure, Vendor Ecosystems, IT Infrastructure',
+    sla: '100% Asset Visibility & Governance &bull; SLA commitments structured according to managed-service agreement'
+  },
+  'it-outsourcing-helpdesk': {
+    title: 'IT Outsourcing, Helpdesk & Technical Support',
+    category: 'IT OPERATIONS & END-USER SUPPORT',
+    lead: 'Lunarays provides outsourced IT helpdesk services covering hardware, email, ERP, CRM, HR solutions, mobile applications, web applications and corporate systems. Support is structured by technical complexity and escalation level.',
+    deliverables: [
+      'L1 Support: Software usage assistance, password/access restoration, user guidance, FAQs & knowledge base',
+      'L2 Support: Software configuration, hardware/software interoperability, log investigation & root-cause analysis',
+      'L3 Support: Code-level troubleshooting, complex application issues, software-engineer escalation & defect resolution',
+      'Omnichannel helpdesk: Ticketing, live phone, remote desktop and onsite escalation',
+      'Monthly reporting on resolution metrics, ticket trends & asset health'
+    ],
+    techStack: 'Enterprise Applications, Email Systems, ERP, CRM, HR Management Systems, Mobile Applications, Web Applications, Corporate IT Systems, Hardware Infrastructure',
+    sla: '4-Hour Guaranteed Response Time &bull; Unlimited Phone & Remote Support &bull; Monthly System & Asset Reports'
+  },
   'application-services': {
-    title: 'Application Services & Lifecycle Engineering',
-    category: 'LIFECYCLE MANAGEMENT',
-    lead: 'End-to-end application lifecycle management, modern microservices architecture, and business-critical software maintenance.',
+    title: 'Application Development, Management & Automation',
+    category: 'APPLICATION ENGINEERING & AUTOMATION',
+    lead: 'Lunarays works with organizations to understand business requirements and develop or manage applications designed around operational needs. Its stated approach incorporates automation, application transition, operations, enhancement and continuous improvement.',
     deliverables: [
-      'Enterprise Application Architecture & Modularization',
-      'Legacy Modernization to Microservices & Kubernetes',
-      'CI/CD Pipeline Automation with Automated Testing',
-      'Custom Web & Enterprise Mobile Solution Implementation',
-      'Continuous SLA-backed Support & Performance Tuning'
+      'Business requirement analysis & solution architecture',
+      'Full-stack custom application development & implementation',
+      'Application transition, staging & operational handover',
+      'Application operations, maintenance & performance tuning',
+      'Process digitization & RPA / BOT implementation',
+      'Application analytics, telemetry & continuous optimization',
+      'Structured issue tracking, bug remediation & feature enhancements'
     ],
-    techStack: 'Java Spring Boot, Node.js, Python, Docker, Kubernetes, AWS, Azure',
-    sla: '99.95% Availability &bull; &lt; 15m Critical Incident SLA'
+    techStack: 'Enterprise Applications, RPA, BOT Technology, Business Applications, HCM, Payroll Systems, Web Applications, Mobile Applications, Databases, Cloud Platforms',
+    sla: 'Continuous Improvement Lifecycle &bull; Response & Resolution SLAs customized per implementation SOW'
   },
-  'infor-services': {
-    title: 'Infor ERP & Supply Chain Execution',
-    category: 'ERP & LOGISTICS',
-    lead: 'Specialized enterprise consulting, implementation, and optimization for Infor LN, M3, WMS, and CloudSuite environments.',
+  'microsoft-365': {
+    title: 'Microsoft 365 Migration, Deployment & Support Services',
+    category: 'CLOUD PRODUCTIVITY & WORKPLACE',
+    lead: 'Lunarays helps organizations transition and support Microsoft productivity and email environments. The documented capabilities include Office 365 migration, Microsoft Exchange migration and Microsoft application consulting and implementation.',
     deliverables: [
-      'Infor CloudSuite & Infor LN Enterprise Deployment',
-      'Supply Chain Execution (SCE) & Automated Warehouse (WMS)',
-      'Enterprise Asset Management (EAM) Predictive Workflows',
-      'Custom Infor OS / ION Middleware Data Integrations',
-      'Version Upgrades, Data Migration & Compliance Validation'
+      'Microsoft 365 environment assessment & readiness audit',
+      'Office 365 migration planning & implementation',
+      'On-premises Exchange to cloud migration',
+      'Active Directory migration & hybrid identity consulting',
+      'Microsoft application consulting & suite rollout',
+      'User and access provisioning & end-user support',
+      'Microsoft system updates & security patch management',
+      'Enterprise email security, backup & post-migration support'
     ],
-    techStack: 'Infor CloudSuite, Infor LN, Infor WMS, Infor ION, Infor OS, SQL Server',
-    sla: '100% Data Integrity Guarantee &bull; 24/7 Global ERP Support'
-  },
-  'it-asset-consulting': {
-    title: 'IT Asset Management & Strategic Consulting',
-    category: 'GOVERNANCE & ASSETS',
-    lead: 'Maximizing ROI and eliminating compliance risk through systematic tracking, software license optimization, and lifecycle audits.',
-    deliverables: [
-      'Automated Hardware & Software Asset Discovery (ITAM)',
-      'Software License Compliance & True-Up Audit Defense',
-      'Cloud & Infrastructure Total Cost of Ownership (TCO) Optimization',
-      'ITIL v4 Governance, Change Management & Standard SOPs',
-      'Vendor Contract Negotiation & Warranty Consolidation'
-    ],
-    techStack: 'ServiceNow, Flexera, Microsoft 365 Admin, Ivanti, Jira Service Management',
-    sla: 'Up to 30% Cost Reduction in Licensing &bull; Zero Audit Penalties'
-  },
-  'database-support': {
-    title: 'Enterprise Database Administration & High Availability',
-    category: 'DATA INTEGRITY',
-    lead: 'Proactive 24/7 DBA services covering transactional integrity, zero-downtime replication, query tuning, and disaster failover.',
-    deliverables: [
-      'Oracle RAC, MS SQL AlwaysOn & PostgreSQL Cluster Management',
-      'Real-Time Replication & Automated Disaster Recovery (DR) Drills',
-      'Slow Query Optimization, Index Defragmentation & Capacity Planning',
-      'Point-in-time Backup Automation with Off-Site Cloud Air-Gapping',
-      'Database Migration from Legacy On-Prem to Cloud Managed RDS/Aurora'
-    ],
-    techStack: 'Oracle 19c/21c, Microsoft SQL Server, PostgreSQL, MySQL, Redis, AWS RDS',
-    sla: 'RPO &lt; 5 Minutes &bull; RTO &lt; 30 Minutes &bull; 24/7 DBA On-Call'
-  },
-  'oracle-retail': {
-    title: 'Oracle Retail & Fusion Cloud Solutions',
-    category: 'OMNICHANNEL & CLOUD',
-    lead: 'Comprehensive omnichannel commerce, merchandising optimization, POS integration, and Oracle Cloud Fusion ERP deployment.',
-    deliverables: [
-      'Oracle Retail Merchandising System (RMS) Implementation',
-      'Oracle Retail Store POS & Omnichannel Inventory Synchronization',
-      'Oracle Fusion Financials & Procurement Cloud Integration',
-      'Custom Business Intelligence (BI) Analytics & Revenue Dashboards',
-      'Continuous Release Testing & Performance Stress Testing'
-    ],
-    techStack: 'Oracle Fusion Cloud, Oracle Retail Suite, Oracle Autonomous DB, OCI',
-    sla: 'Sub-second POS Latency &bull; Seamless Real-time Stock Sync'
-  },
-  'managed-services': {
-    title: '24/7 NOC Managed Services & Systems Integration',
-    category: 'SYSTEM INTEGRATION',
-    lead: 'Fully managed 24/7/365 infrastructure monitoring, hybrid cloud operations, network security, and campus IT support.',
-    deliverables: [
-      '24/7/365 Centralized Network Operations Center (NOC) Telemetry',
-      'Hybrid Cloud Orchestration across AWS, Azure & Private Bare Metal',
-      'Enterprise Campus Wi-Fi & Structured Network Cabling',
-      'L1-L3 Incident Management with Automated Escalation Trees',
-      'Monthly Security Governance, CVE Patching & Performance Audits'
-    ],
-    techStack: 'Cisco, Fortinet, VMware vSphere, Prometheus, Grafana, Zabbix, Azure, AWS',
-    sla: '99.99% Network Uptime SLA &bull; 15-Minute Critical MTTA'
+    techStack: 'Microsoft 365, Office 365, Microsoft Exchange, Active Directory, Microsoft Applications, Enterprise Email, Cloud Infrastructure, Security Updates & Patches',
+    sla: 'Proactive Monitoring &bull; Microsoft System Updates & Security Patches &bull; 4-Hour Guaranteed Response Time'
   }
 };
 
@@ -280,10 +333,12 @@ function initServicesModal() {
       const data = servicesData[serviceId];
       if (!data) return;
 
+      const iconSvg = card.querySelector('.service-icon-box svg')?.outerHTML || '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>';
+
       modalContainer.innerHTML = `
         <div class="modal-header-hero">
           <div class="modal-hero-icon">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+            ${iconSvg}
           </div>
           <div>
             <span class="service-tag">${data.category}</span>
@@ -476,6 +531,18 @@ function initSlidingCTA() {
   const ctaContainer = document.getElementById('ctaContainer');
   const openBtn = document.getElementById('ctaOpenFormBtn');
   const closeBtn = document.getElementById('ctaCloseFormBtn');
+
+  // On mobile, scroll to form panel after opening
+  if (openBtn && ctaContainer) {
+    openBtn.addEventListener('click', () => {
+      if (window.innerWidth < 640) {
+        setTimeout(() => {
+          const formPanel = document.querySelector('.cta-right-form-panel');
+          if (formPanel) formPanel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 100);
+      }
+    });
+  }
   const dialog = document.getElementById('proposalSuccessDialog');
   const dialogCloseBtn = document.getElementById('proposalDialogCloseBtn');
 
@@ -522,7 +589,7 @@ function closeProposalDialog() {
   }
 }
 
-window.handleProposalSubmit = function() {
+window.handleProposalSubmit = function () {
   const form = document.getElementById('proposalForm');
   const dialog = document.getElementById('proposalSuccessDialog');
 
@@ -574,7 +641,7 @@ const aiResponses = {
   'default': 'Thank you for reaching out! Lunarays Technologies specializes in Enterprise IT Infrastructure, Cloud Management, Hardware Procurement, and ERP Solutions. Feel free to request a proposal or consult our team directly at +91-0120-4980800.'
 };
 
-window.sendQuickPrompt = function(promptText) {
+window.sendQuickPrompt = function (promptText) {
   const chatBody = document.getElementById('chatBody');
   if (!chatBody) return;
 
@@ -594,7 +661,7 @@ window.sendQuickPrompt = function(promptText) {
   }, 600);
 };
 
-window.handleSendChatMessage = function() {
+window.handleSendChatMessage = function () {
   const input = document.getElementById('chatInput');
   if (!input || !input.value.trim()) return;
 
@@ -639,13 +706,27 @@ function initNavigation() {
     mobileToggle.addEventListener('click', () => {
       mobileToggle.classList.toggle('active');
       navLinks.classList.toggle('mobile-open');
+      // Prevent body scroll when mobile menu is open
+      document.body.style.overflow = navLinks.classList.contains('mobile-open') ? 'hidden' : '';
     });
 
     links.forEach(link => {
       link.addEventListener('click', () => {
         mobileToggle.classList.remove('active');
         navLinks.classList.remove('mobile-open');
+        document.body.style.overflow = '';
       });
+    });
+
+    // Close mobile nav when clicking outside
+    document.addEventListener('click', (e) => {
+      if (navLinks.classList.contains('mobile-open') &&
+        !navLinks.contains(e.target) &&
+        !mobileToggle.contains(e.target)) {
+        mobileToggle.classList.remove('active');
+        navLinks.classList.remove('mobile-open');
+        document.body.style.overflow = '';
+      }
     });
   }
 

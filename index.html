@@ -1,0 +1,1878 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lunarays Technologies | Managed IT Infrastructure & Enterprise Solutions</title>
+    <meta name="description"
+        content="Enterprise Managed IT Infrastructure, Cloud Solutions, ERP, Network Security, Hardware & Software Procurement by Lunarays Technologies.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="icon" type="image/png" href="logo-icon.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- 1. NAVBAR -->
+    <header class="main-header" id="navbar">
+        <div class="container nav-container">
+            <a href="#hero" class="brand-logo" aria-label="Lunarays Technologies">
+                <img src="logo.png" alt="Lunarays Technologies - Your Wish, Our Endeavour!" class="brand-logo-img">
+            </a>
+
+            <nav class="nav-links">
+                <a href="#hero" class="nav-item active">Home</a>
+                <a href="#services" class="nav-item">Services</a>
+                <a href="#delivery" class="nav-item">Delivery Model</a>
+                <a href="#sales-products" class="nav-item">Sales &amp; Products</a>
+                <a href="#industries" class="nav-item">Industries</a>
+                <a href="#about" class="nav-item">About Us</a>
+                <a href="#blogs" class="nav-item">Insights</a>
+            </nav>
+
+            <div class="nav-actions">
+                <a href="#cta" class="btn btn-primary btn-sm">Request Proposal</a>
+                <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle Navigation">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- 2. HERO SECTION WITH SHADER ANIMATION -->
+    <section class="hero-section" id="hero">
+        <!-- WebGL Canvas Background -->
+        <canvas id="shaderCanvas" class="shader-canvas"></canvas>
+        <div class="shader-overlay"></div>
+
+        <div class="container hero-content">
+            <div class="hero-badge">
+                <span class="badge-dot"></span>
+                <span class="badge-text">Next-Gen IT Infrastructure &amp; Cloud Operations</span>
+            </div>
+
+            <h1 class="hero-title">
+                Empowering Enterprise <span class="gradient-text">Agility &amp; Digital Resilience</span>
+            </h1>
+
+            <p class="hero-lead">
+                We engineer, procure, and manage mission-critical cloud, network, and software environments—ensuring
+                99.99% operational continuity for high-growth enterprises.
+            </p>
+
+            <div class="hero-buttons">
+                <a href="#services" class="btn btn-primary btn-lg">
+                    Explore Services
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7" />
+                    </svg>
+                </a>
+                <a href="#cta" class="btn btn-outline btn-lg">
+                    Schedule Consultation
+                </a>
+            </div>
+
+            <div class="hero-scroll-hint">
+                <span class="scroll-mouse">
+                    <span class="scroll-wheel"></span>
+                </span>
+                <span class="scroll-label">Scroll to explore</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. TRUST SLIP / METRIC COUNTERS -->
+    <section class="trust-slip-section" id="trust-slip">
+        <div class="container">
+            <div class="trust-grid">
+                <div class="trust-card" data-counter="140" data-suffix="+">
+                    <div class="trust-number"><span class="count">0</span><span class="suffix">+</span></div>
+                    <div class="trust-title">HAPPY CLIENTS</div>
+                    <p class="trust-desc">Enterprise and public sector engagements</p>
+                </div>
+
+                <div class="trust-card" data-counter="424" data-suffix="+">
+                    <div class="trust-number"><span class="count">0</span><span class="suffix">+</span></div>
+                    <div class="trust-title">PROJECTS DONE</div>
+                    <p class="trust-desc">Successful implementations across India</p>
+                </div>
+
+                <div class="trust-card" data-counter="98" data-suffix="%">
+                    <div class="trust-number"><span class="count">0</span><span class="suffix">%</span></div>
+                    <div class="trust-title">SATISFACTION RATE</div>
+                    <p class="trust-desc">Client retention &amp; SLA compliance</p>
+                </div>
+
+                <div class="trust-card" data-counter="50" data-suffix="+">
+                    <div class="trust-number"><span class="count">0</span><span class="suffix">+</span></div>
+                    <div class="trust-title">DEDICATED EMPLOYEES</div>
+                    <p class="trust-desc">Certified IT engineers &amp; consultants</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION HEADER STANDARD: WHO WE ARE / SERVICES -->
+    <!-- 4. SERVICES SECTION (CARD FORMAT WITH 80% SCREEN 3D FLIP/ZOOM) -->
+    <section class="section services-section" id="services">
+        <div class="container">
+            <div class="section-header-split">
+                <div class="section-left">
+                    <div class="section-eyebrow">
+                        <span class="eyebrow-bullet"></span>
+                        OUR CAPABILITIES
+                    </div>
+                    <h2 class="section-title">End-to-End Enterprise IT Services</h2>
+                </div>
+                <div class="section-right">
+                    <p class="section-lead">
+                        Comprehensive lifecycle engineering from systems integration to 24/7 managed NOC operations.
+                        Click any card to inspect architectural capabilities.
+                    </p>
+                </div>
+            </div>
+
+            <div class="services-grid">
+                <!-- Service Card 1 -->
+                <div class="service-card" data-service-id="application-services">
+                    <div class="service-card-inner">
+                        <div class="service-icon-box">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                                <line x1="8" y1="21" x2="16" y2="21"></line>
+                                <line x1="12" y1="17" x2="12" y2="21"></line>
+                            </svg>
+                        </div>
+                        <div class="service-tag">LIFECYCLE MANAGEMENT</div>
+                        <h3 class="service-name">Application Services</h3>
+                        <p class="service-excerpt">Application lifecycle management, customized enterprise
+                            implementation, performance tuning, and integration.</p>
+                        <div class="service-action">
+                            <span>View Full Specs</span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service Card 2 -->
+                <div class="service-card" data-service-id="infor-services">
+                    <div class="service-card-inner">
+                        <div class="service-icon-box">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path
+                                    d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z">
+                                </path>
+                                <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                                <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                            </svg>
+                        </div>
+                        <div class="service-tag">ERP &amp; LOGISTICS</div>
+                        <h3 class="service-name">Infor Services</h3>
+                        <p class="service-excerpt">Supply chain execution (SCE), Warehouse Management (WMS), and
+                            Enterprise Asset Management (EAM) optimization.</p>
+                        <div class="service-action">
+                            <span>View Full Specs</span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service Card 3 -->
+                <div class="service-card" data-service-id="it-asset-consulting">
+                    <div class="service-card-inner">
+                        <div class="service-icon-box">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                            </svg>
+                        </div>
+                        <div class="service-tag">GOVERNANCE &amp; ASSETS</div>
+                        <h3 class="service-name">IT Asset Management &amp; Consulting</h3>
+                        <p class="service-excerpt">ITIL-aligned infrastructure consulting, software license compliance,
+                            hardware asset lifecycle, and cost audit.</p>
+                        <div class="service-action">
+                            <span>View Full Specs</span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service Card 4 -->
+                <div class="service-card" data-service-id="database-support">
+                    <div class="service-card-inner">
+                        <div class="service-icon-box">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+                                <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
+                                <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
+                            </svg>
+                        </div>
+                        <div class="service-tag">DATA INTEGRITY</div>
+                        <h3 class="service-name">Database Support Services</h3>
+                        <p class="service-excerpt">High-availability Oracle, MS SQL, PostgreSQL &amp; MySQL
+                            administration, performance tuning, replication &amp; disaster backup.</p>
+                        <div class="service-action">
+                            <span>View Full Specs</span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service Card 5 -->
+                <div class="service-card" data-service-id="oracle-retail">
+                    <div class="service-card-inner">
+                        <div class="service-icon-box">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                                <polyline points="2 17 12 22 22 17"></polyline>
+                                <polyline points="2 12 12 17 22 12"></polyline>
+                            </svg>
+                        </div>
+                        <div class="service-tag">OMNICHANNEL &amp; CLOUD</div>
+                        <h3 class="service-name">Oracle Retail &amp; Fusion</h3>
+                        <p class="service-excerpt">Merchandising, inventory planning, POS integration, and Oracle Cloud
+                            Fusion ERP implementations.</p>
+                        <div class="service-action">
+                            <span>View Full Specs</span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service Card 6 -->
+                <div class="service-card" data-service-id="managed-services">
+                    <div class="service-card-inner">
+                        <div class="service-icon-box">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <line x1="2" y1="12" x2="22" y2="12"></line>
+                                <path
+                                    d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z">
+                                </path>
+                            </svg>
+                        </div>
+                        <div class="service-tag">SYSTEM INTEGRATION</div>
+                        <h3 class="service-name">Solutions &amp; Managed Services</h3>
+                        <p class="service-excerpt">24/7/365 NOC &amp; SOC operations, Hybrid Multi-Cloud orchestration,
+                            Campus &amp; Education Wi-Fi networking, and structured ITIL workflows.</p>
+                        <div class="service-action">
+                            <span>View Full Specs</span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 80% SCREEN 3D FLIP/ZOOM SERVICE MODAL (Overlay) -->
+    <div class="service-modal-backdrop" id="serviceModalBackdrop">
+        <div class="service-modal-card" id="serviceModalCard">
+            <button class="modal-close-btn" id="modalCloseBtn" aria-label="Close details">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+            <div class="modal-content-container" id="modalDynamicContent">
+                <!-- Injected via JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- 6. HOW SERVICES ARE DELIVERED (5-STEP ROADMAP) -->
+    <section class="section delivery-section" id="delivery">
+        <div class="container">
+            <div class="section-header-split">
+                <div class="section-left">
+                    <div class="section-eyebrow">
+                        <span class="eyebrow-bullet"></span>
+                        OPERATIONAL METHODOLOGY
+                    </div>
+                    <h2 class="section-title">How Services Are Delivered</h2>
+                </div>
+                <div class="section-right">
+                    <p class="section-lead">
+                        A battle-tested 5-phase delivery framework designed for zero downtime, rigorous security
+                        compliance, and predictable enterprise velocity.
+                    </p>
+                </div>
+            </div>
+
+            <!-- 5-Step Dotted Sinusoidal Roadmap Infographic -->
+            <div class="roadmap-infographic">
+                <!-- SVG Wave Curve with Direction Indicators -->
+                <svg class="roadmap-wave-svg" viewBox="0 0 1200 580" fill="none" preserveAspectRatio="none"
+                    aria-hidden="true">
+                    <!-- Main Sinusoidal Dashed Curve -->
+                    <path class="wave-path"
+                        d="M 120,58 C 210,58 270,248 360,248 C 450,248 510,58 600,58 C 690,58 750,248 840,248 C 930,248 990,58 1080,58"
+                        stroke="#94A3B8" stroke-width="2.5" stroke-dasharray="6, 6" stroke-linecap="round" />
+
+                    <!-- Vertical Connector Line for Step 1 -->
+                    <line x1="120" y1="88" x2="120" y2="155" stroke="#94A3B8" stroke-width="2"
+                        stroke-dasharray="4, 4" />
+
+                    <!-- Direction Indicator Badges Along the Curve -->
+                    <!-- Indicator 1 (Step 1 Vertical Drop, Down) -->
+                    <g class="wave-indicator" transform="translate(120, 122)">
+                        <circle r="9" fill="#EFF6FF" stroke="#93C5FD" stroke-width="1.5" />
+                        <path d="M-2.5,-1.5 L0,1.5 L2.5,-1.5" stroke="#2563EB" stroke-width="1.5" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </g>
+                    <!-- Indicator 2 (Between 2 and 3, Up) -->
+                    <g class="wave-indicator" transform="translate(470, 148)">
+                        <circle r="9" fill="#EFF6FF" stroke="#93C5FD" stroke-width="1.5" />
+                        <path d="M-2.5,1 L0,-1.5 L2.5,1 M-2.5,3.5 L0,1 L2.5,3.5" stroke="#2563EB" stroke-width="1.2"
+                            stroke-linecap="round" stroke-linejoin="round" />
+                    </g>
+                    <!-- Indicator 3 (Between 3 and 4, Down/Right) -->
+                    <g class="wave-indicator" transform="translate(720, 150)">
+                        <circle r="9" fill="#EFF6FF" stroke="#93C5FD" stroke-width="1.5" />
+                        <path d="M-1.5,-2.5 L1.5,0 L-1.5,2.5" stroke="#2563EB" stroke-width="1.5" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </g>
+                    <!-- Indicator 4 (Between 4 and 5, Up) -->
+                    <g class="wave-indicator" transform="translate(970, 148)">
+                        <circle r="9" fill="#EFF6FF" stroke="#93C5FD" stroke-width="1.5" />
+                        <path d="M-2.5,1 L0,-1.5 L2.5,1 M-2.5,3.5 L0,1 L2.5,3.5" stroke="#2563EB" stroke-width="1.2"
+                            stroke-linecap="round" stroke-linejoin="round" />
+                    </g>
+                </svg>
+
+                <div class="roadmap-steps-wave">
+                    <!-- Step 1: DISCOVERY (UP) -->
+                    <div class="roadmap-col step-pos-up" data-step="1">
+                        <div class="step-badge-header">
+                            <span class="step-num">01</span>
+                            <span class="step-label">DISCOVERY</span>
+                        </div>
+                        <div class="step-icon-orb">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                            </svg>
+                        </div>
+                        <div class="step-card">
+                            <div class="card-accent-bar"></div>
+                            <h4 class="step-title">Infrastructure Audit &amp; Assessment</h4>
+                            <p class="step-desc">Comprehensive baseline analysis of existing servers, topology, security
+                                posture, and application dependencies.</p>
+                            <div class="step-meta">TCO &amp; Risk Modeling</div>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: ARCHITECTURE (DOWN) -->
+                    <div class="roadmap-col step-pos-down" data-step="2">
+                        <div class="step-badge-header">
+                            <span class="step-num">02</span>
+                            <span class="step-label">ARCHITECTURE</span>
+                        </div>
+                        <div class="step-icon-orb">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path
+                                    d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z">
+                                </path>
+                                <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                                <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                            </svg>
+                        </div>
+                        <div class="step-card">
+                            <div class="card-accent-bar"></div>
+                            <h4 class="step-title">Blueprint &amp; Solution Design</h4>
+                            <p class="step-desc">Engineered blueprint covering compute rightsizing, redundant network
+                                fabrics, SLA baselines, and disaster recovery blueprints.</p>
+                            <div class="step-meta">Zero-Trust Security Design</div>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: DEPLOYMENT (UP) -->
+                    <div class="roadmap-col step-pos-up" data-step="3">
+                        <div class="step-badge-header">
+                            <span class="step-num">03</span>
+                            <span class="step-label">DEPLOYMENT</span>
+                        </div>
+                        <div class="step-icon-orb">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="3"></circle>
+                                <path
+                                    d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z">
+                                </path>
+                            </svg>
+                        </div>
+                        <div class="step-card">
+                            <div class="card-accent-bar"></div>
+                            <h4 class="step-title">Staging, Migration &amp; Go-Live</h4>
+                            <p class="step-desc">Zero-downtime cutover execution with sandbox validation, load
+                                benchmarking, and real-time database replication.</p>
+                            <div class="step-meta">Phased Rollout Matrix</div>
+                        </div>
+                    </div>
+
+                    <!-- Step 4: OPERATIONS (DOWN) -->
+                    <div class="roadmap-col step-pos-down" data-step="4">
+                        <div class="step-badge-header">
+                            <span class="step-num">04</span>
+                            <span class="step-label">OPERATIONS</span>
+                        </div>
+                        <div class="step-icon-orb">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                                <line x1="8" y1="21" x2="16" y2="21"></line>
+                                <line x1="12" y1="17" x2="12" y2="21"></line>
+                            </svg>
+                        </div>
+                        <div class="step-card">
+                            <div class="card-accent-bar"></div>
+                            <h4 class="step-title">24/7 Managed NOC &amp; SOC</h4>
+                            <p class="step-desc">Continuous telemetry monitoring, L1-L3 automated alerting, proactive
+                                patch governance, and incident triage under guaranteed SLAs.</p>
+                            <div class="step-meta">15-Min Response SLA</div>
+                        </div>
+                    </div>
+
+                    <!-- Step 5: OPTIMIZATION (UP) -->
+                    <div class="roadmap-col step-pos-up" data-step="5">
+                        <div class="step-badge-header">
+                            <span class="step-num">05</span>
+                            <span class="step-label">OPTIMIZATION</span>
+                        </div>
+                        <div class="step-icon-orb">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="18" y1="20" x2="18" y2="10"></line>
+                                <line x1="12" y1="20" x2="12" y2="4"></line>
+                                <line x1="6" y1="20" x2="6" y2="14"></line>
+                            </svg>
+                        </div>
+                        <div class="step-card">
+                            <div class="card-accent-bar"></div>
+                            <h4 class="step-title">Continuous Tuning &amp; Scale</h4>
+                            <p class="step-desc">Monthly capacity reviews, cloud cost optimization (FinOps),
+                                architecture refactoring, and automated lifecycle governance.</p>
+                            <div class="step-meta">Quarterly Audits</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Explore More Button -->
+            <div class="roadmap-action">
+                <button class="btn-delivery-explore" id="toggleOperationsBtn">
+                    <span class="btn-explore-main">Explore more &rarr;</span>
+                    <span class="btn-explore-divider"></span>
+                    <span class="btn-explore-sub">See How IT Operations Are Managed</span>
+                </button>
+            </div>
+
+            <!-- EXPANDABLE SECTION: HOW IT OPERATIONS ARE MANAGED -->
+            <div class="operations-managed-section" id="operationsManagedSection">
+                <div class="operations-card-box mof-wrapper">
+                    <!-- Top Header -->
+                    <div class="mof-header">
+                        <div class="mof-badge">MANAGED OPERATIONS FRAMEWORK</div>
+                        <h3 class="mof-headline">Keeping Your Infrastructure Running</h3>
+                        <p class="mof-subtext">Continuous visibility, proactive support and structured incident
+                            management across your technology environment.</p>
+                    </div>
+
+                    <!-- Core Architecture & Workflow Flow Diagram -->
+                    <div class="mof-architecture-flow">
+                        <!-- Left: Ingestion Sources -->
+                        <div class="mof-sources-col">
+                            <!-- Source 1: Network -->
+                            <div class="mof-source-card" data-source="network">
+                                <div class="mof-card-icon">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <circle cx="18" cy="5" r="3"></circle>
+                                        <circle cx="6" cy="12" r="3"></circle>
+                                        <circle cx="18" cy="19" r="3"></circle>
+                                        <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+                                        <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+                                    </svg>
+                                </div>
+                                <div class="mof-card-info">
+                                    <h4 class="mof-card-title">Network</h4>
+                                    <p class="mof-card-desc">Routers • Switches • Firewalls</p>
+                                </div>
+                                <span class="mof-port-dot dot-cyan"></span>
+                            </div>
+
+                            <!-- Source 2: Servers -->
+                            <div class="mof-source-card" data-source="servers">
+                                <div class="mof-card-icon">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect>
+                                        <rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect>
+                                        <line x1="6" y1="6" x2="6.01" y2="6"></line>
+                                        <line x1="6" y1="18" x2="6.01" y2="18"></line>
+                                    </svg>
+                                </div>
+                                <div class="mof-card-info">
+                                    <h4 class="mof-card-title">Servers</h4>
+                                    <p class="mof-card-desc">Physical • Virtual • Hybrid</p>
+                                </div>
+                                <span class="mof-port-dot dot-cyan"></span>
+                            </div>
+
+                            <!-- Source 3: Cloud -->
+                            <div class="mof-source-card" data-source="cloud">
+                                <div class="mof-card-icon">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path>
+                                    </svg>
+                                </div>
+                                <div class="mof-card-info">
+                                    <h4 class="mof-card-title">Cloud</h4>
+                                    <p class="mof-card-desc">Public • Private • Multi-Cloud</p>
+                                </div>
+                                <span class="mof-port-dot dot-cyan"></span>
+                            </div>
+
+                            <!-- Source 4: Security -->
+                            <div class="mof-source-card" data-source="security">
+                                <div class="mof-card-icon">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                                    </svg>
+                                </div>
+                                <div class="mof-card-info">
+                                    <h4 class="mof-card-title">Security</h4>
+                                    <p class="mof-card-desc">Infrastructure • Endpoints • Identity</p>
+                                </div>
+                                <span class="mof-port-dot dot-cyan"></span>
+                            </div>
+
+                            <!-- Source 5: Endpoints -->
+                            <div class="mof-source-card" data-source="endpoints">
+                                <div class="mof-card-icon">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                                        <line x1="8" y1="21" x2="16" y2="21"></line>
+                                        <line x1="12" y1="17" x2="12" y2="21"></line>
+                                    </svg>
+                                </div>
+                                <div class="mof-card-info">
+                                    <h4 class="mof-card-title">Endpoints</h4>
+                                    <p class="mof-card-desc">Laptops • Desktops • Mobile</p>
+                                </div>
+                                <span class="mof-port-dot dot-cyan"></span>
+                            </div>
+                        </div>
+
+                        <!-- Center: Orbital Engine & Core Hub -->
+                        <div class="mof-center-col">
+                            <!-- SVG Connectors Canvas -->
+                            <svg class="mof-connectors-svg" viewBox="0 0 800 420" preserveAspectRatio="none"
+                                aria-hidden="true">
+                                <defs>
+                                    <!-- Left Blue Gradient -->
+                                    <linearGradient id="mofCyanCableGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                                        <stop offset="0%" stop-color="#38BDF8" stop-opacity="0.9" />
+                                        <stop offset="70%" stop-color="#60A5FA" stop-opacity="0.4" />
+                                        <stop offset="100%" stop-color="#818CF8" stop-opacity="0.1" />
+                                    </linearGradient>
+                                    <!-- Right Red Gradient -->
+                                    <linearGradient id="mofRedCableGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                                        <stop offset="0%" stop-color="#EF4444" stop-opacity="0.1" />
+                                        <stop offset="30%" stop-color="#F87171" stop-opacity="0.4" />
+                                        <stop offset="100%" stop-color="#EF4444" stop-opacity="0.9" />
+                                    </linearGradient>
+                                </defs>
+
+                                <!-- 5 Left Connection Wires (Cyan Glow) -->
+                                <path class="mof-cable-line cable-left" d="M 10 42 C 160 42, 230 180, 275 210"
+                                    stroke="url(#mofCyanCableGrad)" />
+                                <path class="mof-cable-line cable-left" d="M 10 126 C 140 126, 210 190, 275 210"
+                                    stroke="url(#mofCyanCableGrad)" />
+                                <path class="mof-cable-line cable-left" d="M 10 210 C 120 210, 200 210, 275 210"
+                                    stroke="url(#mofCyanCableGrad)" />
+                                <path class="mof-cable-line cable-left" d="M 10 294 C 140 294, 210 230, 275 210"
+                                    stroke="url(#mofCyanCableGrad)" />
+                                <path class="mof-cable-line cable-left" d="M 10 378 C 160 378, 230 240, 275 210"
+                                    stroke="url(#mofCyanCableGrad)" />
+
+                                <!-- 5 Right Connection Wires (Red Glow) -->
+                                <path class="mof-cable-line cable-right" d="M 525 210 C 570 180, 640 42, 790 42"
+                                    stroke="url(#mofRedCableGrad)" />
+                                <path class="mof-cable-line cable-right" d="M 525 210 C 590 190, 660 126, 790 126"
+                                    stroke="url(#mofRedCableGrad)" />
+                                <path class="mof-cable-line cable-right" d="M 525 210 C 600 210, 680 210, 790 210"
+                                    stroke="url(#mofRedCableGrad)" />
+                                <path class="mof-cable-line cable-right" d="M 525 210 C 590 230, 660 294, 790 294"
+                                    stroke="url(#mofRedCableGrad)" />
+                                <path class="mof-cable-line cable-right" d="M 525 210 C 570 240, 640 378, 790 378"
+                                    stroke="url(#mofRedCableGrad)" />
+                            </svg>
+
+                            <!-- Circular Cyclic Operations Orbit Ring -->
+                            <div class="mof-orbit-container">
+
+                                <svg class="mof-orbit-svg" viewBox="0 0 340 340" aria-hidden="true">
+                                    <defs>
+
+                                        <!-- Proper directional arrow -->
+                                        <marker id="orbitArrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7"
+                                            markerHeight="7" orient="auto-start-reverse" markerUnits="userSpaceOnUse">
+                                            <path d="M 0 0 L 10 5 L 0 10 L 2.5 5 Z" fill="#60A5FA" />
+                                        </marker>
+
+                                        <!-- Subtle glow -->
+                                        <filter id="orbitGlow" x="-50%" y="-50%" width="200%" height="200%">
+                                            <feGaussianBlur stdDeviation="2.5" result="blur" />
+                                            <feMerge>
+                                                <feMergeNode in="blur" />
+                                                <feMergeNode in="SourceGraphic" />
+                                            </feMerge>
+                                        </filter>
+
+                                    </defs>
+
+                                    <!-- ========================================= -->
+                                    <!-- ORBIT 1: MONITOR → DETECT -->
+                                    <!-- ========================================= -->
+
+                                    <path class="mof-orbit-path" d="
+                M 170 30
+                A 140 140 0 0 1 296 125
+            " fill="none" stroke="#60A5FA" stroke-width="2" stroke-dasharray="7 6" stroke-linecap="round"
+                                        marker-end="url(#orbitArrow)" filter="url(#orbitGlow)" />
+
+                                    <!-- ========================================= -->
+                                    <!-- ORBIT 2: DETECT → RESPOND -->
+                                    <!-- ========================================= -->
+
+                                    <path class="mof-orbit-path" d="
+                M 300 170
+                A 140 140 0 0 1 235 295
+            " fill="none" stroke="#60A5FA" stroke-width="2" stroke-dasharray="7 6" stroke-linecap="round"
+                                        marker-end="url(#orbitArrow)" filter="url(#orbitGlow)" />
+
+                                    <!-- ========================================= -->
+                                    <!-- ORBIT 3: RESPOND → RESOLVE -->
+                                    <!-- ========================================= -->
+
+                                    <path class="mof-orbit-path" d="
+                M 205 305
+                A 140 140 0 0 1 135 305
+            " fill="none" stroke="#60A5FA" stroke-width="2" stroke-dasharray="7 6" stroke-linecap="round"
+                                        marker-end="url(#orbitArrow)" filter="url(#orbitGlow)" />
+
+                                    <!-- ========================================= -->
+                                    <!-- ORBIT 4: RESOLVE → REPORT -->
+                                    <!-- ========================================= -->
+
+                                    <path class="mof-orbit-path" d="
+                M 105 290
+                A 140 140 0 0 1 44 170
+            " fill="none" stroke="#60A5FA" stroke-width="2" stroke-dasharray="7 6" stroke-linecap="round"
+                                        marker-end="url(#orbitArrow)" filter="url(#orbitGlow)" />
+
+                                    <!-- ========================================= -->
+                                    <!-- ORBIT 5: REPORT → MONITOR -->
+                                    <!-- ========================================= -->
+
+                                    <path class="mof-orbit-path" d="
+                M 44 125
+                A 140 140 0 0 1 170 30
+            " fill="none" stroke="#60A5FA" stroke-width="2" stroke-dasharray="7 6" stroke-linecap="round"
+                                        marker-end="url(#orbitArrow)" filter="url(#orbitGlow)" />
+
+                                </svg>
+
+
+                                <!-- ========================================= -->
+                                <!-- 1. MONITOR -->
+                                <!-- ========================================= -->
+
+                                <div class="mof-orbit-badge badge-monitor">
+                                    <div class="mof-badge-icon">
+                                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#60A5FA"
+                                            stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                                            <circle cx="12" cy="12" r="3" />
+                                        </svg>
+                                    </div>
+
+                                    <div class="mof-badge-content">
+                                        <span class="mof-badge-label">MONITOR</span>
+                                        <span class="mof-badge-sub">Observe &amp; Analyze</span>
+                                    </div>
+                                </div>
+
+
+                                <!-- ========================================= -->
+                                <!-- 2. DETECT -->
+                                <!-- ========================================= -->
+
+                                <div class="mof-orbit-badge badge-detect">
+                                    <div class="mof-badge-icon">
+                                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#F87171"
+                                            stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                            <circle cx="12" cy="12" r="10" />
+                                            <circle cx="12" cy="12" r="6" />
+                                            <circle cx="12" cy="12" r="2" />
+                                        </svg>
+                                    </div>
+
+                                    <div class="mof-badge-content">
+                                        <span class="mof-badge-label">DETECT</span>
+                                        <span class="mof-badge-sub">Identify &amp; Alert</span>
+                                    </div>
+                                </div>
+
+
+                                <!-- ========================================= -->
+                                <!-- 3. RESPOND -->
+                                <!-- ========================================= -->
+
+                                <div class="mof-orbit-badge badge-respond">
+                                    <div class="mof-badge-icon">
+                                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#F87171"
+                                            stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                            <circle cx="12" cy="12" r="3" />
+                                            <path d="
+                    M19.4 15
+                    a1.65 1.65 0 0 0 .33 1.82
+                    l.06.06
+                    a2 2 0 0 1 0 2.83
+                    2 2 0 0 1-2.83 0
+                    l-.06-.06
+                    a1.65 1.65 0 0 0-1.82-.33
+                    1.65 1.65 0 0 0-1 1.51
+                    V21
+                    a2 2 0 0 1-2 2
+                    2 2 0 0 1-2-2
+                    v-.09
+                    A1.65 1.65 0 0 0 9 19.4
+                    a1.65 1.65 0 0 0-1.82.33
+                    l-.06.06
+                    a2 2 0 0 1-2.83 0
+                    2 2 0 0 1 0-2.83
+                    l.06-.06
+                    a1.65 1.65 0 0 0 .33-1.82
+                    A1.65 1.65 0 0 0 3.17 14
+                    H3
+                    a2 2 0 0 1-2-2
+                    2 2 0 0 1 2-2
+                    h.09
+                    A1.65 1.65 0 0 0 4.6 9
+                    a1.65 1.65 0 0 0-.33-1.82
+                    l-.06-.06
+                    a2 2 0 0 1 0-2.83
+                    2 2 0 0 1 2.83 0
+                    l.06.06
+                    a1.65 1.65 0 0 0 1.82.33
+                    H9
+                    a1.65 1.65 0 0 0 1-1.51
+                    V3
+                    a2 2 0 0 1 2-2
+                    2 2 0 0 1 2 2
+                    v.09
+                    a1.65 1.65 0 0 0 1 1.51
+                    1.65 1.65 0 0 0 1.82-.33
+                    l.06-.06
+                    a2 2 0 0 1 2.83 0
+                    2 2 0 0 1 0 2.83
+                    l-.06.06
+                    a1.65 1.65 0 0 0-.33 1.82
+                    V9
+                    a1.65 1.65 0 0 0 1.51 1
+                    H21
+                    a2 2 0 0 1 2 2
+                    2 2 0 0 1-2 2
+                    h-.09
+                    a1.65 1.65 0 0 0-1.51 1z
+                " />
+                                        </svg>
+                                    </div>
+
+                                    <div class="mof-badge-content">
+                                        <span class="mof-badge-label">RESPOND</span>
+                                        <span class="mof-badge-sub">Investigate &amp; Act</span>
+                                    </div>
+                                </div>
+
+
+                                <!-- ========================================= -->
+                                <!-- 4. RESOLVE -->
+                                <!-- ========================================= -->
+
+                                <div class="mof-orbit-badge badge-resolve">
+                                    <div class="mof-badge-icon">
+                                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#38BDF8"
+                                            stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                                            <polyline points="22 4 12 14.01 9 11.01" />
+                                        </svg>
+                                    </div>
+
+                                    <div class="mof-badge-content">
+                                        <span class="mof-badge-label">RESOLVE</span>
+                                        <span class="mof-badge-sub">Restore &amp; Validate</span>
+                                    </div>
+                                </div>
+
+
+                                <!-- ========================================= -->
+                                <!-- 5. REPORT -->
+                                <!-- ========================================= -->
+
+                                <div class="mof-orbit-badge badge-report">
+                                    <div class="mof-badge-icon">
+                                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#60A5FA"
+                                            stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                                            <polyline points="14 2 14 8 20 8" />
+                                            <line x1="16" y1="13" x2="8" y2="13" />
+                                            <line x1="16" y1="17" x2="8" y2="17" />
+                                            <polyline points="10 9 9 9 8 9" />
+                                        </svg>
+                                    </div>
+
+                                    <div class="mof-badge-content">
+                                        <span class="mof-badge-label">REPORT</span>
+                                        <span class="mof-badge-sub">Insights &amp; Improve</span>
+                                    </div>
+                                </div>
+
+
+                                <!-- ========================================= -->
+                                <!-- CENTRAL CORE -->
+                                <!-- ========================================= -->
+
+                                <div class="mof-core-disc">
+
+                                    <div class="mof-core-glow-pulse"></div>
+
+                                    <div class="mof-core-ring-neon"></div>
+
+                                    <div class="mof-core-inner">
+                                        <h4 class="mof-core-title">LUNARAYS</h4>
+
+                                        <span class="mof-core-sub">
+                                            OPERATIONS CORE
+                                        </span>
+
+                                        <div class="mof-core-divider"></div>
+
+                                        <span class="mof-core-meta">
+                                            24×7 VISIBILITY
+                                        </span>
+
+                                        <span class="mof-core-meta-line">
+                                            STABILITY • CONTINUITY
+                                        </span>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <!-- Right: Output Value Streams -->
+                        <div class="mof-outcomes-col">
+                            <!-- Outcome 1: Stable Operations -->
+                            <div class="mof-outcome-card" data-outcome="stable">
+                                <span class="mof-port-dot dot-red"></span>
+                                <div class="mof-card-icon cyan-tint">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <line x1="18" y1="20" x2="18" y2="10"></line>
+                                        <line x1="12" y1="20" x2="12" y2="4"></line>
+                                        <line x1="6" y1="20" x2="6" y2="14"></line>
+                                    </svg>
+                                </div>
+                                <div class="mof-card-info">
+                                    <h4 class="mof-card-title">Stable Operations</h4>
+                                    <p class="mof-card-desc">High availability</p>
+                                </div>
+                            </div>
+
+                            <!-- Outcome 2: Reduced Risk -->
+                            <div class="mof-outcome-card" data-outcome="risk">
+                                <span class="mof-port-dot dot-red"></span>
+                                <div class="mof-card-icon cyan-tint">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                                    </svg>
+                                </div>
+                                <div class="mof-card-info">
+                                    <h4 class="mof-card-title">Reduced Risk</h4>
+                                    <p class="mof-card-desc">Proactive threat management</p>
+                                </div>
+                            </div>
+
+                            <!-- Outcome 3: Faster Recovery -->
+                            <div class="mof-outcome-card" data-outcome="recovery">
+                                <span class="mof-port-dot dot-red"></span>
+                                <div class="mof-card-icon cyan-tint">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                                    </svg>
+                                </div>
+                                <div class="mof-card-info">
+                                    <h4 class="mof-card-title">Faster Recovery</h4>
+                                    <p class="mof-card-desc">Minimized downtime</p>
+                                </div>
+                            </div>
+
+                            <!-- Outcome 4: Optimized Performance -->
+                            <div class="mof-outcome-card" data-outcome="performance">
+                                <span class="mof-port-dot dot-red"></span>
+                                <div class="mof-card-icon cyan-tint">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+                                        <polyline points="17 6 23 6 23 12"></polyline>
+                                    </svg>
+                                </div>
+                                <div class="mof-card-info">
+                                    <h4 class="mof-card-title">Optimized Performance</h4>
+                                    <p class="mof-card-desc">Continuous improvement</p>
+                                </div>
+                            </div>
+
+                            <!-- Outcome 5: Business Continuity -->
+                            <div class="mof-outcome-card" data-outcome="continuity">
+                                <span class="mof-port-dot dot-red"></span>
+                                <div class="mof-card-icon cyan-tint">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+                                        <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
+                                        <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
+                                    </svg>
+                                </div>
+                                <div class="mof-card-info">
+                                    <h4 class="mof-card-title">Business Continuity</h4>
+                                    <p class="mof-card-desc">Always-on environment</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bottom 4 Feature Cards Grid -->
+                    <div class="mof-feature-grid">
+                        <!-- Card 01 -->
+                        <div class="mof-pillar-card">
+                            <div class="mof-pillar-top">
+                                <span class="mof-pillar-num">01</span>
+                                <div class="mof-pillar-icon-box">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                        <circle cx="12" cy="12" r="3"></circle>
+                                    </svg>
+                                </div>
+
+                            </div>
+                            <h4 class="mof-pillar-title">24/7 Centralized NOC &amp; Telemetry</h4>
+                            <p class="mof-pillar-desc">Continuous monitoring across your infrastructure with proactive
+                                alerting and intelligent analysis.</p>
+                            <div class="mof-pill-tags">
+                                <span>Monitoring</span>
+                                <span>Alerting</span>
+                                <span>Observability</span>
+                            </div>
+                        </div>
+
+                        <!-- Card 02 -->
+                        <div class="mof-pillar-card">
+                            <div class="mof-pillar-top">
+                                <span class="mof-pillar-num">02</span>
+                                <div class="mof-pillar-icon-box">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                                    </svg>
+                                </div>
+                            </div>
+                            <h4 class="mof-pillar-title">Incident Management &amp; Escalation</h4>
+                            <p class="mof-pillar-desc">Structured incident response with multi-level escalation and
+                                faster resolution.</p>
+                            <div class="mof-pill-tags">
+                                <span>Triage</span>
+                                <span>Escalation</span>
+                                <span>RCA</span>
+                            </div>
+                        </div>
+
+                        <!-- Card 03 -->
+                        <div class="mof-pillar-card">
+                            <div class="mof-pillar-top">
+                                <span class="mof-pillar-num">03</span>
+                                <div class="mof-pillar-icon-box">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+                                        <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
+                                        <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                            <h4 class="mof-pillar-title">Backup &amp; Automated Disaster Recovery</h4>
+                            <p class="mof-pillar-desc">Immutable backups, offsite replication and tested recovery to
+                                ensure business continuity.</p>
+                            <div class="mof-pill-tags">
+                                <span>Backup</span>
+                                <span>Replication</span>
+                                <span>Recovery</span>
+                            </div>
+                        </div>
+
+                        <!-- Card 04 -->
+                        <div class="mof-pillar-card">
+                            <div class="mof-pillar-top">
+                                <span class="mof-pillar-num">04</span>
+                                <div class="mof-pillar-icon-box">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                            <h4 class="mof-pillar-title">Security Governance &amp; Patch Audits</h4>
+                            <p class="mof-pillar-desc">Continuous vulnerability management, patch deployment and
+                                compliance tracking.</p>
+                            <div class="mof-pill-tags">
+                                <span>Patching</span>
+                                <span>Vulnerability Scan</span>
+                                <span>Compliance</span>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 7. ABOUT SECTION -->
+    <section class="section about-section" id="about">
+        <div class="container">
+            <div class="section-header-split">
+                <div class="section-left">
+                    <div class="section-eyebrow">
+                        <span class="eyebrow-bullet"></span>
+                        OUR STORY &amp; IDENTITY
+                    </div>
+                    <h2 class="section-title">A partner for a changing world</h2>
+                </div>
+                <div class="section-right">
+                    <p class="section-lead">
+                        Lunarays Technologies was founded with a clear purpose — to help organizations navigate an
+                        increasingly complex technology landscape with unshakeable confidence.
+                    </p>
+                </div>
+            </div>
+
+            <!-- About Top Split (Story & Visual) -->
+            <div class="about-hero-grid">
+                <div class="about-story-col">
+                    <p class="about-paragraph">
+                        From supporting mission-critical infrastructure to enabling modern cloud and secure workplaces,
+                        we work closely with our enterprise clients to deliver solutions that create enduring, long-term
+                        value.
+                    </p>
+                    <div class="about-highlight-box">
+                        <div class="highlight-quote-mark">&ldquo;</div>
+                        <p class="highlight-quote-text">
+                            We believe technology is only valuable when it works for the people who rely on it.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="about-visual-col">
+                    <div class="about-card-banner">
+                        <div class="banner-gradient"></div>
+                        <div class="banner-content">
+                            <div class="banner-word">Technology</div>
+                            <div class="banner-word">People</div>
+                            <div class="banner-word accent">Progress</div>
+                        </div>
+                        <div class="banner-glass-card">
+                            <span class="pulse-indicator"></span>
+                            <span>Engineering Scalable IT Systems Across India</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Building More Possible Together (4 Pillars: Purpose, Mission, Vision, Values) -->
+            <div class="about-pillars-container">
+                <div class="pillars-header">
+                    <div class="pillars-eyebrow">OUR PURPOSE</div>
+                    <h3 class="pillars-headline">Building more possible together</h3>
+                    <p class="pillars-desc">We enable organizations to operate with greater confidence through reliable,
+                        secure and intelligently managed technology environments.</p>
+                </div>
+
+                <div class="pillars-grid">
+                    <div class="pillar-card">
+                        <div class="pillar-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <circle cx="12" cy="12" r="6"></circle>
+                                <circle cx="12" cy="12" r="2"></circle>
+                            </svg>
+                        </div>
+                        <h4 class="pillar-name">OUR MISSION</h4>
+                        <p class="pillar-text">Deliver innovative and reliable technology solutions that help businesses
+                            perform, grow and stay future-ready.</p>
+                    </div>
+
+                    <div class="pillar-card">
+                        <div class="pillar-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                <circle cx="12" cy="12" r="3"></circle>
+                            </svg>
+                        </div>
+                        <h4 class="pillar-name">OUR VISION</h4>
+                        <p class="pillar-text">To be a trusted technology partner known for our expertise, service
+                            excellence and long-term client relationships.</p>
+                    </div>
+
+                    <div class="pillar-card">
+                        <div class="pillar-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path
+                                    d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z">
+                                </path>
+                            </svg>
+                        </div>
+                        <h4 class="pillar-name">OUR VALUES</h4>
+                        <p class="pillar-text">Client First &bull; Integrity &bull; Accountability &bull; Continuous
+                            Learning &bull; Teamwork</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 8. SALES AND PRODUCTS (ENTERPRISE SALES & PROCUREMENT) -->
+    <section class="section sales-section" id="sales-products">
+        <div class="container">
+            <div class="section-header-split">
+                <div class="section-left">
+                    <div class="section-eyebrow">
+                        <span class="eyebrow-bullet"></span>
+                        ENTERPRISE SALES &amp; PRODUCTS
+                    </div>
+                    <h2 class="section-title">Hardware, Software &amp; Enterprise Procurement</h2>
+                </div>
+                <div class="section-right">
+                    <p class="section-lead">
+                        Authorized procurement and implementation across servers, networking, workplace hardware, and
+                        business software suites.
+                    </p>
+                    <a href="https://lunarays.in" target="_blank" class="procurement-link">
+                        Looking for retail equipment? Visit lunarays.in &rarr;
+                    </a>
+                </div>
+            </div>
+
+            <div class="sales-matrix-grid">
+                <!-- 1. Server & Storage -->
+                <div class="procurement-card">
+                    <div class="proc-header">
+                        <span class="proc-category">HARDWARE // COMPUTE</span>
+                        <span class="proc-code-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2">
+                                <rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect>
+                                <rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect>
+                                <line x1="6" y1="6" x2="6.01" y2="6"></line>
+                                <line x1="6" y1="18" x2="6.01" y2="18"></line>
+                            </svg></span>
+                    </div>
+                    <h3 class="proc-title">Server &amp; Storage</h3>
+                    <p class="proc-desc">Rack servers, tower servers, blade servers, NAS/SAN storage arrays, and
+                        enterprise backup storage for mission-critical operations.</p>
+                    <div class="proc-footer">
+                        <span>OEM Certified Hardware &bull; Enterprise Warranties</span>
+                    </div>
+                </div>
+
+                <!-- 2. Network & Security -->
+                <div class="procurement-card">
+                    <div class="proc-header">
+                        <span class="proc-category">HARDWARE // NETWORKING</span>
+                        <span class="proc-code-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2">
+                                <rect x="16" y="16" width="6" height="6" rx="1"></rect>
+                                <rect x="2" y="16" width="6" height="6" rx="1"></rect>
+                                <rect x="9" y="2" width="6" height="6" rx="1"></rect>
+                                <path d="M5 16v-3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3"></path>
+                                <line x1="12" y1="8" x2="12" y2="12"></line>
+                            </svg></span>
+                    </div>
+                    <h3 class="proc-title">Network &amp; Security</h3>
+                    <p class="proc-desc">Enterprise switches, core routers, next-generation firewalls (NGFW), wireless
+                        access controllers, and structured cabling solutions.</p>
+                    <div class="proc-footer">
+                        <span>Perimeter Defense &bull; High-Throughput Routing</span>
+                    </div>
+                </div>
+
+                <!-- 3. End User Computing -->
+                <div class="procurement-card">
+                    <div class="proc-header">
+                        <span class="proc-category">WORKPLACE // FLEET</span>
+                        <span class="proc-code-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2">
+                                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                                <line x1="8" y1="21" x2="16" y2="21"></line>
+                                <line x1="12" y1="17" x2="12" y2="21"></line>
+                            </svg></span>
+                    </div>
+                    <h3 class="proc-title">End User Computing</h3>
+                    <p class="proc-desc">Enterprise laptops, desktop workstations, commercial monitors, thin clients,
+                        multifunction printers, scanners, and accessories.</p>
+                    <div class="proc-footer">
+                        <span>Corporate Staging &bull; Deployment &amp; Support</span>
+                    </div>
+                </div>
+
+                <!-- 4. Software Solutions -->
+                <div class="procurement-card">
+                    <div class="proc-header">
+                        <span class="proc-category">ENTERPRISE // SOFTWARE</span>
+                        <span class="proc-code-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2">
+                                <rect x="3" y="3" width="7" height="7"></rect>
+                                <rect x="14" y="3" width="7" height="7"></rect>
+                                <rect x="14" y="14" width="7" height="7"></rect>
+                                <rect x="3" y="14" width="7" height="7"></rect>
+                            </svg></span>
+                    </div>
+                    <h3 class="proc-title">Software Solutions</h3>
+                    <p class="proc-desc">Enterprise application consulting and licensing across Microsoft solutions,
+                        Oracle Retail &amp; Fusion platforms, and Infor ERP suites.</p>
+                    <div class="proc-footer">
+                        <span>Oracle Fusion &bull; Infor Services &bull; Microsoft</span>
+                    </div>
+                </div>
+
+                <!-- 5. Software / Operating System -->
+                <div class="procurement-card">
+                    <div class="proc-header">
+                        <span class="proc-category">SYSTEM // OS LICENSING</span>
+                        <span class="proc-code-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2">
+                                <polyline points="4 17 10 11 4 5"></polyline>
+                                <line x1="12" y1="19" x2="20" y2="19"></line>
+                            </svg></span>
+                    </div>
+                    <h3 class="proc-title">Software / Operating System</h3>
+                    <p class="proc-desc">Genuine enterprise licensing for Windows Server, Windows 11 Enterprise,
+                        commercial Linux distributions (Red Hat, SUSE), and virtualization platforms.</p>
+                    <div class="proc-footer">
+                        <span>Compliance Auditing &bull; Volume Licensing</span>
+                    </div>
+                </div>
+
+                <!-- 6. Antivirus & Backup Software -->
+                <div class="procurement-card">
+                    <div class="proc-header">
+                        <span class="proc-category">PROTECTION // BACKUP</span>
+                        <span class="proc-code-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                            </svg></span>
+                    </div>
+                    <h3 class="proc-title">Antivirus &amp; Backup Software</h3>
+                    <p class="proc-desc">Enterprise endpoint protection, centralized antivirus management, automated
+                        server backup software, and disaster recovery replication solutions.</p>
+                    <div class="proc-footer">
+                        <span>Endpoint Security &bull; Disaster Recovery</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 9. WHO WE SUPPORT (INDUSTRIES TWO-COLUMN INTERACTIVE ENGINE) -->
+    <section class="section industries-section" id="industries">
+        <div class="container">
+            <div class="section-header-split">
+                <div class="section-left">
+                    <div class="section-eyebrow">
+                        <span class="eyebrow-bullet"></span>
+                        WHO WE SUPPORT
+                    </div>
+                    <h2 class="section-title">Infrastructure with context</h2>
+                </div>
+                <div class="section-right">
+                    <p class="section-lead">
+                        Different environments carry different expectations. Start with the priorities that matter in
+                        yours.
+                    </p>
+                </div>
+            </div>
+
+            <div class="industries-interactive-matrix">
+                <!-- Left Vertical List -->
+                <div class="industry-nav-list" role="tablist" aria-label="Industries">
+
+                    <button class="industry-nav-btn active" role="tab" aria-selected="true" data-industry-index="0"
+                        id="tab-0">
+                        <span class="ind-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2">
+                                <rect x="2" y="5" width="20" height="14" rx="2"></rect>
+                                <line x1="2" y1="10" x2="22" y2="10"></line>
+                            </svg></span>
+                        <span class="ind-name">Financial Services</span>
+                        <svg class="ind-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </button>
+
+                    <button class="industry-nav-btn" role="tab" aria-selected="false" data-industry-index="1"
+                        id="tab-1">
+                        <span class="ind-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2">
+                                <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+                            </svg></span>
+                        <span class="ind-name">Healthcare</span>
+                        <svg class="ind-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </button>
+
+                    <button class="industry-nav-btn" role="tab" aria-selected="false" data-industry-index="2"
+                        id="tab-2">
+                        <span class="ind-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2">
+                                <path d="M5 12.55a11 11 0 0 1 14.08 0"></path>
+                                <path d="M1.42 9a16 16 0 0 1 21.16 0"></path>
+                                <path d="M8.53 16.11a6 6 0 0 1 6.95 0"></path>
+                                <line x1="12" y1="20" x2="12.01" y2="20"></line>
+                            </svg></span>
+                        <span class="ind-name">Telecom</span>
+                        <svg class="ind-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </button>
+
+                    <button class="industry-nav-btn" role="tab" aria-selected="false" data-industry-index="3"
+                        id="tab-3">
+                        <span class="ind-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2">
+                                <rect x="2" y="3" width="20" height="14" rx="2"></rect>
+                                <line x1="8" y1="21" x2="16" y2="21"></line>
+                                <line x1="12" y1="17" x2="12" y2="21"></line>
+                            </svg></span>
+                        <span class="ind-name">Manufacturing</span>
+                        <svg class="ind-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </button>
+
+                    <button class="industry-nav-btn" role="tab" aria-selected="false" data-industry-index="4"
+                        id="tab-4">
+                        <span class="ind-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2">
+                                <path d="M3 21h18M3 10h18M5 6l7-3 7 3M4 10v11M20 10v11M8 14v4M12 14v4M16 14v4"></path>
+                            </svg></span>
+                        <span class="ind-name">Public Sector</span>
+                        <svg class="ind-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </button>
+
+                    <button class="industry-nav-btn" role="tab" aria-selected="false" data-industry-index="5"
+                        id="tab-5">
+                        <span class="ind-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <path
+                                    d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z">
+                                </path>
+                            </svg></span>
+                        <span class="ind-name">Global In-House</span>
+                        <svg class="ind-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </button>
+
+                </div>
+
+                <!-- Right Dynamic Information Card -->
+                <div class="industry-display-panel" id="industryDisplayPanel" role="tabpanel">
+                    <div class="panel-header-row">
+                        <div class="panel-icon-wrap" id="panelIcon">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <rect x="2" y="5" width="20" height="14" rx="2"></rect>
+                                <line x1="2" y1="10" x2="22" y2="10"></line>
+                            </svg>
+                        </div>
+                        <div class="panel-counter" id="panelCounter">01 / 06</div>
+                    </div>
+
+                    <h3 class="panel-industry-title" id="panelTitle">Financial Services</h3>
+                    <p class="panel-lead-text" id="panelDesc">
+                        Technology environments for organisations where resilience, risk, and availability are
+                        non-negotiable.
+                    </p>
+
+                    <div class="panel-tags-group">
+                        <div class="tags-section">
+                            <div class="tags-label">BUSINESS PRIORITIES</div>
+                            <div class="tags-pill-row" id="panelPriorities">
+                                <span class="pill pill-purple">Security</span>
+                                <span class="pill pill-purple">Continuity</span>
+                                <span class="pill pill-purple">Auditability</span>
+                            </div>
+                        </div>
+
+                        <div class="tags-section">
+                            <div class="tags-label">RELEVANT CAPABILITIES</div>
+                            <div class="tags-pill-row" id="panelCapabilities">
+                                <span class="pill pill-blue">Network</span>
+                                <span class="pill pill-blue">Cybersecurity</span>
+                                <span class="pill pill-blue">Cloud</span>
+                                <span class="pill pill-blue">Monitoring</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel-footer-action">
+                        <a href="#cta" class="panel-cta-link">
+                            Consult Sector Specialist &rarr;
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 10. CTA SECTION (SLIDING SECTION -> LEFT SIDE SLIDES, RIGHT SIDE FORM OPENS) -->
+    <section class="section cta-section" id="cta">
+        <div class="container">
+            <div class="cta-interactive-container" id="ctaContainer">
+
+                <!-- Left Sliding Card Content -->
+                <div class="cta-left-panel" id="ctaLeftPanel">
+                    <div class="cta-badge">GET IN TOUCH</div>
+                    <h2 class="cta-headline">Request a Proposal</h2>
+                    <p class="cta-description">
+                        Partner with Lunarays Technologies for robust, high-availability IT architecture, strategic
+                        hardware procurement, and round-the-clock managed operations.
+                    </p>
+                    <div class="cta-benefits-list">
+                        <div class="cta-benefit-item">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            <span>Customized architecture audit within 48 hours</span>
+                        </div>
+                        <div class="cta-benefit-item">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            <span>Transparent hardware &amp; licensing pricing</span>
+                        </div>
+                        <div class="cta-benefit-item">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            <span>Dedicated ITIL-certified Solution Architect</span>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-primary btn-lg cta-trigger-btn" id="ctaOpenFormBtn">
+                        Request Proposal Now
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7" />
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Right Sliding Form Panel -->
+                <div class="cta-right-form-panel" id="ctaRightPanel">
+                    <div class="form-header">
+                        <h3 class="form-title">Enterprise Proposal Request</h3>
+                        <p class="form-subtitle">Fill in your requirements below. Our technical team responds within 24
+                            business hours.</p>
+                    </div>
+
+                    <form id="proposalForm" class="proposal-form"
+                        onsubmit="event.preventDefault(); window.handleProposalSubmit();">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="fullName">Full Name *</label>
+                                <input type="text" id="fullName" class="form-control" placeholder="e.g. Rahul Sharma"
+                                    required>
+                            </div>
+                            <div class="form-group">
+                                <label for="workEmail">Work Email *</label>
+                                <input type="email" id="workEmail" class="form-control" placeholder="rahul@company.com"
+                                    required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="companyName">Company / Organization *</label>
+                                <input type="text" id="companyName" class="form-control" placeholder="Company Name"
+                                    required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phoneNum">Phone Number *</label>
+                                <input type="tel" id="phoneNum" class="form-control" placeholder="+91 98765 43210"
+                                    required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="serviceInterest">Primary Service / Requirement</label>
+                            <select id="serviceInterest" class="form-control">
+                                <option value="managed-it">Managed IT &amp; NOC Services (24/7)</option>
+                                <option value="procurement">Hardware, Server &amp; Storage Procurement</option>
+                                <option value="network-security">Network &amp; Firewall Infrastructure</option>
+                                <option value="erp-fusion">Infor / Oracle Fusion Solutions</option>
+                                <option value="cloud-db">Cloud &amp; Database Administration</option>
+                                <option value="other">General Consultation</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="projectScope">Scope &amp; Timeline Details</label>
+                            <textarea id="projectScope" class="form-control" rows="3"
+                                placeholder="Briefly describe your environment, user count, or timeline goals..."></textarea>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary btn-block">
+                                Submit Proposal Request
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <line x1="22" y1="2" x2="11" y2="13"></line>
+                                    <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                                </svg>
+                            </button>
+                            <button type="button" class="btn btn-ghost" id="ctaCloseFormBtn">Back to Overview</button>
+                        </div>
+                        <div id="formSuccessAlert" class="form-success-alert" style="display:none;">
+                            &#10004; Thank you! Your proposal request has been received. Our Enterprise Solutions Lead
+                            will contact you shortly.
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 11. CREDENTIALS & CERTIFICATIONS STRIP -->
+    <section class="credentials-section" id="credentials">
+        <div class="container">
+            <div class="credentials-label">TRUSTED PARTNER ECOSYSTEM &amp; CERTIFICATIONS</div>
+            <div class="credentials-slider-wrap">
+                <div class="credentials-track">
+                    <div class="cred-badge">Microsoft Certified Partner</div>
+                    <div class="cred-badge">Cisco Systems Premier</div>
+                    <div class="cred-badge">Dell Technologies Authorized</div>
+                    <div class="cred-badge">HPE Partner Ready</div>
+                    <div class="cred-badge">Infor Alliance Partner</div>
+                    <div class="cred-badge">Fortinet Enterprise Expert</div>
+                    <div class="cred-badge">Oracle Partner Network</div>
+                    <div class="cred-badge">ISO 27001 / 9001 Certified</div>
+                    <!-- Repeat for smooth loop -->
+                    <div class="cred-badge">Microsoft Certified Partner</div>
+                    <div class="cred-badge">Cisco Systems Premier</div>
+                    <div class="cred-badge">Dell Technologies Authorized</div>
+                    <div class="cred-badge">HPE Partner Ready</div>
+                    <div class="cred-badge">Infor Alliance Partner</div>
+                    <div class="cred-badge">Fortinet Enterprise Expert</div>
+                    <div class="cred-badge">Oracle Partner Network</div>
+                    <div class="cred-badge">ISO 27001 / 9001 Certified</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 12. BLOGS / INDUSTRY INSIGHTS -->
+    <section class="section blogs-section" id="blogs">
+        <div class="container">
+            <div class="section-header-split">
+                <div class="section-left">
+                    <div class="section-eyebrow">
+                        <span class="eyebrow-bullet"></span>
+                        INSIGHTS &amp; KNOWLEDGE
+                    </div>
+                    <h2 class="section-title">Latest Technology Insights</h2>
+                </div>
+                <div class="section-right">
+                    <p class="section-lead">
+                        Expert viewpoints, architecture best practices, and enterprise IT strategies curated by Lunarays
+                        engineers.
+                    </p>
+                </div>
+            </div>
+
+            <div class="blogs-grid">
+                <article class="blog-card">
+                    <div class="blog-image-wrapper">
+                        <div class="blog-image-placeholder bg-pattern-1">
+                            <span class="blog-tag">CLOUD &amp; NOC</span>
+                        </div>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">5 min read &bull; Architecture</div>
+                        <h3 class="blog-title">Architecting Hybrid Multi-Cloud for 99.99% Enterprise Uptime</h3>
+                        <p class="blog-summary">How modern infrastructure teams combine on-premises bare metal
+                            reliability with elastic public cloud disaster recovery.</p>
+                        <a href="#cta" class="blog-link">Read Case Article &rarr;</a>
+                    </div>
+                </article>
+
+                <article class="blog-card">
+                    <div class="blog-image-wrapper">
+                        <div class="blog-image-placeholder bg-pattern-2">
+                            <span class="blog-tag">CYBERSECURITY</span>
+                        </div>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">4 min read &bull; Security</div>
+                        <h3 class="blog-title">Next-Gen Network Security for Distributed Workforces</h3>
+                        <p class="blog-summary">Implementing SASE, Zero Trust Network Access (ZTNA), and Next-Generation
+                            Firewalls to protect remote enterprise fleets.</p>
+                        <a href="#cta" class="blog-link">Read Case Article &rarr;</a>
+                    </div>
+                </article>
+
+                <article class="blog-card">
+                    <div class="blog-image-wrapper">
+                        <div class="blog-image-placeholder bg-pattern-3">
+                            <span class="blog-tag">ERP &amp; EAM</span>
+                        </div>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">6 min read &bull; Solutions</div>
+                        <h3 class="blog-title">Enterprise Asset Management Best Practices with Infor</h3>
+                        <p class="blog-summary">Streamlining supply chain operations, predictive asset maintenance, and
+                            ERP workflow synchronization for manufacturing leaders.</p>
+                        <a href="#cta" class="blog-link">Read Case Article &rarr;</a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. AI ASSISTANT WIDGET (PULSATING SHADER CIRCLE AT BOTTOM RIGHT) -->
+    <div class="ai-assistant-widget" id="aiAssistantWidget">
+        <!-- Shader Avatar Button -->
+        <button class="ai-avatar-btn" id="aiAvatarBtn" aria-label="Open AI Assistant">
+            <div class="ai-shader-glow"></div>
+            <div class="ai-avatar-inner">
+                <div class="ai-face">
+                    <span class="ai-eye left"></span>
+                    <span class="ai-eye right"></span>
+                </div>
+            </div>
+            <span class="ai-status-pulse"></span>
+        </button>
+
+        <!-- Interactive AI Chat Popup -->
+        <div class="ai-chat-window" id="aiChatWindow">
+            <div class="chat-header">
+                <div class="chat-brand">
+                    <div class="chat-avatar-mini">
+                        <div class="mini-orb"></div>
+                    </div>
+                    <div class="chat-title-box">
+                        <span class="chat-title">Luna AI Specialist</span>
+                        <span class="chat-status">Lunarays Infrastructure Advisor &bull; Online</span>
+                    </div>
+                </div>
+                <button class="chat-close-btn" id="aiChatCloseBtn">&times;</button>
+            </div>
+
+            <div class="chat-body" id="chatBody">
+                <div class="chat-msg bot">
+                    <p>Hello! I&apos;m Luna, Lunarays Intelligent Infrastructure Advisor. How can I
+                        assist your enterprise today?</p>
+                    <div class="quick-prompts">
+                        <button class="prompt-chip"
+                            onclick="window.sendQuickPrompt('Tell me about your 24/7 Managed NOC')">24/7 Managed
+                            NOC</button>
+                        <button class="prompt-chip"
+                            onclick="window.sendQuickPrompt('Hardware &amp; Server Procurement')">Hardware
+                            Procurement</button>
+                        <button class="prompt-chip"
+                            onclick="window.sendQuickPrompt('Infor ERP &amp; Supply Chain')">Infor ERP Services</button>
+                        <button class="prompt-chip"
+                            onclick="window.sendQuickPrompt('How do I request a proposal?')">Request a Proposal</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chat-input-row">
+                <input type="text" id="chatInput" placeholder="Ask about IT services, procurement, SLAs..."
+                    onkeypress="if(event.key === 'Enter') window.handleSendChatMessage()">
+                <button id="chatSendBtn" onclick="window.handleSendChatMessage()" aria-label="Send">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="22" y1="2" x2="11" y2="13"></line>
+                        <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="main-footer">
+        <div class="container footer-grid">
+            <div class="footer-col footer-brand-col">
+                <a href="#hero" class="brand-logo footer-logo" aria-label="Lunarays Technologies">
+                    <img src="logo.png" alt="Lunarays Technologies - Your Wish, Our Endeavour!"
+                        class="brand-logo-img footer-logo-img">
+                </a>
+                <p class="footer-text">
+                    Delivering enterprise-grade Managed IT, Cloud Infrastructure, Systems Integration, and Hardware
+                    Procurement across India.
+                </p>
+                <div class="footer-contact-info">
+                    <p>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="footer-contact-icon"
+                            aria-hidden="true">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                            <circle cx="12" cy="10" r="3"></circle>
+                        </svg>
+                        <span>B-46, Ground Floor -02, Sector-63, Noida-201301, U.P, India</span>
+                    </p>
+                    <p>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="footer-contact-icon"
+                            aria-hidden="true">
+                            <path
+                                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                            </path>
+                        </svg>
+                        <span><a href="tel:+9101204980800">+91-0120-4980800</a> / <a
+                                href="tel:+919971718692">+91-9971718692</a></span>
+                    </p>
+                    <p>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="footer-contact-icon"
+                            aria-hidden="true">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
+                            </path>
+                            <polyline points="22,6 12,13 2,6"></polyline>
+                        </svg>
+                        <span><a href="mailto:info@lunaraystechnologies.com">info@lunaraystechnologies.com</a></span>
+                    </p>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4 class="footer-heading">Services</h4>
+                <ul class="footer-links">
+                    <li><a href="#services">Application Services</a></li>
+                    <li><a href="#services">Infor ERP &amp; WMS</a></li>
+                    <li><a href="#services">Database Support Services</a></li>
+                    <li><a href="#services">IT Asset Consulting</a></li>
+                    <li><a href="#services">24/7 Managed NOC</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4 class="footer-heading">Procurement</h4>
+                <ul class="footer-links">
+                    <li><a href="#sales-products">Servers &amp; SAN Storage</a></li>
+                    <li><a href="#sales-products">Enterprise Networking</a></li>
+                    <li><a href="#sales-products">End-User Fleet Computing</a></li>
+                    <li><a href="#sales-products">Microsoft &amp; Oracle Licensing</a></li>
+                    <li><a href="https://lunarays.in" target="_blank">Retail Shop (lunarays.in)</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4 class="footer-heading">Company</h4>
+                <ul class="footer-links">
+                    <li><a href="#about">About Our Purpose</a></li>
+                    <li><a href="#delivery">Delivery Roadmap</a></li>
+                    <li><a href="#industries">Industries We Support</a></li>
+                    <li><a href="#blogs">Technical Insights</a></li>
+                    <li><a href="#cta">Request Proposal</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="container footer-bottom">
+            <p>&copy; 2026 Lunarays Technologies Private Limited. All rights reserved.</p>
+            <div class="footer-bottom-links">
+                <a href="#about">Privacy Policy</a>
+                <a href="#about">Terms of Service</a>
+                <a href="#about">Security Compliance</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

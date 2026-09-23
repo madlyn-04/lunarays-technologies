@@ -476,33 +476,72 @@ function initSlidingCTA() {
   const ctaContainer = document.getElementById('ctaContainer');
   const openBtn = document.getElementById('ctaOpenFormBtn');
   const closeBtn = document.getElementById('ctaCloseFormBtn');
+  const dialog = document.getElementById('proposalSuccessDialog');
+  const dialogCloseBtn = document.getElementById('proposalDialogCloseBtn');
 
-  if (!ctaContainer || !openBtn) return;
+  if (openBtn && ctaContainer) {
+    openBtn.addEventListener('click', () => {
+      ctaContainer.classList.add('form-open');
+      const firstInput = document.getElementById('fullName');
+      if (firstInput) firstInput.focus();
+    });
+  }
 
-  openBtn.addEventListener('click', () => {
-    ctaContainer.classList.add('form-open');
-    const firstInput = document.getElementById('fullName');
-    if (firstInput) firstInput.focus();
-  });
-
-  if (closeBtn) {
+  if (closeBtn && ctaContainer) {
     closeBtn.addEventListener('click', () => {
       ctaContainer.classList.remove('form-open');
     });
   }
+
+  // Dialogue Box Event Listeners
+  if (dialogCloseBtn) {
+    dialogCloseBtn.addEventListener('click', closeProposalDialog);
+  }
+  if (dialog) {
+    dialog.addEventListener('click', (e) => {
+      if (e.target === dialog) closeProposalDialog();
+    });
+  }
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && dialog && dialog.classList.contains('active')) {
+      closeProposalDialog();
+    }
+  });
+}
+
+let proposalDialogTimer = null;
+
+function closeProposalDialog() {
+  const dialog = document.getElementById('proposalSuccessDialog');
+  if (dialog) {
+    dialog.classList.remove('active');
+  }
+  if (proposalDialogTimer) {
+    clearTimeout(proposalDialogTimer);
+    proposalDialogTimer = null;
+  }
 }
 
 window.handleProposalSubmit = function() {
-  const alert = document.getElementById('formSuccessAlert');
-  if (alert) {
-    alert.style.display = 'block';
-    setTimeout(() => {
-      alert.style.display = 'none';
-      const container = document.getElementById('ctaContainer');
-      if (container) container.classList.remove('form-open');
-      const form = document.getElementById('proposalForm');
-      if (form) form.reset();
-    }, 4000);
+  const form = document.getElementById('proposalForm');
+  const dialog = document.getElementById('proposalSuccessDialog');
+
+  if (dialog) {
+    dialog.classList.add('active');
+
+    if (proposalDialogTimer) {
+      clearTimeout(proposalDialogTimer);
+    }
+
+    // Auto-close the dialogue box in 3 seconds
+    proposalDialogTimer = setTimeout(() => {
+      closeProposalDialog();
+    }, 3000);
+  }
+
+  // Reset form inputs, keep CTA form visible (do not hide)
+  if (form) {
+    form.reset();
   }
 };
 

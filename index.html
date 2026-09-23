@@ -25,7 +25,8 @@
     <header class="main-header" id="navbar">
         <div class="container nav-container">
             <a href="#hero" class="brand-logo" aria-label="Lunarays Technologies">
-                <img src="logo.png" alt="Lunarays Technologies - Your Wish, Our Endeavour!" class="brand-logo-img">
+                <img src="logo-transparent.png" alt="Lunarays Technologies - Your Wish, Our Endeavour!"
+                    class="brand-logo-img">
             </a>
 
             <nav class="nav-links">
@@ -1561,12 +1562,12 @@
                         onsubmit="event.preventDefault(); window.handleProposalSubmit();">
                         <div class="form-row">
                             <div class="form-group">
-                                <label for="fullName">Full Name *</label>
+                                <label for="fullName">Full Name</label>
                                 <input type="text" id="fullName" class="form-control" placeholder="e.g. Rahul Sharma"
                                     required>
                             </div>
                             <div class="form-group">
-                                <label for="workEmail">Work Email *</label>
+                                <label for="workEmail">Work Email</label>
                                 <input type="email" id="workEmail" class="form-control" placeholder="rahul@company.com"
                                     required>
                             </div>
@@ -1574,12 +1575,11 @@
 
                         <div class="form-row">
                             <div class="form-group">
-                                <label for="companyName">Company / Organization *</label>
-                                <input type="text" id="companyName" class="form-control" placeholder="Company Name"
-                                    required>
+                                <label for="companyName">Company / Organization</label>
+                                <input type="text" id="companyName" class="form-control" placeholder="Company Name">
                             </div>
                             <div class="form-group">
-                                <label for="phoneNum">Phone Number *</label>
+                                <label for="phoneNum">Phone Number</label>
                                 <input type="tel" id="phoneNum" class="form-control" placeholder="+91 98765 43210"
                                     required>
                             </div>
@@ -1612,7 +1612,6 @@
                                     <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
                                 </svg>
                             </button>
-                            <button type="button" class="btn btn-ghost" id="ctaCloseFormBtn">Back to Overview</button>
                         </div>
                         <div id="formSuccessAlert" class="form-success-alert" style="display:none;">
                             &#10004; Thank you! Your proposal request has been received. Our Enterprise Solutions Lead
@@ -1624,6 +1623,28 @@
             </div>
         </div>
     </section>
+
+    <!-- PROPOSAL SUBMISSION SUCCESS DIALOGUE BOX (3-SECOND AUTO-CLOSE) -->
+    <div class="proposal-dialog-backdrop" id="proposalSuccessDialog" role="dialog" aria-modal="true"
+        aria-labelledby="dialogTitle">
+        <div class="proposal-dialog-card">
+            <button type="button" class="proposal-dialog-close" id="proposalDialogCloseBtn"
+                aria-label="Close dialogue">&times;</button>
+            <div class="proposal-dialog-icon">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                </svg>
+            </div>
+            <h3 class="proposal-dialog-title" id="dialogTitle">Message Sent!</h3>
+            <p class="proposal-dialog-desc">Thank you! Your proposal request has been received. Our Enterprise Solutions
+                Lead will contact you shortly.</p>
+            <div class="proposal-dialog-progress">
+                <div class="proposal-dialog-bar"></div>
+            </div>
+        </div>
+    </div>
 
     <!-- 11. CREDENTIALS & CERTIFICATIONS STRIP -->
     <section class="credentials-section" id="credentials">

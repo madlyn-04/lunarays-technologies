@@ -183,139 +183,169 @@ function initCounters() {
    3. SERVICES SECTION (CARD CLICK -> 80% SCREEN 3D FLIP/ZOOM MODAL)
    ========================================================================== */
 const servicesData = {
-  'cloud-datacenter': {
-    title: 'Cloud Infrastructure, Migration & Data Center Management',
-    category: 'CLOUD INFRASTRUCTURE & DATA CENTER',
-    lead: 'Lunarays Technologies helps organizations design, migrate and manage cloud environments aligned with their IT requirements, growth and scalability objectives. Services cover private, public and hybrid cloud environments along with data-center infrastructure and operational support.',
+  'microsoft-365': {
+    title: 'Microsoft 365 Migration, Deployment & Support Services',
+    category: 'Cloud & Workplace Productivity',
+    lead: 'Lunarays helps organizations transition and manage Microsoft-based workplace and email environments. Services include Office 365 migration, Exchange migration, Active Directory migration consulting, Microsoft application support and ongoing system updates.',
     deliverables: [
-      'Cloud architecture and environment assessment',
-      'Cloud migration planning and implementation',
-      'Private, public and hybrid cloud solutions',
-      'Network, storage and compute virtualization',
-      'Automation and orchestration workflows',
-      'Cloud and data-center integration',
-      'Cloud-based SIEM and log monitoring',
-      'Mobile security / MDM solutions',
-      'Enterprise monitoring automation',
-      'Data-center operations support 24×7×365',
-      'Scalability, availability and performance optimization'
+      'Microsoft 365 environment assessment',
+      'Office 365 migration planning',
+      'Office 365 migration',
+      'Exchange Server migration',
+      'Active Directory migration consulting',
+      'Enterprise email configuration and support',
+      'Microsoft application implementation',
+      'Microsoft system updates',
+      'Security patch support',
+      'Post-migration technical support'
     ],
-    techStack: 'Public Cloud, Private Cloud, Hybrid Cloud, SDN, SDS, SDC / Compute Virtualization, Cloud SIEM, MDM, Enterprise Monitoring, Data Center Infrastructure',
-    sla: '24×7×365 Data-Center Operations &bull; 4-Hour Guaranteed Response Time for Managed Support Plans (SOW/Plan-dependent)'
+    techStack: 'Microsoft 365, Office 365, Exchange, Active Directory, Enterprise Email, Microsoft Applications',
+    sla: '24×7 Support • Proactive Monitoring • 4-Hour Guaranteed Response Time for Managed Plans'
   },
-  'network-management': {
-    title: 'Enterprise Network Management & Operations',
-    category: 'INFRASTRUCTURE & NETWORK OPERATIONS',
-    lead: 'Lunarays manages enterprise network environments to support continuous operation, availability and performance. The service covers network infrastructure, active and passive components, monitoring, troubleshooting and technical support across multiple support levels.',
+  'solutions-managed-services': {
+    title: 'Enterprise Solutions & Managed IT Services',
+    category: 'Managed IT Infrastructure',
+    lead: 'Lunarays provides end-to-end IT infrastructure and managed services covering infrastructure operations, cloud, security, networking, workplace environments, data protection and technical support.',
     deliverables: [
-      'Network infrastructure assessment & architecture design',
-      'Network design, implementation & rollout',
-      'Hardware and software installation & configuration',
-      'Server and virtual-server setup & provisioning',
-      '24×7×365 Network monitoring & failure resolution',
-      'Performance troubleshooting & traffic optimization',
-      'OEM / Vendor coordination & warranty management',
-      'Structured L1, L2, L3 and L4 technical escalation',
-      'Dedicated onsite network SME support',
-      'Network maintenance, technical logging and SLA adherence'
+      'IT infrastructure management',
+      'System integration',
+      'Cloud & data-center services',
+      'Network management',
+      'Information security',
+      'Workplace management',
+      'Data storage',
+      'Data-loss prevention',
+      'Desktop virtualization',
+      'Upgrade and migration support',
+      'Installation and relocation',
+      'Data-center support',
+      'Remote support',
+      'IT outsourcing and helpdesk',
+      'Email solutions',
+      'Annual maintenance contracts'
     ],
-    techStack: 'LAN, WAN, Wireless Networks, Servers, Storage & Backup, Network & Security Devices, Databases, Middleware, Virtual Servers, OEM Network Technologies',
-    sla: '24×7×365 Monitoring &bull; L1–L4 Technical Resolution &bull; 4-Hour Guaranteed Response Time for Managed Plans'
+    techStack: 'IT Infrastructure, Cloud, Data Center, Networks, Servers, Storage, Security, Virtualization, Backup, End User Computing',
+    sla: '24×7×365 Monitoring • L1–L4 Technical Resolution • 4-Hour Guaranteed Response Time for Managed Plans'
   },
-  'information-security': {
-    title: 'Integrated Information Security Services',
-    category: 'CYBERSECURITY & INFORMATION SECURITY',
-    lead: 'Lunarays provides an integrated information-security approach that aligns security strategy with business objectives, operational requirements, risk tolerance and technology environments.',
+  'application-services': {
+    title: 'Application Development, Implementation & Management',
+    category: 'Application Engineering & Management',
+    lead: 'Lunarays provides application services spanning solution development, implementation, application management, transition, enhancement and continuous improvement. The company also describes the use of RPA and BOT technologies for process digitization.',
     deliverables: [
-      'Security environment assessment & risk posture evaluation',
-      'Security strategy, governance mechanisms & compliance roadmaps',
-      'Security metrics, audit reporting & continual improvement',
-      'ITSM-security workflow integration & incident-to-action automation',
-      'Flexible security operating models: Onsite, Remote & Hybrid',
-      'Endpoint protection, identity governance & perimeter defense',
-      'Comprehensive security program & compliance management'
+      'Business requirement analysis',
+      'Application solutioning',
+      'Application development',
+      'Application implementation',
+      'Application transition',
+      'Application operations',
+      'Application enhancement',
+      'Application maintenance',
+      'Process digitization',
+      'RPA/BOT implementation',
+      'Application monitoring',
+      'Continuous improvement'
     ],
-    techStack: 'Enterprise IT Infrastructure, ITSM Platforms, Security Technologies, Cloud Environments, Network Infrastructure, Endpoint Environments, Security Monitoring, Governance & Risk Frameworks',
-    sla: 'Tailored Business-Service SLAs & Flexible Operating Models aligned to organizational risk profile and contract SOW'
+    techStack: 'Enterprise Applications, RPA, BOT Technology, Web Applications, Mobile Applications, Databases, Cloud Platforms',
+    sla: 'Application-Specific SLA • Managed Support Options • Response & Resolution Based on Service Agreement'
   },
-  'system-integration': {
-    title: 'Enterprise Systems Integration & Architecture',
-    category: 'ENTERPRISE IT INTEGRATION',
-    lead: 'Lunarays integrates applications, platforms and technology components into connected enterprise environments. The approach focuses on workflow analysis, interface assessment, data foundations and optimized information flow.',
+  'infor-services': {
+    title: 'Infor Supply Chain Execution & Enterprise Asset Management',
+    category: 'Enterprise Applications & Business Operations',
+    lead: 'Lunarays lists Infor Services as a dedicated service category focused on Supply Chain Execution and Enterprise Asset Management.',
     deliverables: [
-      'Workflow analysis & IT-tool assessment',
-      'Data-content analysis, mapping & interface definition',
-      'Existing-interface assessment & data-flow optimization',
-      'Database, CRM & ERP cross-platform integration',
-      'Cloud-system integration (Salesforce, Amazon S3, Web Services)',
-      'Custom-built enterprise integration solutions',
-      'Intranet, extranet, e-commerce & mobile application bridges'
+      'Infor solution assessment',
+      'Supply Chain Execution support',
+      'Enterprise Asset Management support',
+      'Business-process alignment',
+      'Application implementation support',
+      'Application maintenance',
+      'Integration support',
+      'Technical support'
     ],
-    techStack: 'Databases, CRM, ERP, Salesforce, Amazon S3, Intranet, Extranet, E-commerce Platforms, Mobile Applications, Custom Applications',
-    sla: 'Milestone-based delivery timelines, data integrity benchmarks and acceptance SLAs defined per project SOW'
+    techStack: 'Infor, Supply Chain Execution, Enterprise Asset Management, Enterprise Applications, Business Operations Systems',
+    sla: 'Managed Support Options • SLA Defined by Service Agreement • Technical Escalation Support'
   },
   'it-asset-management': {
     title: 'IT Asset Lifecycle Management & Consulting',
-    category: 'IT ASSET LIFECYCLE MANAGEMENT',
-    lead: 'Lunarays provides structured management of IT hardware and software assets throughout their lifecycle, helping organizations maintain asset visibility, operational control and optimized utilization across the 4-stage model: Procurement → Deployment → Maintenance → Disposition.',
+    category: 'IT Asset Lifecycle Management',
+    lead: 'Lunarays provides structured IT asset management covering procurement, deployment, maintenance and disposition. The service focuses on maintaining asset visibility, ownership, vendor information and lifecycle control.',
     deliverables: [
-      'IT asset procurement & vendor identification',
-      'Hardware and software rollout deployment',
-      'Asset-location tracking & responsibility assignment',
-      'Vendor information & database credential management',
-      'Asset maintenance, hardware/software repair & warranty tracking',
-      'Asset additions, removals, decommissioning & disposition recycling',
-      'Software license optimization, compliance defense & TCO reduction'
+      'Vendor identification',
+      'Asset procurement',
+      'Cost-focused purchasing',
+      'Hardware/software deployment',
+      'Asset-location tracking',
+      'Responsibility tracking',
+      'Vendor information management',
+      'Asset database management',
+      'Asset maintenance',
+      'Repair management',
+      'Asset additions/removals',
+      'Lifecycle decision support',
+      'Asset disposal',
+      'Asset resale',
+      'Asset recycling',
+      'Lifecycle optimization'
     ],
-    techStack: 'Hardware Assets, Software Assets, Asset Databases, Storage Infrastructure, Endpoint Infrastructure, Vendor Ecosystems, IT Infrastructure',
-    sla: '100% Asset Visibility & Governance &bull; SLA commitments structured according to managed-service agreement'
+    techStack: 'IT Hardware, Software Assets, Asset Databases, End User Computing, Servers, Network Devices, Storage, Vendor Ecosystems',
+    sla: 'Lifecycle-Based Support • Maintenance & Repair Support • SLA Defined by Service Agreement'
   },
-  'it-outsourcing-helpdesk': {
-    title: 'IT Outsourcing, Helpdesk & Technical Support',
-    category: 'IT OPERATIONS & END-USER SUPPORT',
-    lead: 'Lunarays provides outsourced IT helpdesk services covering hardware, email, ERP, CRM, HR solutions, mobile applications, web applications and corporate systems. Support is structured by technical complexity and escalation level.',
+  'database-support': {
+    title: 'Enterprise Database Support & Management Services',
+    category: 'Database Infrastructure & Support',
+    lead: 'Lunarays describes database support as a core component of enterprise software infrastructure, with emphasis on database efficiency, security, user management and data accessibility.',
     deliverables: [
-      'L1 Support: Software usage assistance, password/access restoration, user guidance, FAQs & knowledge base',
-      'L2 Support: Software configuration, hardware/software interoperability, log investigation & root-cause analysis',
-      'L3 Support: Code-level troubleshooting, complex application issues, software-engineer escalation & defect resolution',
-      'Omnichannel helpdesk: Ticketing, live phone, remote desktop and onsite escalation',
-      'Monthly reporting on resolution metrics, ticket trends & asset health'
+      'Database environment assessment',
+      'Database administration support',
+      'User-data management',
+      'Database security',
+      'Authentication support',
+      'Authorization management',
+      'Redundancy checks',
+      'Database maintenance',
+      'Database hosting support',
+      'Performance and operational support'
     ],
-    techStack: 'Enterprise Applications, Email Systems, ERP, CRM, HR Management Systems, Mobile Applications, Web Applications, Corporate IT Systems, Hardware Infrastructure',
-    sla: '4-Hour Guaranteed Response Time &bull; Unlimited Phone & Remote Support &bull; Monthly System & Asset Reports'
+    techStack: 'Oracle, MySQL, PostgreSQL, Enterprise Databases, Web Applications, Cloud Infrastructure, Application Platforms',
+    sla: 'Database Support SLA • Monitoring & Maintenance • Response Based on Service Agreement'
   },
-  'application-services': {
-    title: 'Application Development, Management & Automation',
-    category: 'APPLICATION ENGINEERING & AUTOMATION',
-    lead: 'Lunarays works with organizations to understand business requirements and develop or manage applications designed around operational needs. Its stated approach incorporates automation, application transition, operations, enhancement and continuous improvement.',
+  'oracle-retail-fusion': {
+    title: 'Oracle Retail & Fusion Enterprise Solutions',
+    category: 'Enterprise Applications & Retail Technology',
+    lead: 'Lunarays positions Oracle Retail & Fusion services toward retail organizations and mission-critical enterprise environments. The service portfolio references cloud adoption and Oracle-based business applications.',
     deliverables: [
-      'Business requirement analysis & solution architecture',
-      'Full-stack custom application development & implementation',
-      'Application transition, staging & operational handover',
-      'Application operations, maintenance & performance tuning',
-      'Process digitization & RPA / BOT implementation',
-      'Application analytics, telemetry & continuous optimization',
-      'Structured issue tracking, bug remediation & feature enhancements'
+      'Oracle environment assessment',
+      'Oracle Retail solution support',
+      'Oracle Fusion support',
+      'Cloud adoption support',
+      'Application implementation',
+      'Application maintenance',
+      'Enterprise application support',
+      'Business-process alignment',
+      'Mission-critical application support'
     ],
-    techStack: 'Enterprise Applications, RPA, BOT Technology, Business Applications, HCM, Payroll Systems, Web Applications, Mobile Applications, Databases, Cloud Platforms',
-    sla: 'Continuous Improvement Lifecycle &bull; Response & Resolution SLAs customized per implementation SOW'
+    techStack: 'Oracle Retail, Oracle Fusion, HCM, Financial Services Management, CRM, Cloud Infrastructure, Enterprise Applications',
+    sla: 'Managed Support Options • Application-Specific SLA • Technical Escalation Support'
   },
-  'microsoft-365': {
-    title: 'Microsoft 365 Migration, Deployment & Support Services',
-    category: 'CLOUD PRODUCTIVITY & WORKPLACE',
-    lead: 'Lunarays helps organizations transition and support Microsoft productivity and email environments. The documented capabilities include Office 365 migration, Microsoft Exchange migration and Microsoft application consulting and implementation.',
+  'mobility': {
+    title: 'Enterprise Mobility & Mobile Application Services',
+    category: 'Mobile Application & Digital Transformation',
+    lead: 'Lunarays\' Mobility offering focuses on helping organizations define mobility roadmaps and implement mobile solutions across the application lifecycle, including design, migration, testing, maintenance and reporting.',
     deliverables: [
-      'Microsoft 365 environment assessment & readiness audit',
-      'Office 365 migration planning & implementation',
-      'On-premises Exchange to cloud migration',
-      'Active Directory migration & hybrid identity consulting',
-      'Microsoft application consulting & suite rollout',
-      'User and access provisioning & end-user support',
-      'Microsoft system updates & security patch management',
-      'Enterprise email security, backup & post-migration support'
+      'Mobility strategy and roadmap',
+      'Mobile application design',
+      'Application implementation',
+      'Application migration',
+      'Mobile application testing',
+      'Application maintenance',
+      'Reporting',
+      'Debugging',
+      'Technology-platform assessment',
+      'User-adoption planning',
+      'Mobility architecture support'
     ],
-    techStack: 'Microsoft 365, Office 365, Microsoft Exchange, Active Directory, Microsoft Applications, Enterprise Email, Cloud Infrastructure, Security Updates & Patches',
-    sla: 'Proactive Monitoring &bull; Microsoft System Updates & Security Patches &bull; 4-Hour Guaranteed Response Time'
+    techStack: 'Mobile Applications, Enterprise Applications, Mobile Platforms, Cloud Infrastructure, Application Development, Testing Tools',
+    sla: 'Application-Specific SLA • Maintenance & Support • Response Based on Service Agreement'
   }
 };
 
@@ -368,7 +398,7 @@ function initServicesModal() {
             </div>
 
             <div class="modal-box-card">
-              <h4 style="font-family: var(--font-subheading); font-size: 0.85rem; font-weight: 700; color: var(--color-accent-blue); margin-bottom: 8px;">SLA & GUARANTEES</h4>
+              <h4 style="font-family: var(--font-subheading); font-size: 0.85rem; font-weight: 700; color: var(--color-accent-blue); margin-bottom: 8px;">SLA & SUPPORT COMMITMENT</h4>
               <p style="font-size: 0.95rem; color: var(--color-text-main); font-weight: 400;">${data.sla}</p>
             </div>
 
@@ -428,20 +458,20 @@ function initDeliveryOperations() {
    ========================================================================== */
 const industriesData = [
   {
-    title: 'Financial Services',
+    title: 'Global In-House (GCCs)',
     counter: '01 / 06',
-    icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"></rect><line x1="2" y1="10" x2="22" y2="10"></line></svg>`,
-    desc: 'Technology environments for banking institutions, NBFCs, and FinTech platforms where resilience, regulatory risk, and 100% transaction availability are non-negotiable.',
-    priorities: ['Regulatory Compliance', 'Zero Data Loss', 'High Availability', 'Auditability'],
-    capabilities: ['Core Banking Network Fabric', 'Disaster Recovery (DR) Sync', 'Cybersecurity SOC', 'Database Clusters']
+    icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>`,
+    desc: 'Standardized IT workplace fleets, high-throughput SD-WAN interconnects, and round-the-clock ITIL service desks for global technology centers in India.',
+    priorities: ['Global Fleet Uniformity', 'Zero-Trust Remote Work', 'High-Speed WAN Connects', '24/7 Helpdesk'],
+    capabilities: ['Workplace End-User Compute', 'SD-WAN & SASE Security', 'License Consolidation', 'Dedicated NOC Pods']
   },
   {
-    title: 'Healthcare',
+    title: 'Manufacturing',
     counter: '02 / 06',
-    icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg>`,
-    desc: 'Mission-critical Hospital Information Systems (HIS), PACS imaging networks, and diagnostic infrastructure engineered for continuous care with zero downtime.',
-    priorities: ['HIPAA / ISO Data Privacy', '24/7 HIS Uptime', 'Telemetry Continuity', 'Secure EMR Access'],
-    capabilities: ['PACS Cloud Archiving', 'Encrypted Campus Wi-Fi', 'High-IOPS Server Nodes', 'Redundant Power Fabrics']
+    icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>`,
+    desc: 'Industrial IoT integration, Infor ERP & WMS automation, and shop-floor networking ensuring continuous assembly lines and supply chain execution.',
+    priorities: ['Shop Floor Reliability', 'Supply Chain Visibility', 'Predictive Maintenance', 'Asset Tracking'],
+    capabilities: ['Infor LN & WMS Systems', 'Industrial Rugged LAN', 'SCADA / OT Security', 'Automated Barcode Systems']
   },
   {
     title: 'Telecom',
@@ -452,28 +482,28 @@ const industriesData = [
     capabilities: ['Next-Gen Core Routers', 'BGP Peering Architecture', 'Edge Computing Nodes', 'Automated Failover']
   },
   {
-    title: 'Manufacturing',
+    title: 'Financial Services',
     counter: '04 / 06',
-    icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>`,
-    desc: 'Industrial IoT integration, Infor ERP & WMS automation, and shop-floor networking ensuring continuous assembly lines and supply chain execution.',
-    priorities: ['Shop Floor Reliability', 'Supply Chain Visibility', 'Predictive Maintenance', 'Asset Tracking'],
-    capabilities: ['Infor LN & WMS Systems', 'Industrial Rugged LAN', 'SCADA / OT Security', 'Automated Barcode Systems']
+    icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"></rect><line x1="2" y1="10" x2="22" y2="10"></line></svg>`,
+    desc: 'Technology environments for banking institutions, NBFCs, and FinTech platforms where resilience, regulatory risk, and 100% transaction availability are non-negotiable.',
+    priorities: ['Regulatory Compliance', 'Zero Data Loss', 'High Availability', 'Auditability'],
+    capabilities: ['Core Banking Network Fabric', 'Disaster Recovery (DR) Sync', 'Cybersecurity SOC', 'Database Clusters']
   },
   {
-    title: 'Public Sector',
+    title: 'Healthcare',
     counter: '05 / 06',
+    icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg>`,
+    desc: 'Mission-critical Hospital Information Systems (HIS), PACS imaging networks, and diagnostic infrastructure engineered for continuous care with zero downtime.',
+    priorities: ['HIPAA / ISO Data Privacy', '24/7 HIS Uptime', 'Telemetry Continuity', 'Secure EMR Access'],
+    capabilities: ['PACS Cloud Archiving', 'Encrypted Campus Wi-Fi', 'High-IOPS Server Nodes', 'Redundant Power Fabrics']
+  },
+  {
+    title: 'Public Services',
+    counter: '06 / 06',
     icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M3 10h18M5 6l7-3 7 3M4 10v11M20 10v11M8 14v4M12 14v4M16 14v4"></path></svg>`,
     desc: 'Secure municipal infrastructure, government e-portal hosting, and national digital initiative backbones built with strict sovereign data standards.',
     priorities: ['Public Accountability', 'Sovereign Data Storage', 'Strict SLA Compliance', 'Cost Efficiency'],
     capabilities: ['Government Cloud Portals', 'Centralized Identity Access', 'Audit Trail Telemetry', 'Annual Maintenance (AMC)']
-  },
-  {
-    title: 'Global In-House (GCCs)',
-    counter: '06 / 06',
-    icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>`,
-    desc: 'Standardized IT workplace fleets, high-throughput SD-WAN interconnects, and round-the-clock ITIL service desks for global technology centers in India.',
-    priorities: ['Global Fleet Uniformity', 'Zero-Trust Remote Work', 'High-Speed WAN Connects', '24/7 Helpdesk'],
-    capabilities: ['Workplace End-User Compute', 'SD-WAN & SASE Security', 'License Consolidation', 'Dedicated NOC Pods']
   }
 ];
 

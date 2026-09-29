@@ -653,7 +653,6 @@ a {
   cursor: pointer;
   box-shadow: var(--shadow-sm);
   transition: all var(--transition-normal);
-  position: relative;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -677,7 +676,7 @@ a {
 }
 
 .service-card:hover {
-  transform: translateY(-6px);
+  transform: translateY(-4px);
   box-shadow: var(--shadow-xl);
   border-color: #CBD5E1;
 }
@@ -3145,6 +3144,27 @@ a {
   color: #FFFFFF;
   align-self: flex-end;
   border-bottom-right-radius: 2px;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.chat-msg p {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.chat-msg.typing {
+  color: #94A3B8;
+  font-style: italic;
+}
+
+.chat-msg.error {
+  border: 1px solid rgba(248, 113, 113, 0.4);
+}
+
+#chatSendBtn:disabled {
+  opacity: 0.55;
+  cursor: wait;
 }
 
 .quick-prompts {

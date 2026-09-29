@@ -652,75 +652,124 @@ function initAIAssistant() {
 
   if (!avatarBtn || !chatWindow) return;
 
-  avatarBtn.addEventListener('click', () => {
-    chatWindow.classList.toggle('active');
-  });
+  function setOpen(isOpen) {
+    chatWindow.classList.toggle('active', isOpen);
+    chatWindow.setAttribute('aria-hidden', String(!isOpen));
+    avatarBtn.setAttribute('aria-expanded', String(isOpen));
+    if (isOpen) document.getElementById('chatInput')?.focus();
+  }
+
+  avatarBtn.addEventListener('click', () => setOpen(!chatWindow.classList.contains('active')));
 
   if (closeBtn) {
-    closeBtn.addEventListener('click', () => {
-      chatWindow.classList.remove('active');
-    });
+    closeBtn.addEventListener('click', () => setOpen(false));
   }
+
+  document.getElementById('chatSendBtn')?.addEventListener('click', window.handleSendChatMessage);
+  document.getElementById('chatInput')?.addEventListener('keydown', event => {
+    if (event.key === 'Enter' && !event.shiftKey) {
+      event.preventDefault();
+      window.handleSendChatMessage();
+    }
+  });
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && chatWindow.classList.contains('active')) setOpen(false);
+  });
 }
 
-const aiResponses = {
-  'noc': 'Our 24/7/365 NOC operates out of our Noida engineering center with automated Prometheus/Grafana telemetry, ITIL v4 incident escalation, and a guaranteed 15-minute response SLA for critical infrastructure.',
-  'procurement': 'Lunarays provides authorized enterprise hardware procurement across Dell, HPE, Cisco, and Fortinet servers, storage arrays, switches, and workstations with full manufacturer warranties and staging.',
-  'infor': 'We specialize in Infor CloudSuite, Infor LN, and Infor WMS implementations, warehouse automation, asset management (EAM), and custom ION data synchronization.',
-  'proposal': 'You can submit your requirements right on our Request Proposal section above, or email us directly at info@lunaraystechnologies.com / call +91-9971718692.',
-  'default': 'Thank you for reaching out! Lunarays Technologies specializes in Enterprise IT Infrastructure, Cloud Management, Hardware Procurement, and ERP Solutions. Feel free to request a proposal or consult our team directly at +91-0120-4980800.'
-};
+const lunaConversation = [];
+const LUNA_HISTORY_LIMIT = 12;
+const LUNA_MAX_MESSAGE_LENGTH = 2000;
+let lunaRequestPending = false;
 
 window.sendQuickPrompt = function (promptText) {
-  const chatBody = document.getElementById('chatBody');
-  if (!chatBody) return;
-
-  // Add User Message
-  appendChatMessage(promptText, 'user');
-
-  // Determine Bot Response
-  setTimeout(() => {
-    let reply = aiResponses.default;
-    const lower = promptText.toLowerCase();
-    if (lower.includes('noc') || lower.includes('managed')) reply = aiResponses.noc;
-    else if (lower.includes('procurement') || lower.includes('hardware') || lower.includes('server')) reply = aiResponses.procurement;
-    else if (lower.includes('infor') || lower.includes('erp')) reply = aiResponses.infor;
-    else if (lower.includes('proposal') || lower.includes('quote')) reply = aiResponses.proposal;
-
-    appendChatMessage(reply, 'bot');
-  }, 600);
+  if (typeof promptText !== 'string') return;
+  const chatWindow = document.getElementById('aiChatWindow');
+  const avatarBtn = document.getElementById('aiAvatarBtn');
+  chatWindow?.classList.add('active');
+  chatWindow?.setAttribute('aria-hidden', 'false');
+  avatarBtn?.setAttribute('aria-expanded', 'true');
+  submitLunaMessage(promptText);
 };
 
 window.handleSendChatMessage = function () {
   const input = document.getElementById('chatInput');
-  if (!input || !input.value.trim()) return;
-
+  if (!input || lunaRequestPending) return;
   const text = input.value.trim();
+  if (!text) return;
+  if (text.length > LUNA_MAX_MESSAGE_LENGTH) {
+    appendChatMessage(`Please keep your message to ${LUNA_MAX_MESSAGE_LENGTH} characters or fewer.`, 'bot');
+    return;
+  }
   input.value = '';
-
-  appendChatMessage(text, 'user');
-
-  setTimeout(() => {
-    let reply = aiResponses.default;
-    const lower = text.toLowerCase();
-    if (lower.includes('noc') || lower.includes('managed') || lower.includes('monitoring')) reply = aiResponses.noc;
-    else if (lower.includes('procure') || lower.includes('hardware') || lower.includes('server') || lower.includes('laptop')) reply = aiResponses.procurement;
-    else if (lower.includes('infor') || lower.includes('erp') || lower.includes('oracle')) reply = aiResponses.infor;
-    else if (lower.includes('proposal') || lower.includes('quote') || lower.includes('cost') || lower.includes('pricing')) reply = aiResponses.proposal;
-
-    appendChatMessage(reply, 'bot');
-  }, 700);
+  submitLunaMessage(text);
 };
 
-function appendChatMessage(text, sender) {
+async function submitLunaMessage(text) {
+  if (lunaRequestPending) return;
   const chatBody = document.getElementById('chatBody');
+  const sendButton = document.getElementById('chatSendBtn');
   if (!chatBody) return;
 
+  lunaRequestPending = true;
+  if (sendButton) sendButton.disabled = true;
+  appendChatMessage(text, 'user');
+  const typingMessage = appendChatMessage('Luna is typing…', 'bot', 'typing');
+
+  try {
+    const response = await fetch('/api/chat', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        message: text,
+        history: lunaConversation.slice(-LUNA_HISTORY_LIMIT)
+      })
+    });
+    const payload = await response.json().catch(() => ({}));
+    if (!response.ok) throw new Error(payload.error || 'Luna could not respond right now. Please try again.');
+    if (typeof payload.reply !== 'string' || !payload.reply.trim()) {
+      throw new Error('Luna could not respond right now. Please try again.');
+    }
+
+    lunaConversation.push({ role: 'user', content: text }, { role: 'assistant', content: payload.reply });
+    lunaConversation.splice(0, Math.max(0, lunaConversation.length - LUNA_HISTORY_LIMIT));
+    typingMessage?.remove();
+    appendChatMessage(payload.reply, 'bot');
+  } catch (error) {
+    typingMessage?.remove();
+    appendChatMessage(error?.message === 'Failed to fetch'
+      ? 'I’m having trouble connecting right now. Please try again shortly or contact info@lunaraystechnologies.com.'
+      : (error?.message || 'Luna could not respond right now. Please try again.'), 'bot', 'error');
+  } finally {
+    lunaRequestPending = false;
+    if (sendButton) sendButton.disabled = false;
+    document.getElementById('chatInput')?.focus();
+  }
+}
+
+function appendChatMessage(text, sender, extraClass = '') {
+  const chatBody = document.getElementById('chatBody');
+  if (!chatBody || typeof text !== 'string') return null;
+
   const msgDiv = document.createElement('div');
-  msgDiv.className = `chat-msg ${sender}`;
-  msgDiv.innerHTML = `<p>${text}</p>`;
+  msgDiv.className = `chat-msg ${sender}${extraClass ? ` ${extraClass}` : ''}`;
+  if (sender === 'bot') msgDiv.setAttribute('aria-live', 'polite');
+  const paragraph = document.createElement('p');
+  const emailLinkMarkup = '[info@lunaraystechnologies.com](mailto:info@lunaraystechnologies.com)';
+  const emailLinkIndex = sender === 'bot' ? text.indexOf(emailLinkMarkup) : -1;
+  if (emailLinkIndex < 0) {
+    paragraph.textContent = text;
+  } else {
+    paragraph.append(document.createTextNode(text.slice(0, emailLinkIndex)));
+    const emailLink = document.createElement('a');
+    emailLink.href = 'mailto:info@lunaraystechnologies.com';
+    emailLink.textContent = 'info@lunaraystechnologies.com';
+    paragraph.append(emailLink, document.createTextNode(text.slice(emailLinkIndex + emailLinkMarkup.length)));
+  }
+  msgDiv.appendChild(paragraph);
   chatBody.appendChild(msgDiv);
   chatBody.scrollTop = chatBody.scrollHeight;
+  return msgDiv;
 }
 
 /* ==========================================================================

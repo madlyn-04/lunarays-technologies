@@ -2,20 +2,13 @@ const COMPANY_KNOWLEDGE = `Lunarays Technologies Private Limited is an IT servic
 
 Verified service categories:
 - Microsoft 365 Services
-- Solutions & Managed Services
+- Cloud Services
+- IT Infrastructure & Managed Services
 - Application Services
 - Infor Services
-- IT Asset Management & Consulting
 - Database Support Services
 - Oracle Retail & Fusion
 - Mobility
-- Cloud & Data Center
-- Information Security
-- Network Management
-- Workplace Management
-- Migration Support
-- Remote Support
-- IT Helpdesk
 
 Contact:
 Email: info@lunaraystechnologies.com
@@ -38,6 +31,7 @@ const MAX_MESSAGE_LENGTH = 2000;
 const MAX_HISTORY_MESSAGES = 12;
 const WINDOW_MS = 60_000;
 const MAX_REQUESTS_PER_WINDOW = 12;
+const GEMINI_MODEL = 'gemini-3.5-flash-lite';
 const rateBuckets = new Map();
 
 function sendJson(res, status, body) {
@@ -105,7 +99,8 @@ module.exports = async function handler(req, res) {
 
   const history = validHistory(body.history);
   if (!history) return sendJson(res, 400, { error: 'Invalid conversation history.' });
-  if (!process.env.OPENAI_API_KEY) {
+  if (!process.env.GEMINI_API_KEY) {
+    console.error('[Luna] Gemini API key is not configured.');
     return sendJson(res, 500, { error: 'Luna is temporarily unavailable. Please contact info@lunaraystechnologies.com.' });
   }
   if (isRateLimited(req)) {
@@ -113,40 +108,50 @@ module.exports = async function handler(req, res) {
   }
 
   try {
-    const response = await fetch('https://api.openai.com/v1/responses', {
+    const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent`, {
       method: 'POST',
       headers: {
-        Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
+        'x-goog-api-key': process.env.GEMINI_API_KEY,
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        model: process.env.OPENAI_MODEL || 'gpt-4.1-mini',
-        instructions: SYSTEM_INSTRUCTIONS,
-        input: [
-          ...history,
-          { role: 'user', content: body.message.trim() }
+        systemInstruction: {
+          parts: [{ text: SYSTEM_INSTRUCTIONS }]
+        },
+        contents: [
+          ...history.map(item => ({
+            role: item.role === 'assistant' ? 'model' : 'user',
+            parts: [{ text: item.content }]
+          })),
+          { role: 'user', parts: [{ text: body.message.trim() }] }
         ],
-        max_output_tokens: 500,
-        store: false
+        generationConfig: {
+          maxOutputTokens: 500
+        }
       })
     });
 
     if (!response.ok) {
-      // Do not log request contents or upstream error bodies.
+      console.error('[Luna] Gemini API returned an unsuccessful status.', { status: response.status });
       return sendJson(res, 502, { error: 'Luna is temporarily unavailable. Please try again shortly.' });
     }
 
     const result = await response.json();
-    const reply = result.output
-      ?.filter(item => item.type === 'message')
-      .flatMap(item => item.content || [])
-      .filter(item => item.type === 'output_text')
-      .map(item => item.text)
+    const candidate = result.candidates?.[0];
+    const reply = candidate?.content?.parts
+      ?.filter(part => typeof part.text === 'string')
+      .map(part => part.text)
       .join('\n')
       .trim();
-    if (!reply) return sendJson(res, 502, { error: 'Luna could not prepare a reply. Please try again.' });
+    if (!reply) {
+      console.error('[Luna] Gemini API returned no text candidate.', {
+        finishReason: candidate?.finishReason || 'unknown'
+      });
+      return sendJson(res, 502, { error: 'Luna could not prepare a reply. Please try again.' });
+    }
     return sendJson(res, 200, { reply });
-  } catch {
+  } catch (error) {
+    console.error('[Luna] Gemini request failed.', { name: error?.name || 'Error' });
     return sendJson(res, 502, { error: 'Luna is temporarily unavailable. Please try again shortly.' });
   }
 };

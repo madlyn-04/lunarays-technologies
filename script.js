@@ -202,30 +202,49 @@ const servicesData = {
     techStack: 'Microsoft 365, Office 365, Exchange, Active Directory, Enterprise Email, Microsoft Applications',
     sla: '24×7 Support • Proactive Monitoring • 4-Hour Guaranteed Response Time for Managed Plans'
   },
-  'solutions-managed-services': {
-    title: 'Enterprise Solutions & Managed IT Services',
-    category: 'Managed IT Infrastructure',
-    lead: 'Lunarays provides end-to-end IT infrastructure and managed services covering infrastructure operations, cloud, security, networking, workplace environments, data protection and technical support.',
+  'cloud-services': {
+    title: 'Cloud Infrastructure & Migration Services',
+    category: 'Cloud Infrastructure, Migration & Modernization',
+    lead: 'Lunarays Cloud Services focuses on helping organizations transition from traditional IT infrastructure to flexible, scalable cloud environments. The service scope covers cloud migration, infrastructure deployment, cloud environment management, and hybrid infrastructure support across platforms such as AWS and Microsoft Azure. The offering is designed to support cloud adoption, infrastructure modernization, operational continuity, and evolving business technology requirements.',
     deliverables: [
-      'IT infrastructure management',
-      'System integration',
-      'Cloud & data-center services',
-      'Network management',
-      'Information security',
-      'Workplace management',
-      'Data storage',
-      'Data-loss prevention',
-      'Desktop virtualization',
-      'Upgrade and migration support',
-      'Installation and relocation',
-      'Data-center support',
-      'Remote support',
-      'IT outsourcing and helpdesk',
-      'Email solutions',
-      'Annual maintenance contracts'
+      'Cloud readiness assessment',
+      'Cloud migration planning',
+      'AWS cloud infrastructure support',
+      'Microsoft Azure infrastructure support',
+      'On-premises to cloud migration',
+      'Cloud infrastructure deployment',
+      'Hybrid cloud environment support',
+      'Cloud resource management',
+      'Cloud monitoring and maintenance',
+      'Infrastructure modernization',
+      'Cloud backup and recovery support',
+      'Cloud security configuration support',
+      'Cloud cost optimization',
+      'Post-migration technical assistance'
     ],
-    techStack: 'IT Infrastructure, Cloud, Data Center, Networks, Servers, Storage, Security, Virtualization, Backup, End User Computing',
-    sla: '24×7×365 Monitoring • L1–L4 Technical Resolution • 4-Hour Guaranteed Response Time for Managed Plans'
+    techStack: 'Amazon Web Services (AWS), Microsoft Azure, Cloud Infrastructure, Hybrid Cloud, Virtual Machines, Cloud Storage, Cloud Networking, Backup & Recovery, Infrastructure Monitoring',
+    sla: 'Cloud Support Options • Migration Scope-Based Delivery • Infrastructure Monitoring • Technical Escalation Support'
+  },
+  'it-infrastructure-managed': {
+    title: 'IT Infrastructure & Managed Services',
+    category: 'IT Infrastructure, Operations & Managed Support',
+    lead: 'Lunarays provides IT infrastructure and managed services to support business-critical technology environments. The service portfolio covers infrastructure operations, network management, IT asset lifecycle support, information security, and technical assistance to help organizations maintain reliable and efficient IT operations.',
+    deliverables: [
+      'IT infrastructure assessment',
+      'Server and workstation management',
+      'Network operations and support',
+      'IT asset lifecycle management',
+      'Infrastructure monitoring and maintenance',
+      'Information security support',
+      'Remote technical assistance',
+      'Helpdesk and end-user support',
+      'IT installation and relocation',
+      'Infrastructure optimization',
+      'Preventive maintenance',
+      'Technical escalation support'
+    ],
+    techStack: 'IT Infrastructure, Servers, Workstations, Networking, IT Asset Management, Information Security, Remote Support, Helpdesk, Enterprise IT Operations',
+    sla: 'Managed Support Options • Response-Time Commitments as per Service Plan • Priority Escalation • Preventive Maintenance'
   },
   'application-services': {
     title: 'Application Development, Implementation & Management',
@@ -264,31 +283,6 @@ const servicesData = {
     ],
     techStack: 'Infor, Supply Chain Execution, Enterprise Asset Management, Enterprise Applications, Business Operations Systems',
     sla: 'Managed Support Options • SLA Defined by Service Agreement • Technical Escalation Support'
-  },
-  'it-asset-management': {
-    title: 'IT Asset Lifecycle Management & Consulting',
-    category: 'IT Asset Lifecycle Management',
-    lead: 'Lunarays provides structured IT asset management covering procurement, deployment, maintenance and disposition. The service focuses on maintaining asset visibility, ownership, vendor information and lifecycle control.',
-    deliverables: [
-      'Vendor identification',
-      'Asset procurement',
-      'Cost-focused purchasing',
-      'Hardware/software deployment',
-      'Asset-location tracking',
-      'Responsibility tracking',
-      'Vendor information management',
-      'Asset database management',
-      'Asset maintenance',
-      'Repair management',
-      'Asset additions/removals',
-      'Lifecycle decision support',
-      'Asset disposal',
-      'Asset resale',
-      'Asset recycling',
-      'Lifecycle optimization'
-    ],
-    techStack: 'IT Hardware, Software Assets, Asset Databases, End User Computing, Servers, Network Devices, Storage, Vendor Ecosystems',
-    sla: 'Lifecycle-Based Support • Maintenance & Repair Support • SLA Defined by Service Agreement'
   },
   'database-support': {
     title: 'Enterprise Database Support & Management Services',

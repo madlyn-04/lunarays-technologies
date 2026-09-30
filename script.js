@@ -613,26 +613,44 @@ function closeProposalDialog() {
   }
 }
 
-window.handleProposalSubmit = function () {
+window.handleProposalSubmit = async function () {
   const form = document.getElementById('proposalForm');
   const dialog = document.getElementById('proposalSuccessDialog');
+  const submitBtn = form.querySelector('button[type="submit"]');
 
-  if (dialog) {
-    dialog.classList.add('active');
-
-    if (proposalDialogTimer) {
-      clearTimeout(proposalDialogTimer);
-    }
-
-    // Auto-close the dialogue box in 3 seconds
-    proposalDialogTimer = setTimeout(() => {
-      closeProposalDialog();
-    }, 3000);
+  if (submitBtn) {
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = 'Sending...';
   }
 
-  // Reset form inputs, keep CTA form visible (do not hide)
-  if (form) {
-    form.reset();
+  const formData = new FormData(form);
+
+  try {
+    const response = await fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      body: formData
+    });
+
+    const data = await response.json();
+
+    if (data.success) {
+      if (dialog) {
+        dialog.classList.add('active');
+        if (proposalDialogTimer) clearTimeout(proposalDialogTimer);
+        proposalDialogTimer = setTimeout(() => closeProposalDialog(), 3000);
+      }
+      if (form) form.reset();
+    } else {
+      alert('Form submission failed: ' + data.message);
+    }
+  } catch (error) {
+    console.error('Form submission error:', error);
+    alert('Something went wrong. Please try again.');
+  } finally {
+    if (submitBtn) {
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = 'Submit Proposal Request<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>';
+    }
   }
 };
 

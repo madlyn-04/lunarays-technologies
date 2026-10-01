@@ -23,24 +23,25 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<body data-home-page="true">
 
     <!-- 1. NAVBAR -->
     <header class="main-header" id="navbar">
         <div class="container nav-container">
-            <a href="/" class="brand-logo" aria-label="Lunarays Technologies">
+            <a href="index.html" class="brand-logo home-link" aria-label="Lunarays Technologies home">
                 <img src="logo-transparent.png" alt="Lunarays Technologies - Your Wish, Our Endeavour!"
                     class="brand-logo-img">
             </a>
 
             <nav class="nav-links">
-                <a href="/" class="nav-item active">Home</a>
+                <a href="index.html" class="nav-item active home-link">Home</a>
                 <a href="#services" class="nav-item">Services</a>
                 <a href="#delivery" class="nav-item">Delivery Model</a>
+                <a href="#about" class="nav-item">About Us</a>
                 <a href="#sales-products" class="nav-item">Sales &amp; Products</a>
                 <a href="#industries" class="nav-item">Industries</a>
-                <a href="#about" class="nav-item">About Us</a>
                 <a href="#blogs" class="nav-item">Insights</a>
+                <!--<a href="careers.html" class="nav-item">Careers</a>-->
             </nav>
 
             <div class="nav-actions">
@@ -377,7 +378,7 @@
                 </div>
             </div>
 
-            <!-- 5-Step Dotted Sinusoidal Roadmap Infographic -->
+            <!-- Five-stage dotted roadmap infographic -->
             <div class="roadmap-infographic">
                 <!-- SVG Wave Curve with Direction Indicators (Desktop / Laptop) -->
                 <svg class="roadmap-wave-svg" viewBox="0 0 1200 580" fill="none" preserveAspectRatio="none"
@@ -1308,9 +1309,13 @@
                         Authorized procurement and implementation across servers, networking, workplace hardware, and
                         business software suites.
                     </p>
-                    <a href="https://lunarays.in" target="_blank" class="procurement-link">
+                    <!-- <a href="https://lunarays.in" target="_blank" class="procurement-link">
                         Looking for retail equipment? Visit lunarays.in &rarr;
-                    </a>
+                    </a> -->
+                    <p class="procurement-link" target="_blank">
+                        Looking for retail equipment? Visit <a href="https://lunarays.in"
+                            class="procurement-link procurement-link-hov">lunarays.in &rarr;</a>
+                    </p>
                 </div>
             </div>
 
@@ -1922,8 +1927,10 @@
     <footer class="main-footer">
         <div class="container footer-grid">
             <div class="footer-col footer-brand-col">
-                <img src="logo.png" alt="Lunarays Technologies - Your Wish, Our Endeavour!"
-                    class="brand-logo-img footer-logo-img">
+                <a href="index.html" class="brand-logo home-link" aria-label="Lunarays Technologies home">
+                    <img src="logo.png" alt="Lunarays Technologies - Your Wish, Our Endeavour!"
+                        class="brand-logo-img footer-logo-img">
+                </a>
 
                 <p class="footer-text">
                     Delivering enterprise-grade Managed IT, Cloud Infrastructure, Systems Integration, and Hardware
@@ -1992,6 +1999,7 @@
                     <li><a href="#delivery">Delivery Roadmap</a></li>
                     <li><a href="#industries">Industries We Support</a></li>
                     <li><a href="#blogs">Technical Insights</a></li>
+                    <li><a href="careers.html">Careers</a></li>
                     <li><a href="#cta">Request Proposal</a></li>
                 </ul>
             </div>
@@ -2034,7 +2042,7 @@
         </div>
     </footer>
 
-    <!-- WhatsApp Floating Action Button (Fixed Bottom-Left) -->
+    <!-- WhatsApp contact moves into the footer social row while the footer is visible. -->
     <aside class="whatsapp-float-container" aria-label="WhatsApp Contact">
         <a href="https://wa.me/919971718692" target="_blank" rel="noopener noreferrer" class="whatsapp-float-btn"
             aria-label="Chat with us on WhatsApp" title="Chat on WhatsApp (+91 99717 18692)">

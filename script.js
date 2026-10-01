@@ -19,7 +19,76 @@ document.addEventListener('DOMContentLoaded', () => {
   initSlidingCTA();
   initAIAssistant();
   initNavigation();
+  initHomeNavigation();
+  initWhatsAppFooterPosition();
 });
+
+function initHomeNavigation() {
+  document.addEventListener('click', event => {
+    const homeLink = event.target.closest('a.home-link');
+    if (!homeLink || event.defaultPrevented || event.button !== 0 ||
+        event.metaKey || event.ctrlKey || event.shiftKey || event.altKey ||
+        homeLink.target === '_blank' || homeLink.hasAttribute('download')) {
+      return;
+    }
+
+    const isHomePage = document.body.dataset.homePage === 'true';
+    if (isHomePage) {
+      event.preventDefault();
+      if (/^https?:$/.test(window.location.protocol) && window.location.hash) {
+        window.history.replaceState(window.history.state, '', `${window.location.pathname}${window.location.search}`);
+      }
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
+
+    event.preventDefault();
+    const homeUrl = window.location.protocol === 'file:'
+      ? new URL('index.html', document.baseURI)
+      : new URL('/', window.location.origin);
+    homeUrl.search = window.location.search;
+    window.location.assign(homeUrl.href);
+  });
+}
+
+function initWhatsAppFooterPosition() {
+  const whatsappContainer = document.querySelector('.whatsapp-float-container');
+  const whatsappLink = whatsappContainer?.querySelector('.whatsapp-float-btn');
+  const footerLinks = document.querySelector('.main-footer .footer-bottom-links');
+  if (!whatsappContainer || !whatsappLink || !footerLinks) return;
+
+  const floatingHome = whatsappContainer;
+  const footerPosition = footerLinks.querySelector('[aria-label="Facebook"]');
+  let footerMode = false;
+  let transitionTimer;
+
+  const observer = new IntersectionObserver(([entry]) => {
+    if (entry.isIntersecting && !footerMode) {
+      footerMode = true;
+      whatsappLink.classList.add('is-shrinking');
+      transitionTimer = window.setTimeout(() => {
+        if (!footerMode) return;
+        footerLinks.insertBefore(whatsappLink, footerPosition?.nextSibling ?? null);
+        whatsappContainer.hidden = true;
+        whatsappLink.classList.remove('is-shrinking');
+        whatsappLink.classList.add('is-footer-icon');
+      }, 220);
+    } else if (!entry.isIntersecting && footerMode) {
+      footerMode = false;
+      window.clearTimeout(transitionTimer);
+      whatsappLink.classList.remove('is-shrinking');
+      whatsappLink.classList.remove('is-footer-icon');
+      whatsappLink.classList.add('is-expanding');
+      floatingHome.appendChild(whatsappLink);
+      whatsappContainer.hidden = false;
+      window.requestAnimationFrame(() => {
+        whatsappLink.classList.remove('is-expanding');
+      });
+    }
+  }, { threshold: 0.01 });
+
+  observer.observe(footerLinks);
+}
 
 /* ==========================================================================
    1. HERO CANVAS SHADER ANIMATION (21st.dev Fluid Shader Hero Style)
@@ -433,6 +502,26 @@ function initServicesModal() {
 function initDeliveryOperations() {
   const toggleBtn = document.getElementById('toggleOperationsBtn');
   const operationsSection = document.getElementById('operationsManagedSection');
+  const roadmap = document.querySelector('.delivery-section');
+  const roadmapStages = document.querySelectorAll('.roadmap-steps-wave .roadmap-col');
+
+  if (roadmap && roadmapStages.length) {
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduceMotion || !('IntersectionObserver' in window)) {
+      roadmapStages.forEach(stage => stage.classList.add('is-visible'));
+    } else {
+      roadmap.classList.add('roadmap-reveal-ready');
+      const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+
+      roadmapStages.forEach(stage => revealObserver.observe(stage));
+    }
+  }
 
   if (!toggleBtn || !operationsSection) return;
 
@@ -615,8 +704,11 @@ function closeProposalDialog() {
 
 window.handleProposalSubmit = async function () {
   const form = document.getElementById('proposalForm');
+  if (!form || form.dataset.submitting === 'true' || !form.reportValidity()) return;
+
   const dialog = document.getElementById('proposalSuccessDialog');
   const submitBtn = form.querySelector('button[type="submit"]');
+  form.dataset.submitting = 'true';
 
   if (submitBtn) {
     submitBtn.disabled = true;
@@ -624,29 +716,57 @@ window.handleProposalSubmit = async function () {
   }
 
   const formData = new FormData(form);
+  const sheetFields = Object.fromEntries(
+    ['name', 'email', 'company', 'phone', 'service', 'message']
+      .map((key) => [key, String(formData.get(key) || '')])
+  );
 
   try {
-    const response = await fetch('https://api.web3forms.com/submit', {
+    const [emailResult, sheetResult] = await Promise.allSettled([
+      fetch('https://api.web3forms.com/submit', {
       method: 'POST',
       body: formData
-    });
+      }).then(async (response) => {
+        const data = await response.json();
+        if (!response.ok || !data.success) throw new Error('email');
+        return data;
+      }),
+      fetch('/api/cta', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(sheetFields)
+      }).then(async (response) => {
+        const data = await response.json().catch(() => ({}));
+        if (!response.ok || !data.success) throw new Error('sheet');
+        return data;
+      })
+    ]);
 
-    const data = await response.json();
+    const emailSent = emailResult.status === 'fulfilled';
+    const sheetSaved = sheetResult.status === 'fulfilled';
 
-    if (data.success) {
+    if (emailSent && sheetSaved) {
       if (dialog) {
         dialog.classList.add('active');
         if (proposalDialogTimer) clearTimeout(proposalDialogTimer);
         proposalDialogTimer = setTimeout(() => closeProposalDialog(), 3000);
       }
-      if (form) form.reset();
+      form.reset();
+    } else if (emailSent) {
+      form.reset();
+      alert('Your enquiry email was sent, but it could not be saved to our spreadsheet. Please contact Lunarays at info@lunaraystechnologies.com to ensure we receive it.');
+    } else if (sheetSaved) {
+      form.reset();
+      alert('Your enquiry was saved, but the email notification could not be sent.');
     } else {
-      alert('Form submission failed: ' + data.message);
+      alert('We could not submit your enquiry. Please try again or email info@lunaraystechnologies.com.');
     }
   } catch (error) {
-    console.error('Form submission error:', error);
-    alert('Something went wrong. Please try again.');
+    // Do not log form contents or contact details.
+    console.error('Proposal form submission failed.', { name: error?.name || 'Error' });
+    alert('Something went wrong. Please try again or email info@lunaraystechnologies.com.');
   } finally {
+    form.dataset.submitting = 'false';
     if (submitBtn) {
       submitBtn.disabled = false;
       submitBtn.innerHTML = 'Submit Proposal Request<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>';

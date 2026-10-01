@@ -86,9 +86,23 @@ module.exports = async function handler(req, res) {
       body: JSON.stringify({ ...fields, token: SHEETS_WEB_APP_TOKEN }),
       redirect: 'follow'
     });
-    const result = await response.json().catch(() => null);
+    const contentType = response.headers.get('content-type') || '';
+    const result = contentType.includes('application/json')
+      ? await response.json().catch(() => null)
+      : null;
     if (!response.ok || !result?.success) {
-      console.error('CTA sheet receiver rejected a submission.', { status: response.status });
+      const knownCodes = new Set([
+        'MISSING_CONFIG', 'TOKEN_MISMATCH', 'INVALID_FIELDS', 'SHEET_WRITE_FAILED'
+      ]);
+      const reason = knownCodes.has(result?.code) ? result.code : 'NON_JSON_OR_UNKNOWN_RESPONSE';
+      console.error('CTA sheet receiver rejected a submission.', {
+        status: response.status,
+        reason,
+        contentType: contentType.slice(0, 80),
+        responseHost: (() => {
+          try { return new URL(response.url).hostname; } catch { return 'unknown'; }
+        })()
+      });
       return sendJson(res, 502, { error: 'The spreadsheet could not save this enquiry.' });
     }
     return sendJson(res, 200, { success: true });

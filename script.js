@@ -845,9 +845,8 @@ let lunaRequestPending = false;
 
 /* --------------------------------------------------------------------------
    Luna is a simple scripted assistant (no AI service, no API keys, no backend).
-   It answers the 4 starter questions below. Anything else is pointed to the
-   enquiry form (#cta) or the official email.
-   Only edit the text below - keep it limited to verified company information.
+   It answers four main questions and their follow-ups. Anything else is
+   pointed to the enquiry form (#cta) or the official email.
    -------------------------------------------------------------------------- */
 const LUNA_EMAIL_LINK = '[info@lunaraystechnologies.com](mailto:info@lunaraystechnologies.com)';
 const LUNA_CTA_LINK = '[enquiry form](#cta)';
@@ -855,40 +854,78 @@ const LUNA_CTA_LINK = '[enquiry form](#cta)';
 const LUNA_FALLBACK_REPLY =
   `I can help with the quick questions above. For anything else, please submit your query using our ${LUNA_CTA_LINK} on this page, or email us at ${LUNA_EMAIL_LINK}.`;
 
-const LUNA_ANSWERS = {
-  managed:
-    `Managed Services is part of our "IT Infrastructure & Managed Services" category. For details about your specific requirement, please submit your query through our ${LUNA_CTA_LINK} or email ${LUNA_EMAIL_LINK}.`,
-  services:
-    `Lunarays Technologies offers these service categories: Microsoft 365 Services, Cloud Services, IT Infrastructure & Managed Services, Application Services, Infor Services, Database Support Services, Oracle Retail & Fusion, and Mobility. To discuss your requirement, use our ${LUNA_CTA_LINK} or email ${LUNA_EMAIL_LINK}.`,
-  infor:
-    `Infor Services is one of our service categories. For specific questions about your Infor requirement, please submit your query through our ${LUNA_CTA_LINK} or email ${LUNA_EMAIL_LINK}.`,
-  proposal:
-    `To request a proposal, please fill in the ${LUNA_CTA_LINK} in the contact section of this page. You can also email ${LUNA_EMAIL_LINK} or call +91-0120-4980800.`
+const LUNA_FAQ = {
+  about: {
+    question: 'What does Lunarays Technologies do?',
+    answer: 'Lunarays Technologies provides IT infrastructure, cloud, application, database, security, networking, and managed IT services for businesses.',
+    followUps: [
+      ['What IT solutions do you provide?', 'We provide infrastructure, cloud, applications, databases, networking, security, mobility, and managed IT services.'],
+      ['Do you provide managed IT services?', 'Yes. We provide infrastructure management, monitoring, maintenance, helpdesk, remote support, and technical assistance.'],
+      ['Do you provide cloud services?', 'Yes. We provide cloud migration, infrastructure support, hybrid cloud, AWS, Azure, monitoring, and optimization services.'],
+      ['Do you support enterprise IT environments?', 'Yes. We support business-critical infrastructure, applications, cloud, databases, networking, and workplace IT environments.'],
+      ['Do you provide ongoing IT support?', 'Yes. Our services include technical assistance, remote support, helpdesk, maintenance, monitoring, and troubleshooting.']
+    ]
+  },
+  services: {
+    question: 'What services does Lunarays Technologies offer?',
+    answer: 'Our main services include Microsoft 365, IT Infrastructure & Managed Services, Cloud, Application Services, Infor, Database Support, Oracle Retail & Fusion, and Mobility.',
+    followUps: [
+      ['What are your IT Infrastructure services?', 'Server and workstation management, networking, IT asset management, monitoring, security support, helpdesk, and technical assistance.'],
+      ['What Cloud services do you provide?', 'Cloud migration, AWS and Azure support, hybrid cloud, deployment, monitoring, backup, recovery, and cost optimization.'],
+      ['Do you provide Database Support?', 'Yes. We provide database configuration, monitoring, maintenance, troubleshooting, backup, recovery, and performance support.'],
+      ['Do you support Oracle Retail & Fusion?', 'Yes. We provide implementation support, configuration, maintenance, troubleshooting, and technical assistance.'],
+      ['Do you provide Microsoft 365 services?', 'Yes. We support Microsoft 365 deployment, configuration, administration, migration, troubleshooting, and ongoing support.']
+    ]
+  },
+  industries: {
+    question: 'Which industries does Lunarays support?',
+    answer: 'Lunarays supports organizations across Financial Services, Healthcare, Telecom, Manufacturing, Public Sector, and Global In-House Centers.',
+    followUps: [
+      ['Do you work with financial services companies?', 'Yes. Financial Services is one of the industries supported by Lunarays.'],
+      ['Do you support healthcare organizations?', 'Yes. Healthcare is one of the industries served by Lunarays.'],
+      ['Do you work with manufacturing companies?', 'Yes. Lunarays provides IT solutions for the Manufacturing sector.'],
+      ['Do you support telecom companies?', 'Yes. Telecom is one of the industries supported by Lunarays.'],
+      ['Do you work with public-sector organizations?', 'Yes. Public Sector is among the industries supported by Lunarays.']
+    ]
+  },
+  contact: {
+    question: 'How can I contact Lunarays Technologies?',
+    answer: `You can contact Lunarays through the website's enquiry or Request Proposal option. You can also reach the team by phone or visit the Noida office.`,
+    followUps: [
+      ['Where is Lunarays located?', 'Lunarays Technologies is located in Sector 63, Noida, Uttar Pradesh, India.'],
+      ['How can I request a proposal?', `Use the Request Proposal option on the website and submit your requirements. You can also use our ${LUNA_CTA_LINK}.`],
+      ['Can I contact Lunarays by phone?', 'Yes. You can contact Lunarays at +91-0120-4980800 or +91-9971718692.'],
+      ['Can I enquire about multiple services?', 'Yes. You can submit requirements for multiple IT services in a single enquiry.'],
+      ['Do you provide customized IT solutions?', "Yes. Solutions can be aligned with your organization's specific IT and infrastructure requirements."]
+    ]
+  }
 };
 
-// The four starter chips send these exact texts.
-const LUNA_EXACT_QUESTIONS = {
-  'tell me about solutions & managed services': 'managed',
-  'what it services does lunarays provide?': 'services',
-  'infor erp & supply chain': 'infor',
-  'how do i request a proposal?': 'proposal'
-};
+function lunaNormalizeQuestion(text) {
+  return text.toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim().replace(/\s+/g, ' ');
+}
+
+const LUNA_QUESTION_ANSWERS = new Map();
+const LUNA_MAIN_QUESTION_KEYS = new Map();
+Object.entries(LUNA_FAQ).forEach(([topic, data]) => {
+  LUNA_MAIN_QUESTION_KEYS.set(lunaNormalizeQuestion(data.question), topic);
+  LUNA_QUESTION_ANSWERS.set(lunaNormalizeQuestion(data.question), data.answer);
+  data.followUps.forEach(([question, answer]) => {
+    LUNA_QUESTION_ANSWERS.set(lunaNormalizeQuestion(question), answer);
+  });
+});
 
 function lunaFindAnswer(text) {
-  const t = text.toLowerCase().replace(/\s+/g, ' ').trim();
-  if (LUNA_EXACT_QUESTIONS[t]) return LUNA_ANSWERS[LUNA_EXACT_QUESTIONS[t]];
-  // Typed questions: only match clear versions of the same four topics.
-  if (/\b(proposal|quotation|quote|consultation)\b/.test(t)) return LUNA_ANSWERS.proposal;
-  if (/\binfor\b/.test(t)) return LUNA_ANSWERS.infor;
-  if (/\bmanaged\b/.test(t)) return LUNA_ANSWERS.managed;
-  if (/\b(what|which)\b.*\b(services?|offer|provide)\b/.test(t) || /^(it )?services\??$/.test(t)) return LUNA_ANSWERS.services;
-  return LUNA_FALLBACK_REPLY;
+  return LUNA_QUESTION_ANSWERS.get(lunaNormalizeQuestion(text)) || LUNA_FALLBACK_REPLY;
+}
+
+function lunaGetFollowups(text) {
+  const topic = LUNA_MAIN_QUESTION_KEYS.get(lunaNormalizeQuestion(text));
+  return topic ? LUNA_FAQ[topic].followUps.map(([question]) => question) : [];
 }
 
 window.sendQuickPrompt = function (promptText) {
   if (typeof promptText !== 'string') return;
-  const chatWindow = document.getElementById('aiChatWindow');
-  const avatarBtn = document.getElementById('aiAvatarBtn');
   setLunaOpenState(true);
   submitLunaMessage(promptText);
 };
@@ -913,10 +950,28 @@ function submitLunaMessage(text) {
   const typingMessage = appendChatMessage('Luna is typing…', 'bot', 'typing');
   window.setTimeout(() => {
     typingMessage?.remove();
-    appendChatMessage(lunaFindAnswer(text), 'bot');
+    const answerMessage = appendChatMessage(lunaFindAnswer(text), 'bot');
+    appendFollowupPromptChips(answerMessage, lunaGetFollowups(text));
     lunaRequestPending = false;
     document.getElementById('chatInput')?.focus();
   }, 450);
+}
+
+function appendFollowupPromptChips(message, questions) {
+  if (!message || !questions.length) return;
+  const prompts = document.createElement('div');
+  prompts.className = 'quick-prompts';
+  questions.forEach(question => {
+    const button = document.createElement('button');
+    button.className = 'prompt-chip';
+    button.type = 'button';
+    button.textContent = question;
+    button.addEventListener('click', () => window.sendQuickPrompt(question));
+    prompts.appendChild(button);
+  });
+  message.appendChild(prompts);
+  const chatBody = document.getElementById('chatBody');
+  if (chatBody) chatBody.scrollTop = chatBody.scrollHeight;
 }
 
 function appendChatMessage(text, sender, extraClass = '') {

@@ -2939,15 +2939,15 @@ a {
    ========================================================================== */
 .ai-assistant-widget {
   position: fixed;
-  bottom: 110px;
+  bottom: 104px;
   right: 28px;
   z-index: 1500;
   transition: bottom 0.22s ease;
 }
 
 .ai-avatar-btn {
-  width: 64px;
-  height: 64px;
+  width: 55px;
+  height: 55px;
   border-radius: 50%;
   border: none;
   background: #0B0F19;
@@ -2966,10 +2966,10 @@ a {
 
 .ai-shader-glow {
   position: absolute;
-  top: -4px;
-  left: -4px;
-  right: -4px;
-  bottom: -4px;
+  top: -3px;
+  left: -3px;
+  right: -3px;
+  bottom: -3px;
   border-radius: 50%;
   background: linear-gradient(135deg, #3B82F6, #EC4899, #EF4444);
   z-index: 1;
@@ -2979,8 +2979,8 @@ a {
 .ai-avatar-inner {
   position: relative;
   z-index: 2;
-  width: 56px;
-  height: 56px;
+  width: 47px;
+  height: 47px;
   border-radius: 50%;
   background: radial-gradient(circle at 35% 35%, #1E293B, #0F172A);
   display: flex;
@@ -2990,12 +2990,12 @@ a {
 
 .ai-face {
   display: flex;
-  gap: 10px;
+  gap: 8px;
 }
 
 .ai-eye {
-  width: 7px;
-  height: 10px;
+  width: 6px;
+  height: 8px;
   background: #38BDF8;
   border-radius: 50%;
   box-shadow: 0 0 8px #38BDF8;
@@ -3006,8 +3006,8 @@ a {
   position: absolute;
   bottom: 2px;
   right: 2px;
-  width: 14px;
-  height: 14px;
+  width: 12px;
+  height: 12px;
   border-radius: 50%;
   background: #10B981;
   border: 2px solid #0B0F19;
@@ -3040,7 +3040,7 @@ a {
 /* Chat Popup Window */
 .ai-chat-window {
   position: absolute;
-  bottom: 78px;
+  bottom: 66px;
   right: 0;
   width: 360px;
   height: 480px;
@@ -4556,14 +4556,14 @@ a {
 /* ---- AI CHAT WIDGET: full-width on phones ---- */
 @media (max-width: 420px) {
   .ai-assistant-widget {
-    bottom: 94px;
+    bottom: 82px;
     right: calc(20px + env(safe-area-inset-right, 0px));
   }
 
   .ai-chat-window {
     width: calc(100vw - 32px);
     right: 0;
-    bottom: 74px;
+    bottom: 66px;
     height: 420px;
   }
 }
@@ -4659,7 +4659,7 @@ a {
   }
 
   .ai-assistant-widget {
-    bottom: calc(110px + env(safe-area-inset-bottom, 0px));
+    bottom: calc(104px + env(safe-area-inset-bottom, 0px));
     right: calc(28px + env(safe-area-inset-right, 0px));
   }
 
@@ -4731,8 +4731,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 60px;
-  height: 60px;
+  width: 55px;
+  height: 55px;
   border-radius: 50%;
   background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
   color: #FFFFFF;
@@ -4743,8 +4743,8 @@ body {
 }
 
 .whatsapp-float-btn .whatsapp-icon {
-  width: 34px;
-  height: 34px;
+  width: 31px;
+  height: 31px;
   fill: #FFFFFF;
   transition: transform 0.3s ease;
   z-index: 2;
@@ -4845,8 +4845,23 @@ body {
 /* Mobile adjustments */
 @media (max-width: 768px) {
   .ai-assistant-widget {
-    bottom: calc(94px + env(safe-area-inset-bottom, 0px));
+    bottom: calc(82px + env(safe-area-inset-bottom, 0px));
     right: calc(20px + env(safe-area-inset-right, 0px));
+  }
+
+  .ai-avatar-btn {
+    width: 44px;
+    height: 44px;
+  }
+
+  .ai-avatar-inner {
+    width: 36px;
+    height: 36px;
+  }
+
+  .ai-status-pulse {
+    width: 10px;
+    height: 10px;
   }
 
   .whatsapp-float-container {
@@ -4856,13 +4871,13 @@ body {
   }
 
   .whatsapp-float-btn {
-    width: 54px;
-    height: 54px;
+    width: 44px;
+    height: 44px;
   }
 
   .whatsapp-float-btn .whatsapp-icon {
-    width: 30px;
-    height: 30px;
+    width: 25px;
+    height: 25px;
   }
 }
 

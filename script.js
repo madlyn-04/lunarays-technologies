@@ -10,6 +10,9 @@
  * - Floating AI Assistant Chatbot (Luna AI)
  */
 
+/* Backend API (hosted on Vercel). Public URL only - never put API keys or tokens in this file. */
+const API_BASE_URL = 'https://lr-iota.vercel.app';
+
 document.addEventListener('DOMContentLoaded', () => {
   initShaderHero();
   initCounters();
@@ -59,12 +62,14 @@ function initWhatsAppFooterPosition() {
 
   const floatingHome = whatsappContainer;
   const footerPosition = footerLinks.querySelector('[aria-label="Facebook"]');
+  const aiWidget = document.querySelector('.ai-assistant-widget');
   let footerMode = false;
   let transitionTimer;
 
   const observer = new IntersectionObserver(([entry]) => {
     if (entry.isIntersecting && !footerMode) {
       footerMode = true;
+      aiWidget?.classList.add('is-whatsapp-docked');
       whatsappLink.classList.add('is-shrinking');
       transitionTimer = window.setTimeout(() => {
         if (!footerMode) return;
@@ -75,6 +80,7 @@ function initWhatsAppFooterPosition() {
       }, 220);
     } else if (!entry.isIntersecting && footerMode) {
       footerMode = false;
+      aiWidget?.classList.remove('is-whatsapp-docked');
       window.clearTimeout(transitionTimer);
       whatsappLink.classList.remove('is-shrinking');
       whatsappLink.classList.remove('is-footer-icon');
@@ -717,9 +723,10 @@ window.handleProposalSubmit = async function () {
 
   const formData = new FormData(form);
   const sheetFields = Object.fromEntries(
-    ['name', 'email', 'company', 'phone', 'service', 'message']
+    ['name', 'email', 'company', 'phone', 'service', 'subject', 'message']
       .map((key) => [key, String(formData.get(key) || '')])
   );
+  sheetFields.sourcePage = window.location.pathname;
 
   try {
     const [emailResult, sheetResult] = await Promise.allSettled([
@@ -731,7 +738,7 @@ window.handleProposalSubmit = async function () {
         if (!response.ok || !data.success) throw new Error('email');
         return data;
       }),
-      fetch('/api/cta', {
+      fetch(`${API_BASE_URL}/api/submit`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(sheetFields)
@@ -774,9 +781,36 @@ window.handleProposalSubmit = async function () {
   }
 };
 
-/* ==========================================================================
+/* ========================================================================== 
    7. AI ASSISTANT WIDGET (LUNA AI CHATBOT)
    ========================================================================== */
+let whatsappShowTimer;
+
+function setLunaOpenState(isOpen, focusInput = false) {
+  const avatarBtn = document.getElementById('aiAvatarBtn');
+  const chatWindow = document.getElementById('aiChatWindow');
+  const aiWidget = document.getElementById('aiAssistantWidget');
+  const whatsappBtn = document.querySelector('.whatsapp-float-btn');
+  if (!avatarBtn || !chatWindow) return;
+
+  chatWindow.classList.toggle('active', isOpen);
+  aiWidget?.classList.toggle('is-chat-open', isOpen);
+  chatWindow.setAttribute('aria-hidden', String(!isOpen));
+  avatarBtn.setAttribute('aria-expanded', String(isOpen));
+
+  if (whatsappBtn) {
+    window.clearTimeout(whatsappShowTimer);
+    whatsappBtn.classList.remove('is-showing-by-chat');
+    whatsappBtn.classList.toggle('is-hidden-by-chat', isOpen);
+    if (!isOpen) {
+      whatsappBtn.classList.add('is-showing-by-chat');
+      whatsappShowTimer = window.setTimeout(() => whatsappBtn.classList.remove('is-showing-by-chat'), 450);
+    }
+  }
+
+  if (isOpen && focusInput) document.getElementById('chatInput')?.focus();
+}
+
 function initAIAssistant() {
   const avatarBtn = document.getElementById('aiAvatarBtn');
   const chatWindow = document.getElementById('aiChatWindow');
@@ -785,10 +819,7 @@ function initAIAssistant() {
   if (!avatarBtn || !chatWindow) return;
 
   function setOpen(isOpen) {
-    chatWindow.classList.toggle('active', isOpen);
-    chatWindow.setAttribute('aria-hidden', String(!isOpen));
-    avatarBtn.setAttribute('aria-expanded', String(isOpen));
-    if (isOpen) document.getElementById('chatInput')?.focus();
+    setLunaOpenState(isOpen, isOpen);
   }
 
   avatarBtn.addEventListener('click', () => setOpen(!chatWindow.classList.contains('active')));
@@ -809,18 +840,56 @@ function initAIAssistant() {
   });
 }
 
-const lunaConversation = [];
-const LUNA_HISTORY_LIMIT = 12;
 const LUNA_MAX_MESSAGE_LENGTH = 2000;
 let lunaRequestPending = false;
+
+/* --------------------------------------------------------------------------
+   Luna is a simple scripted assistant (no AI service, no API keys, no backend).
+   It answers the 4 starter questions below. Anything else is pointed to the
+   enquiry form (#cta) or the official email.
+   Only edit the text below - keep it limited to verified company information.
+   -------------------------------------------------------------------------- */
+const LUNA_EMAIL_LINK = '[info@lunaraystechnologies.com](mailto:info@lunaraystechnologies.com)';
+const LUNA_CTA_LINK = '[enquiry form](#cta)';
+
+const LUNA_FALLBACK_REPLY =
+  `I can help with the quick questions above. For anything else, please submit your query using our ${LUNA_CTA_LINK} on this page, or email us at ${LUNA_EMAIL_LINK}.`;
+
+const LUNA_ANSWERS = {
+  managed:
+    `Managed Services is part of our "IT Infrastructure & Managed Services" category. For details about your specific requirement, please submit your query through our ${LUNA_CTA_LINK} or email ${LUNA_EMAIL_LINK}.`,
+  services:
+    `Lunarays Technologies offers these service categories: Microsoft 365 Services, Cloud Services, IT Infrastructure & Managed Services, Application Services, Infor Services, Database Support Services, Oracle Retail & Fusion, and Mobility. To discuss your requirement, use our ${LUNA_CTA_LINK} or email ${LUNA_EMAIL_LINK}.`,
+  infor:
+    `Infor Services is one of our service categories. For specific questions about your Infor requirement, please submit your query through our ${LUNA_CTA_LINK} or email ${LUNA_EMAIL_LINK}.`,
+  proposal:
+    `To request a proposal, please fill in the ${LUNA_CTA_LINK} in the contact section of this page. You can also email ${LUNA_EMAIL_LINK} or call +91-0120-4980800.`
+};
+
+// The four starter chips send these exact texts.
+const LUNA_EXACT_QUESTIONS = {
+  'tell me about solutions & managed services': 'managed',
+  'what it services does lunarays provide?': 'services',
+  'infor erp & supply chain': 'infor',
+  'how do i request a proposal?': 'proposal'
+};
+
+function lunaFindAnswer(text) {
+  const t = text.toLowerCase().replace(/\s+/g, ' ').trim();
+  if (LUNA_EXACT_QUESTIONS[t]) return LUNA_ANSWERS[LUNA_EXACT_QUESTIONS[t]];
+  // Typed questions: only match clear versions of the same four topics.
+  if (/\b(proposal|quotation|quote|consultation)\b/.test(t)) return LUNA_ANSWERS.proposal;
+  if (/\binfor\b/.test(t)) return LUNA_ANSWERS.infor;
+  if (/\bmanaged\b/.test(t)) return LUNA_ANSWERS.managed;
+  if (/\b(what|which)\b.*\b(services?|offer|provide)\b/.test(t) || /^(it )?services\??$/.test(t)) return LUNA_ANSWERS.services;
+  return LUNA_FALLBACK_REPLY;
+}
 
 window.sendQuickPrompt = function (promptText) {
   if (typeof promptText !== 'string') return;
   const chatWindow = document.getElementById('aiChatWindow');
   const avatarBtn = document.getElementById('aiAvatarBtn');
-  chatWindow?.classList.add('active');
-  chatWindow?.setAttribute('aria-hidden', 'false');
-  avatarBtn?.setAttribute('aria-expanded', 'true');
+  setLunaOpenState(true);
   submitLunaMessage(promptText);
 };
 
@@ -837,46 +906,17 @@ window.handleSendChatMessage = function () {
   submitLunaMessage(text);
 };
 
-async function submitLunaMessage(text) {
-  if (lunaRequestPending) return;
-  const chatBody = document.getElementById('chatBody');
-  const sendButton = document.getElementById('chatSendBtn');
-  if (!chatBody) return;
-
+function submitLunaMessage(text) {
+  if (lunaRequestPending || !document.getElementById('chatBody')) return;
   lunaRequestPending = true;
-  if (sendButton) sendButton.disabled = true;
   appendChatMessage(text, 'user');
   const typingMessage = appendChatMessage('Luna is typing…', 'bot', 'typing');
-
-  try {
-    const response = await fetch('/api/chat', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        message: text,
-        history: lunaConversation.slice(-LUNA_HISTORY_LIMIT)
-      })
-    });
-    const payload = await response.json().catch(() => ({}));
-    if (!response.ok) throw new Error(payload.error || 'Luna could not respond right now. Please try again.');
-    if (typeof payload.reply !== 'string' || !payload.reply.trim()) {
-      throw new Error('Luna could not respond right now. Please try again.');
-    }
-
-    lunaConversation.push({ role: 'user', content: text }, { role: 'assistant', content: payload.reply });
-    lunaConversation.splice(0, Math.max(0, lunaConversation.length - LUNA_HISTORY_LIMIT));
+  window.setTimeout(() => {
     typingMessage?.remove();
-    appendChatMessage(payload.reply, 'bot');
-  } catch (error) {
-    typingMessage?.remove();
-    appendChatMessage(error?.message === 'Failed to fetch'
-      ? 'I’m having trouble connecting right now. Please try again shortly or contact info@lunaraystechnologies.com.'
-      : (error?.message || 'Luna could not respond right now. Please try again.'), 'bot', 'error');
-  } finally {
+    appendChatMessage(lunaFindAnswer(text), 'bot');
     lunaRequestPending = false;
-    if (sendButton) sendButton.disabled = false;
     document.getElementById('chatInput')?.focus();
-  }
+  }, 450);
 }
 
 function appendChatMessage(text, sender, extraClass = '') {
@@ -887,16 +927,27 @@ function appendChatMessage(text, sender, extraClass = '') {
   msgDiv.className = `chat-msg ${sender}${extraClass ? ` ${extraClass}` : ''}`;
   if (sender === 'bot') msgDiv.setAttribute('aria-live', 'polite');
   const paragraph = document.createElement('p');
-  const emailLinkMarkup = '[info@lunaraystechnologies.com](mailto:info@lunaraystechnologies.com)';
-  const emailLinkIndex = sender === 'bot' ? text.indexOf(emailLinkMarkup) : -1;
-  if (emailLinkIndex < 0) {
+  if (sender !== 'bot') {
     paragraph.textContent = text;
   } else {
-    paragraph.append(document.createTextNode(text.slice(0, emailLinkIndex)));
-    const emailLink = document.createElement('a');
-    emailLink.href = 'mailto:info@lunaraystechnologies.com';
-    emailLink.textContent = 'info@lunaraystechnologies.com';
-    paragraph.append(emailLink, document.createTextNode(text.slice(emailLinkIndex + emailLinkMarkup.length)));
+    const linkPattern = /\[([^\]]+)\]\((mailto:info@lunaraystechnologies\.com|#cta)\)/g;
+    let lastIndex = 0;
+    let match;
+    while ((match = linkPattern.exec(text)) !== null) {
+      paragraph.append(document.createTextNode(text.slice(lastIndex, match.index)));
+      const link = document.createElement('a');
+      link.href = match[2];
+      link.textContent = match[1];
+      if (match[2] === '#cta') {
+        link.classList.add('chat-cta-link');
+        link.addEventListener('click', () => {
+          setLunaOpenState(false);
+        });
+      }
+      paragraph.append(link);
+      lastIndex = match.index + match[0].length;
+    }
+    paragraph.append(document.createTextNode(text.slice(lastIndex)));
   }
   msgDiv.appendChild(paragraph);
   chatBody.appendChild(msgDiv);

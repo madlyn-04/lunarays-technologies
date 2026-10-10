@@ -770,7 +770,7 @@ window.handleProposalSubmit = async function () {
 
   try {
     const [emailResult, sheetResult] = await Promise.allSettled([
-      fetch('https://formsubmit.co/ajax/madlynevie04@gmail.com', {
+      fetch('https://formsubmit.co/ajax/info@lunaraystechnologies.com', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
         body: JSON.stringify(emailPayload)

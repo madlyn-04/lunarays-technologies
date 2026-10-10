@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const emailPayload = Object.fromEntries(new FormData(careerForm).entries());
 
     try {
-      const response = await fetch('https://formsubmit.co/ajax/madlynevie04@gmail.com', {
+      const response = await fetch('https://formsubmit.co/ajax/info@lunaraystechnologies.com', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
         body: JSON.stringify(emailPayload)

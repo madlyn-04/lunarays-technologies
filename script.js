@@ -761,6 +761,7 @@ window.handleProposalSubmit = async function () {
   }
 
   const formData = new FormData(form);
+  const emailPayload = Object.fromEntries(formData.entries());
   const sheetFields = Object.fromEntries(
     ['name', 'email', 'company', 'phone', 'service', 'subject', 'message']
       .map((key) => [key, String(formData.get(key) || '')])
@@ -769,9 +770,10 @@ window.handleProposalSubmit = async function () {
 
   try {
     const [emailResult, sheetResult] = await Promise.allSettled([
-      fetch('https://api.web3forms.com/submit', {
-      method: 'POST',
-      body: formData
+      fetch('https://formsubmit.co/ajax/madlynevie04@gmail.com', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(emailPayload)
       }).then(async (response) => {
         const data = await response.json();
         if (!response.ok || !data.success) throw new Error('email');

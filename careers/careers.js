@@ -59,11 +59,13 @@ document.addEventListener('DOMContentLoaded', () => {
     submitButton.textContent = 'Sending profile…';
     status.textContent = '';
     status.classList.remove('success');
+    const emailPayload = Object.fromEntries(new FormData(careerForm).entries());
 
     try {
-      const response = await fetch('https://api.web3forms.com/submit', {
+      const response = await fetch('https://formsubmit.co/ajax/madlynevie04@gmail.com', {
         method: 'POST',
-        body: new FormData(careerForm)
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(emailPayload)
       });
       const result = await response.json();
 

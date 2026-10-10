@@ -24,7 +24,44 @@ document.addEventListener('DOMContentLoaded', () => {
   initNavigation();
   initHomeNavigation();
   initWhatsAppFooterPosition();
+  initWhiteAreaCursorGlow();
 });
+
+function initWhiteAreaCursorGlow() {
+  const lightAreas = '.services-section, .delivery-section, .about-section, .sales-section, .industries-section, .blogs-section';
+  let activeSection = null;
+
+  function clearActiveSection() {
+    activeSection?.classList.remove('cursor-glow-active');
+    activeSection = null;
+  }
+
+  document.addEventListener('pointermove', event => {
+    if (event.pointerType === 'touch') return;
+    const target = event.target instanceof Element ? event.target : null;
+    if (!target || target.closest('.main-header, .trust-slip-section')) {
+      clearActiveSection();
+      return;
+    }
+
+    const lightSection = target.closest(lightAreas);
+    if (!lightSection) {
+      clearActiveSection();
+      return;
+    }
+
+    if (activeSection && activeSection !== lightSection) {
+      activeSection.classList.remove('cursor-glow-active');
+    }
+    const bounds = lightSection.getBoundingClientRect();
+    lightSection.style.setProperty('--cursor-glow-x', `${event.clientX - bounds.left}px`);
+    lightSection.style.setProperty('--cursor-glow-y', `${event.clientY - bounds.top}px`);
+    lightSection.classList.add('cursor-glow-active');
+    activeSection = lightSection;
+  }, { passive: true });
+
+  window.addEventListener('blur', clearActiveSection);
+}
 
 function initHomeNavigation() {
   document.addEventListener('click', event => {
@@ -70,6 +107,7 @@ function initWhatsAppFooterPosition() {
     if (entry.isIntersecting && !footerMode) {
       footerMode = true;
       aiWidget?.classList.add('is-whatsapp-docked');
+      window.dispatchEvent(new Event('luna-widget-position-change'));
       whatsappLink.classList.add('is-shrinking');
       transitionTimer = window.setTimeout(() => {
         if (!footerMode) return;
@@ -81,6 +119,7 @@ function initWhatsAppFooterPosition() {
     } else if (!entry.isIntersecting && footerMode) {
       footerMode = false;
       aiWidget?.classList.remove('is-whatsapp-docked');
+      window.dispatchEvent(new Event('luna-widget-position-change'));
       window.clearTimeout(transitionTimer);
       whatsappLink.classList.remove('is-shrinking');
       whatsappLink.classList.remove('is-footer-icon');
@@ -795,6 +834,7 @@ function setLunaOpenState(isOpen, focusInput = false) {
 
   chatWindow.classList.toggle('active', isOpen);
   aiWidget?.classList.toggle('is-chat-open', isOpen);
+  window.dispatchEvent(new Event('luna-widget-position-change'));
   chatWindow.setAttribute('aria-hidden', String(!isOpen));
   avatarBtn.setAttribute('aria-expanded', String(isOpen));
 
@@ -815,14 +855,103 @@ function initAIAssistant() {
   const avatarBtn = document.getElementById('aiAvatarBtn');
   const chatWindow = document.getElementById('aiChatWindow');
   const closeBtn = document.getElementById('aiChatCloseBtn');
+  const widget = document.getElementById('aiAssistantWidget');
 
-  if (!avatarBtn || !chatWindow) return;
+  if (!avatarBtn || !chatWindow || !widget) return;
+
+  let offsetX = 0;
+  let offsetY = 0;
+  let dragStart = null;
+  let didDrag = false;
+  let suppressClick = false;
+
+  function applyOffset() {
+    widget.style.setProperty('--ai-drag-x', `${offsetX}px`);
+    widget.style.setProperty('--ai-drag-y', `${offsetY}px`);
+  }
+
+  function clampToViewport() {
+    const rect = widget.getBoundingClientRect();
+    const margin = 4;
+    let correctionX = 0;
+    let correctionY = 0;
+    if (rect.left < margin) correctionX = margin - rect.left;
+    else if (rect.right > window.innerWidth - margin) correctionX = window.innerWidth - margin - rect.right;
+    if (rect.top < margin) correctionY = margin - rect.top;
+    else if (rect.bottom > window.innerHeight - margin) correctionY = window.innerHeight - margin - rect.bottom;
+    if (correctionX || correctionY) {
+      offsetX += correctionX;
+      offsetY += correctionY;
+      applyOffset();
+
+    }
+  }
+
+  applyOffset();
+  window.requestAnimationFrame(clampToViewport);
+  window.addEventListener('resize', clampToViewport);
+  widget.addEventListener('transitionend', event => {
+    if (event.propertyName === 'bottom') clampToViewport();
+  });
+  window.addEventListener('luna-widget-position-change', () => window.requestAnimationFrame(clampToViewport));
+
+  avatarBtn.title = 'Drag to move Luna; click to open the assistant';
+  avatarBtn.addEventListener('pointerdown', event => {
+    if (event.button !== 0) return;
+    dragStart = {
+      pointerId: event.pointerId,
+      x: event.clientX,
+      y: event.clientY,
+      offsetX,
+      offsetY,
+      rect: widget.getBoundingClientRect()
+    };
+    didDrag = false;
+    avatarBtn.setPointerCapture(event.pointerId);
+  });
+
+  avatarBtn.addEventListener('pointermove', event => {
+    if (!dragStart || event.pointerId !== dragStart.pointerId) return;
+    const dx = event.clientX - dragStart.x;
+    const dy = event.clientY - dragStart.y;
+    if (!didDrag && Math.hypot(dx, dy) < 5) return;
+    didDrag = true;
+    event.preventDefault();
+    widget.classList.add('is-dragging');
+    const left = Math.min(Math.max(dragStart.rect.left + dx, 4), window.innerWidth - dragStart.rect.width - 4);
+    const top = Math.min(Math.max(dragStart.rect.top + dy, 4), window.innerHeight - dragStart.rect.height - 4);
+    offsetX = dragStart.offsetX + left - dragStart.rect.left;
+    offsetY = dragStart.offsetY + top - dragStart.rect.top;
+    applyOffset();
+  });
+
+  function finishDrag(event) {
+    if (!dragStart || event.pointerId !== dragStart.pointerId) return;
+    dragStart = null;
+    widget.classList.remove('is-dragging');
+    if (didDrag) {
+      suppressClick = true;
+
+      window.setTimeout(() => { suppressClick = false; }, 100);
+    }
+  }
+
+  avatarBtn.addEventListener('pointerup', finishDrag);
+  avatarBtn.addEventListener('pointercancel', finishDrag);
 
   function setOpen(isOpen) {
     setLunaOpenState(isOpen, isOpen);
   }
 
-  avatarBtn.addEventListener('click', () => setOpen(!chatWindow.classList.contains('active')));
+  avatarBtn.addEventListener('click', event => {
+    if (suppressClick) {
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      suppressClick = false;
+      return;
+    }
+    setOpen(!chatWindow.classList.contains('active'));
+  });
 
   if (closeBtn) {
     closeBtn.addEventListener('click', () => setOpen(false));

@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#ffffff">
+  <title>Privacy Policy | Lunarays Technologies</title>
+  <meta name="description" content="How Lunarays Technologies Private Limited collects, uses, stores and protects information shared through its website, enquiry forms and Luna virtual assistant.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="logo-icon.png">
+  <link rel="stylesheet" href="style.css?v=2">
+  <link rel="stylesheet" href="careers.css?v=2">
+  <style>
+    .policy-page { background: #fff; color: #17283a; }
+
+    .policy-hero { padding: 48px 0 40px; background: linear-gradient(180deg, #fff 0%, #f6f8ff 100%); border-bottom: 1px solid #e8edf7; }
+    .policy-hero .container { max-width: 1100px; }
+    .policy-hero h1 { margin-bottom: 12px; color: #17283a; font-size: clamp(2.2rem, 4.6vw, 3.4rem); line-height: 1.08; letter-spacing: -.04em; }
+    .policy-hero p { max-width: 640px; color: #5f6e83; font-size: 1rem; line-height: 1.65; }
+    .policy-meta { display: flex; flex-wrap: wrap; gap: 8px 22px; margin-top: 20px; color: #5f6e83; font: 600 .78rem var(--font-subheading); }
+    .policy-meta b { color: #17283a; }
+
+    .policy-layout { display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 56px; max-width: 1100px; margin: 0 auto; padding: 52px 24px 84px; align-items: start; }
+
+    .policy-toc { position: sticky; top: 96px; padding: 18px 18px 14px; border: 1px solid #e8edf7; border-radius: 6px; background: #f6f8ff; }
+    .policy-toc h2 { margin-bottom: 10px; color: #17283a; font: 700 .8rem var(--font-subheading); }
+    .policy-toc ol { list-style: none; display: grid; gap: 1px; counter-reset: toc; }
+    .policy-toc li { counter-increment: toc; }
+    .policy-toc a { display: flex; gap: 9px; padding: 5px 0; color: #4b5b73; font: 500 .8rem/1.35 var(--font-subheading); transition: color .2s ease; }
+    .policy-toc a::before { content: counter(toc) "."; min-width: 18px; color: #a0aec0; }
+    .policy-toc a:hover { color: #b51425; }
+
+    .policy-body { max-width: 740px; }
+    .policy-body section { padding-bottom: 8px; margin-bottom: 30px; scroll-margin-top: 96px; }
+    .policy-body h2 { margin-bottom: 12px; color: #17283a; font-size: 1.45rem; line-height: 1.25; letter-spacing: -.02em; }
+    .policy-body h3 { margin: 22px 0 8px; color: #26384d; font-size: 1.05rem; }
+    .policy-body p { margin-bottom: 12px; color: #4a586b; font-size: .97rem; line-height: 1.75; font-weight: 400; }
+    .policy-body ul { margin: 0 0 14px; padding-left: 0; list-style: none; display: grid; gap: 7px; }
+    .policy-body li { position: relative; padding-left: 20px; color: #4a586b; font-size: .95rem; line-height: 1.65; font-weight: 400; }
+    .policy-body li::before { content: ""; position: absolute; left: 3px; top: .62em; width: 6px; height: 6px; border-radius: 2px; background: #c62838; }
+    .policy-body strong { color: #26384d; font-weight: 700; }
+    .policy-body a { color: #b51425; text-decoration: underline; text-underline-offset: 2px; }
+    .policy-body a:hover { color: #8f1020; }
+
+    .policy-note { margin: 16px 0; padding: 14px 16px; border-left: 3px solid #c62838; border-radius: 0 4px 4px 0; background: #fff4f5; color: #4a586b; font-size: .9rem; line-height: 1.6; }
+    .policy-note p { margin: 0; font-size: .9rem; }
+
+    .policy-contact { margin-top: 14px; padding: 20px 22px; border: 1px solid #e8edf7; border-radius: 6px; background: #f6f8ff; }
+    .policy-contact p { margin-bottom: 6px; font-size: .93rem; }
+    .policy-contact p:last-child { margin-bottom: 0; }
+
+    @media (max-width: 900px) {
+      .policy-layout { grid-template-columns: 1fr; gap: 28px; padding: 36px 20px 64px; }
+      .policy-toc { position: static; }
+      .policy-toc ol { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 18px; }
+    }
+    @media (max-width: 520px) {
+      .policy-hero { padding: 32px 0 30px; }
+      .policy-toc ol { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body class="policy-page">
+  <header class="main-header" id="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo home-link" aria-label="Lunarays Technologies home">
+        <img src="logo-transparent.png" alt="Lunarays Technologies" class="brand-logo-img">
+      </a>
+      <nav class="nav-links" id="careersNav" aria-label="Main navigation">
+        <a href="index.html" class="nav-item home-link">Home</a>
+        <a href="index.html#services" class="nav-item">Services</a>
+        <a href="index.html#delivery" class="nav-item">Delivery Model</a>
+        <a href="index.html#about" class="nav-item">About Us</a>
+        <a href="index.html#sales-products" class="nav-item">Sales &amp; Products</a>
+        <a href="index.html#industries" class="nav-item">Industries</a>
+        <a href="index.html#blogs" class="nav-item">Insights</a>
+        <a href="careers.html" class="nav-item">Careers</a>
+      </nav>
+      <div class="nav-actions">
+        <a href="index.html#cta" class="btn btn-primary btn-sm">Request Proposal</a>
+        <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="careersNav">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="policy-hero">
+      <div class="container">
+        <h1>Privacy Policy</h1>
+        <p>How Lunarays Technologies Private Limited collects, uses, stores and protects the information you share through this website.</p>
+        <div class="policy-meta">
+          <span><b>Last updated:</b> 10 October 2026</span>
+        </div>
+      </div>
+    </section>
+
+    <div class="policy-layout">
+      <aside class="policy-toc" aria-label="Contents">
+        <h2>Contents</h2>
+        <ol>
+          <li><a href="#introduction">Introduction</a></li>
+          <li><a href="#information-we-collect">Information we collect</a></li>
+          <li><a href="#how-we-use">How we use your information</a></li>
+          <li><a href="#sharing">Sharing of information</a></li>
+          <li><a href="#third-party">Third-party services and links</a></li>
+          <li><a href="#retention">Data storage and retention</a></li>
+          <li><a href="#security">Data security</a></li>
+          <li><a href="#international">International data processing</a></li>
+          <li><a href="#your-rights">Your privacy rights</a></li>
+          <li><a href="#children">Children's privacy</a></li>
+          <li><a href="#changes">Changes to this policy</a></li>
+          <li><a href="#contact">Contact us</a></li>
+        </ol>
+      </aside>
+
+      <article class="policy-body">
+
+        <section id="introduction">
+          <h2>1. Introduction</h2>
+          <p>Lunarays Technologies Private Limited (“Lunarays Technologies”, “we”, “our”, or “us”) respects your privacy and is committed to protecting the personal information you share with us through our website.</p>
+          <p>This Privacy Policy explains how we collect, use, store, and protect information when you visit our website, submit an enquiry, request a proposal, send us your profile through our Careers page, chat with our virtual assistant, or communicate with us regarding our IT services and solutions.</p>
+          <p>By using our website, you acknowledge this Privacy Policy. Where consent is required by applicable law, we will seek it appropriately.</p>
+        </section>
+
+        <section id="information-we-collect">
+          <h2>2. Information We Collect</h2>
+          <p>We may collect the following categories of information, depending on how you interact with our website.</p>
+
+          <h3>2.1 Information you provide</h3>
+          <p>When you contact us, request a proposal, submit an enquiry, or share your profile for career opportunities, you may provide:</p>
+          <ul>
+            <li>Name and business contact details.</li>
+            <li>Email address and telephone number.</li>
+            <li>Company name, job title, or business information.</li>
+            <li>Details about your IT requirements, project enquiries, or requested services.</li>
+            <li>For career enquiries, the professional details you choose to share about yourself.</li>
+            <li>Any additional information you choose to include in your message.</li>
+          </ul>
+          <div class="policy-note">
+            <p>Please avoid submitting passwords, confidential credentials, sensitive personal information, or production system access details through public website forms or the chat assistant.</p>
+          </div>
+
+          <h3>2.2 Chat with Luna, our virtual assistant</h3>
+          <p>Our website includes “Luna”, an AI-powered virtual assistant. Messages you type into Luna, along with recent messages from the same conversation, are sent to our server and then to a third-party AI service to generate a reply. Luna is an automated assistant, not a human employee, and a chat with Luna does not submit an enquiry to our team. To request a proposal or consultation, please use the enquiry form or contact us directly using the details below.</p>
+          <p>We do not intend for Luna to be used to share personal, confidential, or sensitive information. We do not use Luna to ask for such details.</p>
+
+          <h3>2.3 Technical information</h3>
+          <p>When you visit our website, certain technical information may be collected through hosting services, server logs, or other technologies, depending on our configuration. This may include:</p>
+          <ul>
+            <li>IP address and general device information.</li>
+            <li>Browser type and operating system.</li>
+            <li>Pages visited and referring URLs.</li>
+            <li>Date, time, and basic website usage information.</li>
+          </ul>
+          <p>We may also use your IP address in a limited way to protect our forms and chat assistant from abuse, for example to limit how many messages can be sent in a short period.</p>
+
+          <h3>2.4 Cookies and similar technologies</h3>
+          <p>Our website may use cookies or similar technologies to support website functionality, security, performance, and visitor analytics.</p>
+          <p>The types of cookies used depend on the tools and services enabled on our website. Where required, we will provide appropriate notice and obtain consent before using non-essential cookies.</p>
+          <p>You may manage cookies through your browser settings. Disabling certain cookies may affect website functionality.</p>
+        </section>
+
+        <section id="how-we-use">
+          <h2>3. How We Use Your Information</h2>
+          <p>We may use the information collected for the following purposes:</p>
+          <ul>
+            <li>To respond to enquiries and requests for proposals.</li>
+            <li>To understand your business and IT service requirements.</li>
+            <li>To communicate with you regarding our services, solutions, and potential engagements.</li>
+            <li>To prepare proposals, estimates, and relevant service information.</li>
+            <li>To review career profiles you share with us.</li>
+            <li>To operate Luna and respond to your chat messages.</li>
+            <li>To maintain, operate, troubleshoot, and improve our website.</li>
+            <li>To protect our website and systems against misuse, fraud, and security threats.</li>
+            <li>To maintain business records and meet applicable legal obligations.</li>
+          </ul>
+          <p>We will use personal information only for appropriate and lawful purposes, in accordance with applicable requirements.</p>
+        </section>
+
+        <section id="sharing">
+          <h2>4. Sharing of Information</h2>
+          <p>We do not make your personal information available to third parties for their independent marketing purposes without an appropriate legal basis.</p>
+          <p>We may share information in the following circumstances:</p>
+          <ul>
+            <li><strong>Service providers:</strong> With trusted third-party providers that support website hosting, form processing, email delivery, data storage, AI-assisted chat, analytics, security, or other business operations, where applicable.</li>
+            <li><strong>Business operations:</strong> With authorised personnel or relevant service teams when access is necessary to respond to your enquiry or provide requested services.</li>
+            <li><strong>Legal requirements:</strong> Where disclosure is required by applicable law, regulation, court order, or a lawful request from an authorised authority.</li>
+            <li><strong>Business transactions:</strong> Where necessary in connection with a merger, restructuring, acquisition, or transfer of business, subject to applicable legal requirements.</li>
+          </ul>
+          <p>We seek to limit access to personal information to what is reasonably necessary for the relevant purpose.</p>
+        </section>
+
+        <section id="third-party">
+          <h2>5. Third-Party Services and Links</h2>
+          <p>Our website may use or link to third-party platforms and services. Depending on how you use the website, these may include:</p>
+          <ul>
+            <li><strong>Web hosting and serverless hosting providers</strong>, which serve our pages and run the services that process our forms and chat assistant.</li>
+            <li><strong>Form and data-handling services</strong>, which receive and store the enquiries and career profiles you submit, such as Google Sheets and Web3Forms.</li>
+            <li><strong>AI services</strong>, such as Google's Gemini, which generate Luna's replies from the messages you send.</li>
+            <li><strong>Web fonts</strong> served by Google Fonts, which may receive your IP address when your browser loads them.</li>
+            <li><strong>Messaging and social platforms</strong>, such as WhatsApp, LinkedIn, Instagram, X and Facebook, if you choose to click through to them.</li>
+          </ul>
+          <p>These third parties may process information in accordance with their own privacy policies and terms. Lunarays Technologies does not control the privacy practices of independent third-party websites or services.</p>
+          <p>We encourage visitors to review the privacy policies of any third-party services they use through our website.</p>
+        </section>
+
+        <section id="retention">
+          <h2>6. Data Storage and Retention</h2>
+          <p>We retain personal information only for as long as reasonably necessary to fulfil the purposes described in this policy, respond to enquiries, maintain relevant business records, resolve disputes, and meet applicable legal obligations.</p>
+          <p>Retention periods may vary depending on the nature of the information, the purpose of collection, and applicable requirements.</p>
+          <p>When personal information is no longer required, we will take reasonable steps to delete it or otherwise dispose of it appropriately, subject to legal and operational obligations.</p>
+        </section>
+
+        <section id="security">
+          <h2>7. Data Security</h2>
+          <p>We take reasonable technical and organisational measures to protect personal information against unauthorised access, disclosure, alteration, loss, or misuse.</p>
+          <p>However, no website, electronic transmission, or storage system can be guaranteed to be completely secure. We therefore cannot guarantee absolute security of information transmitted through the internet.</p>
+          <p>Visitors should avoid sharing confidential credentials or sensitive business information through general website enquiry forms or the chat assistant.</p>
+        </section>
+
+        <section id="international">
+          <h2>8. International Data Processing</h2>
+          <p>Depending on the service providers and technology infrastructure used by our website or business operations, information may be processed or stored in locations outside your country of residence.</p>
+          <p>Where applicable, such processing will be subject to relevant contractual safeguards and legal requirements.</p>
+          <p>The actual locations and safeguards depend on the third-party services used by Lunarays Technologies.</p>
+        </section>
+
+        <section id="your-rights">
+          <h2>9. Your Privacy Rights</h2>
+          <p>Subject to applicable law, you may have rights concerning your personal information, including the right to:</p>
+          <ul>
+            <li>Request information about personal data we hold about you.</li>
+            <li>Request correction of inaccurate or incomplete information.</li>
+            <li>Request deletion of personal information where applicable.</li>
+            <li>Withdraw consent where processing is based on consent.</li>
+            <li>Raise a concern or grievance regarding our handling of personal information.</li>
+          </ul>
+          <p>To exercise an applicable right, please contact us using the details in the <a href="#contact">Contact Us</a> section below. We may need to verify your identity before responding to a request.</p>
+          <p>We will handle such requests in accordance with applicable law and relevant exceptions.</p>
+        </section>
+
+        <section id="children">
+          <h2>10. Children's Privacy</h2>
+          <p>Our website and business services are intended primarily for businesses and professional users. We do not knowingly seek to collect personal information from children through our website for purposes that are not permitted by applicable law.</p>
+          <p>If you believe that a child has provided personal information to us inappropriately, please contact us so that the matter can be reviewed and appropriate action taken.</p>
+        </section>
+
+        <section id="changes">
+          <h2>11. Changes to This Privacy Policy</h2>
+          <p>We may update this Privacy Policy from time to time to reflect changes in our website, business operations, technology, or applicable legal requirements.</p>
+          <p>Any revised version will be published on this page with an updated “Last updated” date. We encourage visitors to review this page periodically.</p>
+        </section>
+
+        <section id="contact">
+          <h2>12. Contact Us</h2>
+          <p>If you have questions, concerns, or requests regarding this Privacy Policy or the handling of your personal information, please contact us:</p>
+          <div class="policy-contact">
+            <p><strong>Lunarays Technologies Private Limited</strong></p>
+            <p><strong>Address:</strong> B-46, Ground Floor-02, Sector-63, Noida, Uttar Pradesh – 201301, India</p>
+            <p><strong>Email:</strong> <a href="mailto:info@lunaraystechnologies.com">info@lunaraystechnologies.com</a></p>
+            <p><strong>Phone:</strong> <a href="tel:+9101204980800">+91-0120-4980800</a></p>
+            <p><strong>Mobile:</strong> <a href="tel:+919971718692">+91-9971718692</a></p>
+          </div>
+          <p style="margin-top:14px">We will review and respond to privacy-related enquiries in accordance with applicable requirements.</p>
+        </section>
+
+      </article>
+    </div>
+  </main>
+
+  <footer class="main-footer">
+    <div class="container footer-grid">
+      <div class="footer-col footer-brand-col">
+        <a href="index.html" class="brand-logo home-link" aria-label="Lunarays Technologies home">
+          <img src="logo.png" alt="Lunarays Technologies - Your Wish, Our Endeavour!" class="brand-logo-img footer-logo-img">
+        </a>
+        <p class="footer-text">
+          Delivering enterprise-grade Managed IT, Cloud Infrastructure, Systems Integration, and Hardware Procurement across India.
+        </p>
+        <div class="footer-contact-info">
+          <p>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="footer-contact-icon" aria-hidden="true">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+              <circle cx="12" cy="10" r="3"></circle>
+            </svg>
+            <span>B-46, Ground Floor -02, Sector-63, Noida-201301, U.P, India</span>
+          </p>
+          <p>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="footer-contact-icon" aria-hidden="true">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+            </svg>
+            <span><a href="tel:+9101204980800">+91-0120-4980800</a> / <a href="tel:+919971718692">+91-9971718692</a></span>
+          </p>
+          <p>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="footer-contact-icon" aria-hidden="true">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+              <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+            <span><a href="mailto:info@lunaraystechnologies.com">info@lunaraystechnologies.com</a></span>
+          </p>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-heading">Services</h4>
+        <ul class="footer-links">
+          <li><a href="index.html#services">Application Services</a></li>
+          <li><a href="index.html#services">Infor ERP &amp; WMS</a></li>
+          <li><a href="index.html#services">Database Support Services</a></li>
+          <li><a href="index.html#services">IT Asset Consulting</a></li>
+          <li><a href="index.html#services">24/7 Managed NOC</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-heading">Procurement</h4>
+        <ul class="footer-links">
+          <li><a href="index.html#sales-products">Servers &amp; SAN Storage</a></li>
+          <li><a href="index.html#sales-products">Enterprise Networking</a></li>
+          <li><a href="index.html#sales-products">End-User Fleet Computing</a></li>
+          <li><a href="index.html#sales-products">Microsoft &amp; Oracle Licensing</a></li>
+          <li><a href="https://lunarays.in" target="_blank" rel="noopener noreferrer">Retail Shop (lunarays.in)</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-heading">Company</h4>
+        <ul class="footer-links">
+          <li><a href="index.html#about">About Our Purpose</a></li>
+          <li><a href="index.html#delivery">Delivery Roadmap</a></li>
+          <li><a href="index.html#industries">Industries We Support</a></li>
+          <li><a href="index.html#blogs">Technical Insights</a></li>
+          <li><a href="careers.html">Careers</a></li>
+          <li><a href="index.html#cta">Request Proposal</a></li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <p>&copy; 2026 Lunarays Technologies Private Limited. All rights reserved.</p>
+      <div class="footer-bottom-links">
+        <a href="https://www.linkedin.com/company/lunarays-technologies-private-limited/?originalSubdomain=in" target="_blank" rel="noopener noreferrer" class="social-icon-link" aria-label="LinkedIn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z" />
+          </svg>
+        </a>
+        <a href="https://www.instagram.com/lunaraystechnologies/" target="_blank" rel="noopener noreferrer" class="social-icon-link" aria-label="Instagram">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+          </svg>
+        </a>
+        <a href="https://x.com/LunaraysL" target="_blank" rel="noopener noreferrer" class="social-icon-link" aria-label="X (formerly Twitter)">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+          </svg>
+        </a>
+        <a href="https://www.facebook.com/lunaraystechnologies/" target="_blank" rel="noopener noreferrer" class="social-icon-link" aria-label="Facebook">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <aside class="whatsapp-float-container" aria-label="WhatsApp Contact">
+    <a href="https://wa.me/919971718692" target="_blank" rel="noopener noreferrer" class="whatsapp-float-btn" aria-label="Chat with us on WhatsApp" title="Chat on WhatsApp (+91 99717 18692)">
+      <svg class="whatsapp-icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M16 3C8.82 3 3 8.82 3 16C3 18.44 3.68 20.73 4.88 22.7L3.13 28.87L9.48 27.17C11.39 28.24 13.62 28.87 16 28.87C23.18 28.87 29 23.05 29 15.87C29 8.69 23.18 3 16 3ZM16 26.68C13.84 26.68 11.83 26.06 10.12 25L9.72 24.76L5.86 25.8L6.92 22.04L6.65 21.61C5.46 19.86 4.83 17.78 4.83 15.62C4.83 9.47 9.85 4.45 16 4.45C22.15 4.45 27.17 9.47 27.17 15.62C27.17 21.77 22.15 26.68 16 26.68ZM22.11 19.34C21.78 19.17 20.15 18.37 19.85 18.26C19.55 18.15 19.33 18.1 19.11 18.43C18.89 18.76 18.26 19.5 18.07 19.72C17.88 19.94 17.69 19.97 17.36 19.8C17.03 19.63 15.97 19.28 14.71 18.16C13.73 17.29 13.07 16.21 12.88 15.88C12.69 15.55 12.86 15.37 13.03 15.2C13.18 15.05 13.36 14.82 13.52 14.63C13.69 14.44 13.74 14.3 13.85 14.08C13.96 13.86 13.91 13.67 13.83 13.5C13.75 13.33 13.09 11.71 12.81 11.05C12.55 10.41 12.28 10.5 12.08 10.49C11.89 10.48 11.67 10.48 11.45 10.48C11.23 10.48 10.87 10.56 10.57 10.89C10.27 11.22 9.42 12.02 9.42 13.65C9.42 15.28 10.61 16.85 10.77 17.07C10.94 17.29 13.1 20.61 16.41 22.04C17.2 22.38 17.81 22.58 18.29 22.73C19.08 22.98 19.8 22.95 20.37 22.86C21.01 22.76 22.34 22.05 22.61 21.28C22.89 20.51 22.89 19.85 22.81 19.72C22.73 19.58 22.51 19.5 22.18 19.34H22.11Z" fill="currentColor" />
+      </svg>
+      <span class="whatsapp-tooltip">Chat with us</span>
+      <span class="whatsapp-pulse"></span>
+    </a>
+  </aside>
+
+  <script src="careers.js?v=2"></script>
+</body>
+</html>

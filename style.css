@@ -891,11 +891,10 @@ a {
    6. HOW SERVICES ARE DELIVERED (5-STEP ROADMAP & OPERATIONS DEEP DIVE)
    ========================================================================== */
 .delivery-section {
-  background-color: #FFFFFF;
+  background-color: #F8FAFC;
   background-image:
-    linear-gradient(to right, rgba(226, 232, 240, 0.65) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(226, 232, 240, 0.65) 1px, transparent 1px);
-  background-size: 36px 36px;
+    radial-gradient(ellipse at 50% 0%, rgba(37, 99, 235, 0.08) 0%, transparent 62%),
+    linear-gradient(180deg, #FFFFFF 0%, #F5F8FC 100%);
   position: relative;
   overflow: hidden;
 }
@@ -2941,8 +2940,23 @@ a {
   position: fixed;
   bottom: 104px;
   right: 28px;
-  z-index: 1500;
+  z-index: 10000;
   transition: bottom 0.22s ease;
+  transform: translate(var(--ai-drag-x, 0px), var(--ai-drag-y, 0px));
+}
+
+.ai-assistant-widget.is-dragging {
+  transition: none;
+  cursor: grabbing;
+}
+
+.ai-avatar-btn {
+  cursor: grab;
+  touch-action: none;
+}
+
+.ai-assistant-widget.is-dragging .ai-avatar-btn {
+  cursor: grabbing;
 }
 
 .ai-avatar-btn {
@@ -3695,11 +3709,10 @@ a {
 
 @media (max-width: 900px) {
   .delivery-section {
-    background-color: #fbfcfe;
+    background-color: #F8FAFC;
     background-image:
-      linear-gradient(to right, rgba(148, 163, 184, .10) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(148, 163, 184, .10) 1px, transparent 1px);
-    background-size: 28px 28px;
+      radial-gradient(ellipse at 50% 0%, rgba(37, 99, 235, 0.08) 0%, transparent 62%),
+      linear-gradient(180deg, #FFFFFF 0%, #F5F8FC 100%);
   }
 
   .roadmap-infographic {
@@ -4891,4 +4904,24 @@ body {
   .ai-assistant-widget.is-chat-open {
     bottom: calc(20px + env(safe-area-inset-bottom, 0px));
   }
+}
+
+/* Cursor glow is painted on light section backgrounds, beneath their cards and content. */
+.cursor-glow-active {
+  --cursor-glow-image: radial-gradient(440px circle at var(--cursor-glow-x) var(--cursor-glow-y), rgba(191, 219, 254, 0.28) 0%, rgba(224, 231, 255, 0.18) 34%, rgba(255, 255, 255, 0) 72%);
+}
+
+.services-section.cursor-glow-active,
+.about-section.cursor-glow-active,
+.sales-section.cursor-glow-active,
+.industries-section.cursor-glow-active,
+.blogs-section.cursor-glow-active {
+  background-image: var(--cursor-glow-image);
+}
+
+.delivery-section.cursor-glow-active {
+  background-image:
+    var(--cursor-glow-image),
+    radial-gradient(ellipse at 50% 0%, rgba(37, 99, 235, 0.08) 0%, transparent 62%),
+    linear-gradient(180deg, #FFFFFF 0%, #F5F8FC 100%);
 }

@@ -1,0 +1,360 @@
+.careers-page {
+  background: #fff;
+  color: #17283a;
+}
+
+.careers-page .career-hero {
+  padding: 42px 0 72px;
+  background: linear-gradient(180deg, #fff 0%, #fbfcff 100%);
+}
+
+.career-hero-inner { max-width: 1260px; }
+
+.career-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: fit-content;
+  margin-bottom: 18px;
+  padding: 5px 9px;
+  border-radius: 4px;
+  background: #eef3ff;
+  color: #213b65;
+  font: 700 .65rem/1.2 var(--font-subheading);
+  letter-spacing: .09em;
+}
+
+.career-eyebrow > span:first-child {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--color-primary);
+}
+
+.career-eyebrow > span:nth-child(2) { color: #9aa8bc; }
+.career-eyebrow.red { background: transparent; color: #a32231; padding: 0; margin-bottom: 8px; }
+.career-eyebrow.red > span:first-child { width: 8px; height: 8px; border-radius: 2px; }
+
+.career-hero h1 {
+  max-width: 760px;
+  margin-bottom: 14px;
+  color: #17283a;
+  font-size: clamp(2.7rem, 5.3vw, 4.25rem);
+  line-height: 1.04;
+  letter-spacing: -.045em;
+}
+
+.career-hero h1 span { color: #bd2631; }
+.career-hero p { max-width: 680px; color: #657386; font-size: 1.03rem; line-height: 1.65; }
+.career-hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
+.career-hero-actions .btn { border-radius: 4px; font-size: .84rem; padding: 11px 17px; }
+.career-secondary-btn { background: #e9efff; color: #203450; }
+.career-secondary-btn:hover { background: #dce6ff; transform: translateY(-2px); }
+
+.career-pillars { padding: 20px 0 72px; }
+.career-section-heading { margin-bottom: 25px; }
+.career-section-heading h2,
+.career-apply-copy h2 { color: #1c2e42; font-size: clamp(1.85rem, 3.2vw, 2.55rem); line-height: 1.14; letter-spacing: -.04em; }
+.career-section-heading > p { max-width: 720px; margin-top: 9px; color: #68778a; font-size: .94rem; }
+.split-heading { display: flex; align-items: end; justify-content: space-between; gap: 34px; }
+.split-heading > p { max-width: 440px; margin: 0 0 5px; font-size: .88rem; }
+
+.career-pillar-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; }
+.career-pillar-card,
+.career-growth-grid article { min-height: 215px; padding: 20px; border: 1px solid #edf1fa; border-radius: 6px; background: #eff3ff; }
+.career-icon { display: inline-flex; align-items: center; justify-content: center; width: 35px; height: 35px; margin-bottom: 14px; border-radius: 4px; font: 700 1rem var(--font-subheading); }
+.red-icon { background: #ffe9ec; color: #c62838; }
+.blue-icon { background: #e2ecff; color: #2563eb; }
+.purple-icon { background: #f1e6ff; color: #7c3aed; }
+.green-icon { background: #e4f6ee; color: #16865b; }
+.career-card-kicker { margin-bottom: 8px; color: #bf3040; font: 700 .59rem var(--font-subheading); letter-spacing: .08em; }
+.career-pillar-card h3,
+.career-growth-grid h3 { margin-bottom: 7px; color: #20334a; font-size: 1.02rem; }
+.career-pillar-card p,
+.career-growth-grid p { color: #68778a; font-size: .83rem; line-height: 1.5; }
+.career-card-foot { display: block; margin-top: 15px; color: #506a98; font: 600 .68rem var(--font-subheading); }
+
+.career-roles { padding: 64px 0 74px; background: #f3f6ff; }
+.career-roles .career-section-heading { margin-bottom: 20px; }
+.career-roles .career-section-heading > p { font-size: .86rem; }
+.career-filter-row { display: flex; gap: 7px; overflow-x: auto; padding: 7px; margin-bottom: 16px; border-radius: 5px; background: #e6edff; scrollbar-width: thin; }
+.career-filter { flex: 0 0 auto; padding: 9px 13px; border: 0; border-radius: 4px; background: transparent; color: #4b5b73; cursor: pointer; font: 600 .72rem var(--font-subheading); transition: background .2s ease, color .2s ease; }
+.career-filter:hover { color: #a71f2e; }
+.career-filter.active { background: #fff; color: #263a55; box-shadow: 0 1px 5px rgba(24, 45, 78, .08); }
+.career-role-list { display: grid; gap: 9px; }
+.career-role-card { display: flex; align-items: center; justify-content: space-between; gap: 22px; min-height: 132px; padding: 18px 22px; border: 1px solid #eef1f6; border-radius: 6px; background: #fff; box-shadow: 0 2px 6px rgba(28, 47, 75, .035); transition: transform .2s ease, box-shadow .2s ease; }
+.career-role-card[hidden] { display: none; }
+.career-role-card:hover { transform: translateY(-2px); box-shadow: 0 8px 22px rgba(28, 47, 75, .08); }
+.career-role-content { min-width: 0; }
+.career-role-meta { display: flex; align-items: center; flex-wrap: wrap; gap: 7px; margin-bottom: 5px; color: #718098; font: 600 .6rem var(--font-subheading); }
+.career-role-meta span { color: #a82b3b; }
+.career-role-meta i { padding: 2px 5px; border: 1px solid #e5eaf4; border-radius: 3px; font-style: normal; font-size: .53rem; }
+.career-role-meta b { color: #adb8c7; }
+.career-role-card h3 { margin-bottom: 3px; color: #26384d; font-size: 1.02rem; }
+.career-role-card p { color: #68778a; font-size: .8rem; line-height: 1.45; }
+.career-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 9px; }
+.career-tags span { padding: 3px 6px; border: 1px solid #e8edf8; border-radius: 3px; background: #f5f7fc; color: #64748b; font: 500 .58rem var(--font-subheading); }
+.career-role-cta { flex: 0 0 auto; color: #a51f2c; font: 700 .73rem var(--font-subheading); white-space: nowrap; }
+.career-role-cta span { display: inline-block; padding: 8px 11px; margin-left: 7px; border-radius: 3px; background: #b51425; color: white; transition: background .2s ease; }
+.career-role-cta:hover span { background: #8f1020; }
+.career-no-results { padding: 30px; text-align: center; color: #68778a; }
+
+.career-growth { padding: 68px 0 76px; }
+.career-growth .career-section-heading { margin-bottom: 24px; }
+.career-growth-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+.career-growth-grid article { min-height: 178px; }
+.career-growth-grid .career-icon { margin-bottom: 12px; }
+
+.career-apply { padding: 66px 0 72px; background: #e9efff; }
+.career-apply-grid { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: 34px; align-items: start; }
+.career-apply-copy { padding: 15px 0; }
+.career-apply-copy > p { max-width: 460px; margin-top: 12px; color: #5f6e83; font-size: .92rem; }
+.career-review-note { display: grid; gap: 5px; max-width: 470px; margin-top: 30px; padding: 17px 19px; border: 1px solid #edf0f5; border-radius: 5px; background: #fff; color: #68778a; font-size: .76rem; }
+.career-review-note strong { color: #26384d; font: 700 .79rem var(--font-subheading); }
+.career-form { padding: 24px; border: 1px solid rgba(217, 225, 240, .8); border-radius: 6px; background: #fff; box-shadow: 0 8px 26px rgba(29, 49, 82, .07); }
+.career-form-top { display: flex; justify-content: space-between; gap: 12px; margin-bottom: 19px; color: #43536b; font: 700 .65rem var(--font-subheading); letter-spacing: .06em; }
+.career-form-top b { color: #a92333; font-size: .58rem; }
+.career-form-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px 16px; }
+.career-form-grid label { display: grid; gap: 6px; color: #334258; font: 700 .67rem var(--font-subheading); }
+.career-form-grid input,
+.career-form-grid select,
+.career-form-grid textarea { width: 100%; min-height: 42px; padding: 10px 11px; border: 1px solid #dfe5ef; border-radius: 4px; outline: 0; background: #fff; color: #2c3b50; font: 400 .77rem var(--font-body); }
+.career-form-grid textarea { resize: vertical; }
+.career-form-grid input:focus,
+.career-form-grid select:focus,
+.career-form-grid textarea:focus { border-color: #7ca0e8; box-shadow: 0 0 0 3px rgba(37, 99, 235, .1); }
+.career-form-grid input::placeholder,
+.career-form-grid textarea::placeholder { color: #9aa6b6; }
+.career-form-wide { grid-column: 1 / -1; }
+.career-form-status { min-height: 1.25rem; margin-top: 9px; color: #a92333; font-size: .75rem; }
+.career-form-status.success { color: #158052; }
+.career-submit { min-width: 155px; justify-content: space-between; border-radius: 4px; font-size: .82rem; }
+.career-submit:disabled { cursor: wait; opacity: .7; }
+.career-form-privacy { margin-top: 12px; color: #8490a1; font-size: .66rem; line-height: 1.45; }
+.career-honeypot { position: absolute; left: -10000px; width: 1px; height: 1px; opacity: 0; }
+
+.career-footer { padding: 38px 0 25px; background: #1d2c40; color: #aeb9c7; }
+.career-footer-inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px 28px; }
+.career-footer .brand-logo-img { height: 42px; max-width: 210px; }
+.career-footer-inner > p { max-width: 300px; font-size: .78rem; }
+.career-footer-inner > div { display: flex; flex-direction: column; gap: 4px; font-size: .76rem; }
+.career-footer-inner > div a:hover { color: #fff; }
+.career-footer-inner small { width: 100%; padding-top: 17px; border-top: 1px solid rgba(255,255,255,.1); color: #8e9bab; font-size: .65rem; }
+
+@media (max-width: 960px) {
+  .career-pillar-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .split-heading { align-items: start; flex-direction: column; gap: 12px; }
+  .career-apply-grid { grid-template-columns: 1fr; gap: 25px; }
+  .career-apply-copy { padding: 0; }
+}
+
+@media (max-width: 600px) {
+  .careers-page .career-hero { padding: 28px 0 49px; }
+  .career-hero h1 { font-size: clamp(2.35rem, 11vw, 3.25rem); }
+  .career-hero p { font-size: .94rem; }
+  .career-pillars, .career-growth { padding: 48px 0; }
+  .career-pillar-grid, .career-growth-grid { grid-template-columns: 1fr; gap: 11px; }
+  .career-pillar-card { min-height: auto; }
+  .career-roles { padding: 48px 0; }
+  .career-role-card { align-items: start; flex-direction: column; gap: 13px; padding: 17px; }
+  .career-role-cta { align-self: flex-end; }
+  .career-growth-grid article { min-height: auto; }
+  .career-apply { padding: 49px 0; }
+  .career-form { padding: 18px 15px; }
+  .career-form-grid { grid-template-columns: 1fr; gap: 12px; }
+  .career-form-wide { grid-column: auto; }
+  .career-footer-inner { align-items: flex-start; flex-direction: column; }
+  .career-footer-inner small { margin-top: 4px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .career-role-card, .career-filter, .career-role-cta span { transition: none; }
+  .career-role-card:hover { transform: none; }
+}
+
+.main-footer {
+  background: #060911;
+  color: #94A3B8;
+  padding: 70px 0 30px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr;
+  gap: 40px;
+  margin-bottom: 48px;
+}
+
+.footer-text {
+  font-size: 0.88rem;
+  line-height: 1.6;
+  margin: 16px 0;
+  color: #94A3B8;
+}
+
+.footer-contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font-size: 0.84rem;
+  color: #CBD5E1;
+  margin-top: 14px;
+}
+
+.footer-contact-info p {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.footer-contact-icon {
+  width: 16px;
+  height: 16px;
+  color: #F87171;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.footer-contact-info a {
+  color: #CBD5E1;
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.footer-contact-info a:hover {
+  color: #FFFFFF;
+}
+
+.footer-heading {
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  color: #FFFFFF;
+  margin-bottom: 18px;
+}
+
+.footer-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer-links a {
+  font-family: var(--font-subheading);
+  font-size: 0.85rem;
+  color: #94A3B8;
+  transition: color var(--transition-fast);
+}
+
+.footer-links a:hover {
+  color: #FFFFFF;
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.8rem;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.footer-bottom-links {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-top: 10px;
+}
+
+.footer-bottom-links .whatsapp-float-btn {
+  position: relative;
+  width: 36px;
+  height: 36px;
+  flex: 0 0 36px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #94A3B8;
+  box-shadow: none;
+  transition: color var(--transition-fast), background var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast), width 0.22s ease, height 0.22s ease;
+}
+
+.footer-bottom-links .whatsapp-float-btn .whatsapp-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.footer-bottom-links .whatsapp-float-btn .whatsapp-pulse,
+.footer-bottom-links .whatsapp-float-btn .whatsapp-tooltip {
+  display: none;
+}
+
+.whatsapp-float-container[hidden] {
+  display: none;
+}
+
+.footer-bottom-links .whatsapp-float-btn:hover {
+  transform: translateY(-2px) scale(1.04);
+  color: #FFFFFF;
+  background: rgba(239, 68, 68, 0.2);
+  border-color: #EF4444;
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+}
+
+.whatsapp-float-btn.is-shrinking,
+.whatsapp-float-btn.is-expanding {
+  transition: transform 0.22s cubic-bezier(0.2, 0.7, 0.2, 1), opacity 0.22s ease, width 0.22s ease, height 0.22s ease, background 0.22s ease, color 0.22s ease, box-shadow 0.22s ease;
+}
+
+.whatsapp-float-btn.is-shrinking {
+  transform: scale(0.6);
+  opacity: 0;
+}
+
+.whatsapp-float-btn.is-expanding {
+  transform: scale(0.6);
+  opacity: 0;
+  transition: none;
+}
+
+.footer-bottom-links .whatsapp-float-btn.is-footer-icon {
+  animation: whatsapp-footer-arrive 0.22s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+@keyframes whatsapp-footer-arrive {
+  from {
+    opacity: 0;
+    transform: scale(0.65);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.social-icon-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #94A3B8;
+  text-decoration: none;
+  transition: all var(--transition-fast);
+}
+
+.social-icon-link:hover {
+  color: #FFFFFF;
+  background: rgba(239, 68, 68, 0.2);
+  border-color: #EF4444;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+}

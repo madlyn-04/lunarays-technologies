@@ -3,7 +3,6 @@
  * Features:
  * - Interactive WebGL/Canvas Shader Hero Background
  * - Animated Counting Metrics (Trust Slip)
- * - 3D Zoom & Flip Full-Detail Service Modal (80% Viewport)
  * - 5-Step Delivery Roadmap & IT Operations Management Revealer
  * - Dynamic Two-Column Contextual Industries Switcher
  * - Sliding Split-Screen Proposal Request Form
@@ -16,7 +15,6 @@ const API_BASE_URL = 'https://lr-iota.vercel.app';
 document.addEventListener('DOMContentLoaded', () => {
   initShaderHero();
   initCounters();
-  initServicesModal();
   initDeliveryOperations();
   initIndustriesMatrix();
   initSlidingCTA();
@@ -294,254 +292,6 @@ function initCounters() {
 }
 
 /* ==========================================================================
-   3. SERVICES SECTION (CARD CLICK -> 80% SCREEN 3D FLIP/ZOOM MODAL)
-   ========================================================================== */
-const servicesData = {
-  'microsoft-365': {
-    title: 'Microsoft 365 Migration, Deployment & Support Services',
-    category: 'Cloud & Workplace Productivity',
-    lead: 'Lunarays helps organizations transition and manage Microsoft-based workplace and email environments. Services include Office 365 migration, Exchange migration, Active Directory migration consulting, Microsoft application support and ongoing system updates.',
-    deliverables: [
-      'Microsoft 365 environment assessment',
-      'Office 365 migration planning',
-      'Office 365 migration',
-      'Exchange Server migration',
-      'Active Directory migration consulting',
-      'Enterprise email configuration and support',
-      'Microsoft application implementation',
-      'Microsoft system updates',
-      'Security patch support',
-      'Post-migration technical support'
-    ],
-    techStack: 'Microsoft 365, Office 365, Exchange, Active Directory, Enterprise Email, Microsoft Applications',
-    sla: '24×7 Support • Proactive Monitoring • 4-Hour Guaranteed Response Time for Managed Plans'
-  },
-  'cloud-services': {
-    title: 'Cloud Infrastructure & Migration Services',
-    category: 'Cloud Infrastructure, Migration & Modernization',
-    lead: 'Lunarays Cloud Services focuses on helping organizations transition from traditional IT infrastructure to flexible, scalable cloud environments. The service scope covers cloud migration, infrastructure deployment, cloud environment management, and hybrid infrastructure support across platforms such as AWS and Microsoft Azure. The offering is designed to support cloud adoption, infrastructure modernization, operational continuity, and evolving business technology requirements.',
-    deliverables: [
-      'Cloud readiness assessment',
-      'Cloud migration planning',
-      'AWS cloud infrastructure support',
-      'Microsoft Azure infrastructure support',
-      'On-premises to cloud migration',
-      'Cloud infrastructure deployment',
-      'Hybrid cloud environment support',
-      'Cloud resource management',
-      'Cloud monitoring and maintenance',
-      'Infrastructure modernization',
-      'Cloud backup and recovery support',
-      'Cloud security configuration support',
-      'Cloud cost optimization',
-      'Post-migration technical assistance'
-    ],
-    techStack: 'Amazon Web Services (AWS), Microsoft Azure, Cloud Infrastructure, Hybrid Cloud, Virtual Machines, Cloud Storage, Cloud Networking, Backup & Recovery, Infrastructure Monitoring',
-    sla: 'Cloud Support Options • Migration Scope-Based Delivery • Infrastructure Monitoring • Technical Escalation Support'
-  },
-  'it-infrastructure-managed': {
-    title: 'IT Infrastructure & Managed Services',
-    category: 'IT Infrastructure, Operations & Managed Support',
-    lead: 'Lunarays provides IT infrastructure and managed services to support business-critical technology environments. The service portfolio covers infrastructure operations, network management, IT asset lifecycle support, information security, and technical assistance to help organizations maintain reliable and efficient IT operations.',
-    deliverables: [
-      'IT infrastructure assessment',
-      'Server and workstation management',
-      'Network operations and support',
-      'IT asset lifecycle management',
-      'Infrastructure monitoring and maintenance',
-      'Information security support',
-      'Remote technical assistance',
-      'Helpdesk and end-user support',
-      'IT installation and relocation',
-      'Infrastructure optimization',
-      'Preventive maintenance',
-      'Technical escalation support'
-    ],
-    techStack: 'IT Infrastructure, Servers, Workstations, Networking, IT Asset Management, Information Security, Remote Support, Helpdesk, Enterprise IT Operations',
-    sla: 'Managed Support Options • Response-Time Commitments as per Service Plan • Priority Escalation • Preventive Maintenance'
-  },
-  'application-services': {
-    title: 'Application Development, Implementation & Management',
-    category: 'Application Engineering & Management',
-    lead: 'Lunarays provides application services spanning solution development, implementation, application management, transition, enhancement and continuous improvement. The company also describes the use of RPA and BOT technologies for process digitization.',
-    deliverables: [
-      'Business requirement analysis',
-      'Application solutioning',
-      'Application development',
-      'Application implementation',
-      'Application transition',
-      'Application operations',
-      'Application enhancement',
-      'Application maintenance',
-      'Process digitization',
-      'RPA/BOT implementation',
-      'Application monitoring',
-      'Continuous improvement'
-    ],
-    techStack: 'Enterprise Applications, RPA, BOT Technology, Web Applications, Mobile Applications, Databases, Cloud Platforms',
-    sla: 'Application-Specific SLA • Managed Support Options • Response & Resolution Based on Service Agreement'
-  },
-  'infor-services': {
-    title: 'Infor Supply Chain Execution & Enterprise Asset Management',
-    category: 'Enterprise Applications & Business Operations',
-    lead: 'Lunarays lists Infor Services as a dedicated service category focused on Supply Chain Execution and Enterprise Asset Management.',
-    deliverables: [
-      'Infor solution assessment',
-      'Supply Chain Execution support',
-      'Enterprise Asset Management support',
-      'Business-process alignment',
-      'Application implementation support',
-      'Application maintenance',
-      'Integration support',
-      'Technical support'
-    ],
-    techStack: 'Infor, Supply Chain Execution, Enterprise Asset Management, Enterprise Applications, Business Operations Systems',
-    sla: 'Managed Support Options • SLA Defined by Service Agreement • Technical Escalation Support'
-  },
-  'database-support': {
-    title: 'Enterprise Database Support & Management Services',
-    category: 'Database Infrastructure & Support',
-    lead: 'Lunarays describes database support as a core component of enterprise software infrastructure, with emphasis on database efficiency, security, user management and data accessibility.',
-    deliverables: [
-      'Database environment assessment',
-      'Database administration support',
-      'User-data management',
-      'Database security',
-      'Authentication support',
-      'Authorization management',
-      'Redundancy checks',
-      'Database maintenance',
-      'Database hosting support',
-      'Performance and operational support'
-    ],
-    techStack: 'Oracle, MySQL, PostgreSQL, Enterprise Databases, Web Applications, Cloud Infrastructure, Application Platforms',
-    sla: 'Database Support SLA • Monitoring & Maintenance • Response Based on Service Agreement'
-  },
-  'oracle-retail-fusion': {
-    title: 'Oracle Retail & Fusion Enterprise Solutions',
-    category: 'Enterprise Applications & Retail Technology',
-    lead: 'Lunarays positions Oracle Retail & Fusion services toward retail organizations and mission-critical enterprise environments. The service portfolio references cloud adoption and Oracle-based business applications.',
-    deliverables: [
-      'Oracle environment assessment',
-      'Oracle Retail solution support',
-      'Oracle Fusion support',
-      'Cloud adoption support',
-      'Application implementation',
-      'Application maintenance',
-      'Enterprise application support',
-      'Business-process alignment',
-      'Mission-critical application support'
-    ],
-    techStack: 'Oracle Retail, Oracle Fusion, HCM, Financial Services Management, CRM, Cloud Infrastructure, Enterprise Applications',
-    sla: 'Managed Support Options • Application-Specific SLA • Technical Escalation Support'
-  },
-  'mobility': {
-    title: 'Enterprise Mobility & Mobile Application Services',
-    category: 'Mobile Application & Digital Transformation',
-    lead: 'Lunarays\' Mobility offering focuses on helping organizations define mobility roadmaps and implement mobile solutions across the application lifecycle, including design, migration, testing, maintenance and reporting.',
-    deliverables: [
-      'Mobility strategy and roadmap',
-      'Mobile application design',
-      'Application implementation',
-      'Application migration',
-      'Mobile application testing',
-      'Application maintenance',
-      'Reporting',
-      'Debugging',
-      'Technology-platform assessment',
-      'User-adoption planning',
-      'Mobility architecture support'
-    ],
-    techStack: 'Mobile Applications, Enterprise Applications, Mobile Platforms, Cloud Infrastructure, Application Development, Testing Tools',
-    sla: 'Application-Specific SLA • Maintenance & Support • Response Based on Service Agreement'
-  }
-};
-
-function initServicesModal() {
-  const cards = document.querySelectorAll('.service-card');
-  const backdrop = document.getElementById('serviceModalBackdrop');
-  const modalContainer = document.getElementById('modalDynamicContent');
-  const closeBtn = document.getElementById('modalCloseBtn');
-
-  if (!cards.length || !backdrop || !modalContainer) return;
-
-  cards.forEach(card => {
-    card.addEventListener('click', () => {
-      const serviceId = card.getAttribute('data-service-id');
-      const data = servicesData[serviceId];
-      if (!data) return;
-
-      const iconSvg = card.querySelector('.service-icon-box svg')?.outerHTML || '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>';
-
-      modalContainer.innerHTML = `
-        <div class="modal-header-hero">
-          <div class="modal-hero-icon">
-            ${iconSvg}
-          </div>
-          <div>
-            <span class="service-tag">${data.category}</span>
-            <h2 class="modal-headline">${data.title}</h2>
-          </div>
-        </div>
-
-        <p class="section-lead" style="margin-bottom: 30px;">${data.lead}</p>
-
-        <div class="modal-grid-cols">
-          <div>
-            <h3 class="modal-col-title">Core Engineering Deliverables</h3>
-            <ul class="modal-features-list">
-              ${data.deliverables.map(item => `
-                <li>
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                  <span>${item}</span>
-                </li>
-              `).join('')}
-            </ul>
-          </div>
-
-          <div>
-            <div class="modal-box-card">
-              <h4 style="font-family: var(--font-subheading); font-size: 0.85rem; font-weight: 700; color: var(--color-primary); margin-bottom: 8px;">TECHNOLOGY ECOSYSTEM</h4>
-              <p style="font-size: 0.95rem; color: var(--color-text-main); font-weight: 400;">${data.techStack}</p>
-            </div>
-
-            <div class="modal-box-card">
-              <h4 style="font-family: var(--font-subheading); font-size: 0.85rem; font-weight: 700; color: var(--color-accent-blue); margin-bottom: 8px;">SLA & SUPPORT COMMITMENT</h4>
-              <p style="font-size: 0.95rem; color: var(--color-text-main); font-weight: 400;">${data.sla}</p>
-            </div>
-
-            <div style="margin-top: 24px;">
-              <a href="#cta" onclick="document.getElementById('serviceModalBackdrop').classList.remove('active');" class="btn btn-primary btn-block">
-                Request Architecture Consultation &rarr;
-              </a>
-            </div>
-          </div>
-        </div>
-      `;
-
-      backdrop.classList.add('active');
-      document.body.style.overflow = 'hidden';
-    });
-  });
-
-  function closeModal() {
-    backdrop.classList.remove('active');
-    document.body.style.overflow = '';
-  }
-
-  closeBtn.addEventListener('click', closeModal);
-  backdrop.addEventListener('click', (e) => {
-    if (e.target === backdrop) closeModal();
-  });
-
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && backdrop.classList.contains('active')) {
-      closeModal();
-    }
-  });
-}
-
-/* ==========================================================================
    4. HOW SERVICES ARE DELIVERED (ROADMAP + EXPLORE MORE OPERATIONS)
    ========================================================================== */
 function initDeliveryOperations() {
@@ -770,7 +520,7 @@ window.handleProposalSubmit = async function () {
 
   try {
     const [emailResult, sheetResult] = await Promise.allSettled([
-      fetch('https://formsubmit.co/ajax/info@lunaraystechnologies.com', {
+      fetch('https://formsubmit.co/ajax/nilesh.kumar@lunaraystechnologies.com', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
         body: JSON.stringify(emailPayload)

@@ -1,0 +1,29 @@
+/* Shared styles for the /services/ pages. Builds on style.css and careers.css (footer). */
+.service-page { background: #fff; color: #17283a; }
+.sp-wrap { max-width: 1000px; }
+.sp-hero { padding: 40px 0 44px; background: linear-gradient(180deg, #fff 0%, #f6f8ff 100%); border-bottom: 1px solid #e8edf7; }
+.sp-breadcrumb { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 22px; color: #6b7a90; font: 600 .78rem var(--font-subheading); }
+.sp-breadcrumb a { color: #4b5b73; }
+.sp-breadcrumb a:hover { color: #b51425; }
+.sp-category { margin-bottom: 10px; color: #a32231; font: 700 .8rem var(--font-subheading); }
+.sp-hero h1 { max-width: 780px; margin-bottom: 16px; color: #17283a; font-size: clamp(2rem, 4.2vw, 3.1rem); line-height: 1.1; letter-spacing: -.035em; }
+.sp-lead { max-width: 720px; color: #4f5e72; font-size: 1.03rem; line-height: 1.75; font-weight: 400; }
+.sp-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 22px; margin-top: 26px; }
+.sp-secondary { color: #b51425; font: 600 .88rem var(--font-subheading); text-decoration: underline; text-underline-offset: 3px; }
+.sp-body { padding-top: 48px; padding-bottom: 76px; }
+.sp-body section { margin-bottom: 40px; }
+.sp-body h2 { margin-bottom: 14px; color: #17283a; font-size: 1.5rem; letter-spacing: -.02em; }
+.sp-body p { max-width: 720px; color: #4a586b; font-size: .98rem; line-height: 1.75; font-weight: 400; }
+.sp-body a { color: #b51425; text-decoration: underline; text-underline-offset: 2px; }
+.sp-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px 32px; list-style: none; padding: 0; }
+.sp-list li { position: relative; padding-left: 20px; color: #3f4d62; font-size: .96rem; line-height: 1.55; font-weight: 400; }
+.sp-list li::before { content: ""; position: absolute; left: 3px; top: .6em; width: 6px; height: 6px; border-radius: 2px; background: #c62838; }
+.sp-chips { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; padding: 0; }
+.sp-chips li { padding: 6px 12px; border: 1px solid #e3e9f5; border-radius: 4px; background: #f6f8ff; color: #3f4d62; font: 500 .82rem var(--font-subheading); }
+.sp-related { display: flex; flex-wrap: wrap; gap: 10px 22px; list-style: none; padding: 0; }
+.sp-related a { font: 600 .92rem var(--font-subheading); }
+@media (max-width: 700px) {
+  .sp-hero { padding: 28px 0 34px; }
+  .sp-list { grid-template-columns: 1fr; }
+  .sp-body { padding-top: 34px; }
+}

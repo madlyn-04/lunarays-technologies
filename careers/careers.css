@@ -435,3 +435,8 @@
     bottom: calc(16px + env(safe-area-inset-bottom, 0px));
   }
 }
+@media (max-width: 768px) {
+  .cookie-consent-banner { left: 12px; right: 12px; width: auto; padding: 12px; gap: 10px; }
+  .cookie-consent-actions { flex-wrap: nowrap; gap: 5px; width: 100%; }
+  .cookie-consent-actions button { flex: 1 1 0; min-width: 0; padding: 7px 2px; font-size: 0.62rem; white-space: nowrap; }
+}
